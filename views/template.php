@@ -376,6 +376,16 @@ if(!empty($_SESSION["nombre"]))
                 allowClear: true
             }
         );
+        
+        $.fn.modal.Constructor.prototype.enforceFocus = function() {
+            $(".select2").select2
+        (
+            {
+                placeholder: "Choose ...",
+                allowClear: true
+            }
+        );
+        };
     </script>
     <style>
         .repairtext

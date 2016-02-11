@@ -33,7 +33,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 
                     <div class="form-group">
                         <label class="control-label repairtext">Code</label>
-                        <input type="text" class="form-control" name="codigo" placeholder="Code" required>
+                        <input type="text" class="form-control" name="codigo" placeholder="Code" maxlength="7" required>
                     </div>
 
                     <div class="form-group">
