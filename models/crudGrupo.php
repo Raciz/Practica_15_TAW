@@ -65,7 +65,7 @@ class CRUDGrupo
         //cerramos la conexion
         $stmt -> close();
     }
-    
+
     //modelo para borrar un grupo de la base de datos
     public static function eliminarGrupoModel($data,$tabla1,$tabla2)
     {

@@ -126,21 +126,5 @@ class CRUDUnidad
         //cerramos la conexion
         $stmt->close();
     }
-    
-    //modelo para obtener la informacion de las unidades registradas
-    public static function optionUnidadModel($tabla)
-    {
-        //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
-
-        //se ejecuta la consulta
-        $stmt -> execute();
-
-        //retornamos la informacion de la tabla
-        return $stmt -> fetchAll();
-
-        //cerramos la conexion
-        $stmt -> close();
-    }
 }
 ?>
