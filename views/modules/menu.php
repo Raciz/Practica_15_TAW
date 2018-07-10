@@ -3,7 +3,7 @@
     <li><a href="index.php?section=dashboard"><i class="ti-home"></i> Dashboard </a></li>
     <li><a href="index.php?section=users&action=list"><i class="mdi mdi-account-circle"></i> Users </a></li>
     <li><a href="index.php?section=groups&action=list"><i class="mdi mdi-account-multiple"></i> Gruops </a></li>
-    <li><a href="index.php?section=career&action=list"><i class="fa fa-user"></i> Careers </a></li>
+    <li><a href="index.php?section=careers&action=list"><i class="fa fa-user"></i> Careers </a></li>
     <li><a href="index.php?section=students&action=list"><i class="fa fa-user"></i> Students </a></li>
     <!--
     <li>

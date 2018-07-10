@@ -53,7 +53,8 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 
                     <div class="form-group">
                         <label class="control-label">Type</label>
-                        <select class="form-control select2" name="tipo">
+                        <select style="width:100%;" class="form-control select2" name="tipo" required>
+                            <option value=""></option>
                             <option value="Teacher">Teacher</option>
                             <option value="Administrator">Administrator</option>
                         </select>

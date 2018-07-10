@@ -21,6 +21,9 @@ class mvcUsuario
             //en caso de que se haya registrado correctamente
             if($resp == "success")
             {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "add";
+                
                 //nos redireccionara al listado deusuarios
                 echo "<script>
                         window.location.replace('index.php?section=users&action=list');
@@ -52,15 +55,18 @@ class mvcUsuario
                 <td>".$row["tipo"]."</td>
                 <td>
                     <center>
-                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#eliminar-modal'>Delete</button>
-                        <a href='index.php?section=users&action=list&edit=".$row["num_empleado"]."'><button class='btn btn-rounded btn-custom'>Edit</button></a>
+                        <button class='btn btn-rounded btn-danger' data-toggle='modal' data-target='#delete-modal' onclick='idDel(".$row["num_empleado"].")'> Delete </button>
+                        
+                        <a href='index.php?section=users&action=list&edit=".$row["num_empleado"]."'>
+                            <button class='btn btn-rounded btn-custom'>Edit</button>
+                        </a>
                     </center>
                 </td>
                 </tr>";
         }
     }
 
-    /*/Control para borrar un usuario del sistema
+    //Control para borrar un usuario del sistema
     public function eliminarUsuarioController()
     {
         //se verifica si se envio el id del usuario a eliminar
@@ -70,18 +76,21 @@ class mvcUsuario
             $data = $_POST["del"];
 
             //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
-            $resp = CRUDUsuario::eliminarUsuarioModel($data,"usuario");
+            $resp = CRUDUsuario::eliminarUsuarioModel($data,"grupo","teacher","usuario");
 
             //en caso de haberse eliminado correctamente
             if($resp == "success")
             {
-                //nos redireccionara al listado deusuarios
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "delete";
+                
+                //nos redireccionara al listado de usuarios
                 echo "<script>
-                window.location.replace('index.php?section=usuario&action=listado');
-            </script>";
+                        window.location.replace('index.php?section=users&action=list');
+                      </script>";
             }
         }
-    }*/
+    }
 
     //Control para poder mostrar la informacion de un Usuario a editar
     public function editarUsuarioController()
@@ -140,10 +149,13 @@ class mvcUsuario
             //en caso de que se haya editado correctamente 
             if($resp == "success")
             {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "edit";
+                
                 //nos redireccionara al listado de usuarios
                 echo "<script>
-                window.location.replace('index.php?section=users&action=list');
-            </script>";
+                        window.location.replace('index.php?section=users&action=list');
+                      </script>";
             }
         }
     }

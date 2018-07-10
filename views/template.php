@@ -53,6 +53,10 @@ if(!empty($_SESSION["nombre"]))
         <link href="views/media/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
         <!-- Summernote css -->
         <link href="views/media/plugins/summernote/summernote.css" rel="stylesheet" />
+        
+        <!-- Sweet Alert -->
+        <link href="views/media/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+        <script src="views/media/plugins/sweet-alert2/sweetalert2.min.js"></script>
     </head>
 
 
@@ -316,6 +320,7 @@ if(!empty($_SESSION["nombre"]))
         <script src="views/media/plugins/datatables/dataTables.fixedColumns.min.js"></script>
 
         <script src="views/media/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+        
         <!--Morris Chart-->
         <script src="views/media/plugins/morris/morris.min.js"></script>
         <script src="views/media/plugins/raphael/raphael-min.js"></script>

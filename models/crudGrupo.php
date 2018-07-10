@@ -22,7 +22,7 @@ class CRUDGrupo
             return "success";
         }
         else
-        {
+        {            
             //en caso de no ser asi nos retorna fail
             return "fail";
         }
@@ -79,16 +79,20 @@ class CRUDGrupo
 
         //cerramos la conexion
         $stmt -> close();
-    }
+    }*/
 
-    //modelo para obtener la informacion de un usuario
-    public static function editarUsuarioModel($data,$tabla)
+    //modelo para obtener la informacion de un grupo
+    public static function editarGrupoModel($data,$tabla1,$tabla2,$tabla3)
     {
         //preparamos la sentencia para realizar el select
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE num_empleado = :id");
+        $stmt = Conexion::conectar()->prepare("SELECT g.codigo as codigo, g.nivel as nivel, u.nombre as teacher, u.num_empleado as id
+                                               FROM $tabla1 as g 
+                                               JOIN $tabla2 as t on t.teacher = g.teacher
+                                               JOIN $tabla3 as u on u.num_empleado = t.teacher 
+                                               WHERE g.codigo = :id");
 
         //se realiza la asignacion de los datos para la consulta
-        $stmt->bindParam(":id",$data, PDO::PARAM_INT);	
+        $stmt->bindParam(":id",$data, PDO::PARAM_STR);	
 
         //se ejecuta la sentencia
         $stmt->execute();
@@ -101,13 +105,13 @@ class CRUDGrupo
     }
 
     //modelo para modificar la informacion de un usuario registrada en la base de datos
-    public static function modificarAlumnoModel($data,$tabla)
+    public static function modificarGrupoModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el update
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nivel = :nivel, teacher = :teacher WHERE codigo = :id");
-
+        
         //se realiza la asignacion de los datos para el update
-        $stmt -> bindParam(":id", $data["id"], PDO::PARAM_INT);
+        $stmt -> bindParam(":id", $data["id"], PDO::PARAM_STR);
         $stmt -> bindParam(":nivel", $data["nivel"], PDO::PARAM_INT);
         $stmt -> bindParam(":teacher", $data["teacher"], PDO::PARAM_INT);
 
@@ -125,6 +129,6 @@ class CRUDGrupo
 
         //cerramos la conexion
         $stmt->close();
-    }*/
+    }
 }
 ?>

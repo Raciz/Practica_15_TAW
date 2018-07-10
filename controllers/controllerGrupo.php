@@ -85,19 +85,24 @@ class mvcGrupo
     public function editarGrupoController()
     {
         //se obtiene el id del grupo a mostrar su informacion
-        $data = $_POST["edit"];
+        $data = $_GET["edit"];
 
         //se manda el id del grupo y el nombre de la tabla donde esta almacenada
-        $resp = CRUDGrupo::editarGrupoModel($data,"grupo");
+        $resp = CRUDGrupo::editarGrupoModel($data,"grupo","teacher","usuario");
 
         //se imprime la informacion del grupo en inputs de un formulario
         echo "
                     <input type=hidden value=".$resp["codigo"]." name='id'>
-
+                    
+                     <div class='form-group'>
+                        <label class='control-label'>Code</label>
+                        <input type='text' class='form-control' placeholder='Code' value=".$resp["codigo"]." readonly>
+                    </div>
+                    
                     <div class='form-group'>
                         <label class='control-label'>Level</label>
-                        <select style='width:100%;' class='form-control select2' name='nivel' required>
-                            <option value=""></option>";
+                        <select style='width:100%;' class='form-control select2' id='level' name='nivel' required>
+                            <option value=''></option>";
                             for($i = 1; $i <= 9; $i++)
                             {
                                 echo "<option value=".$i.">Level ".$i."</option>";
@@ -109,7 +114,7 @@ class mvcGrupo
                         <label class='control-label'>Teacher</label>
                         <option></option>
                         <select style='width:100%;' class='form-control select2' id='teacher' name='teacher' required>
-                            <option value=""></option>";
+                            <option value=''></option>";
                             
                             //creamos un objeto de mvcUsuario
                             $option = new mvcUsuario();
@@ -123,13 +128,22 @@ class mvcGrupo
  
         //script para seleccionar en el select el option del teacher al que pertenece el grupo
         echo "<script>
-                var grupo = document.getElementById('teacher');
+                var teacher = document.getElementById('teacher');
+                var level = document.getElementById('level');
 
-                for(var i = 1; i < grupo.options.length; i++)
+                for(var i = 1; i < teacher.options.length; i++)
                 {
-                    if(grupo.options[i].value ==".$resp["teacher"].")
+                    if(teacher.options[i].value ==".$resp["id"].")
                     {
-                        grupo.selectedIndex = i;
+                        teacher.selectedIndex = i;
+                    }
+                }
+                
+                for(var i = 1; i < level.options.length; i++)
+                {
+                    if(level.options[i].value ==".$resp["nivel"].")
+                    {
+                        level.selectedIndex = i;
                     }
                 }
                 </script>";
@@ -159,8 +173,6 @@ class mvcGrupo
                     </script>";
             }
         }
-    }*/
+    }
 }
 ?>
-
-
