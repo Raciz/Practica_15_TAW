@@ -11,17 +11,17 @@ if(!isset($_SESSION["nombre"]))
 //verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
 if(!empty($_SESSION["mensaje"]))
 {
-    //si session en mensaje es agregar un usuario
+    //si session en mensaje es agregar un usuario a la sesion
     if($_SESSION["mensaje"]=="add")
     {
         $_SESSION["tiempo"] = date("H:i:s");
-        //se muestra el sweet alert de agregar un usuario
+        //se muestra el sweet alert de agregar un usuario a la sesion
         echo"<script>
                     swal
                     (
                         {
-                            title: 'Registro Exitoso:',
-                            text: 'se ha registrado un nuevo alumno en la session',
+                            title: 'Successful registration:',
+                            text: 'a new student has registered in the session',
                             type: 'success',
                             confirmButtonText: 'Continue',
                             confirmButtonColor: '#4fa7f3'
@@ -29,16 +29,16 @@ if(!empty($_SESSION["mensaje"]))
                     )
             </script>";
     }
-    //si session en mensaje es eliminar un usuario
+    //si session en mensaje es finalizacion de la hora
     elseif ($_SESSION["mensaje"]=="delete")
     {
-        //se muestra el sweet alert de eliminar un usuario
+        //se muestra el sweet alert de finalizacion de la hora
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha finalizado la hora de CAI del alumno',
+                        title: 'Warning:',
+                        text: 'The CAI hour of the student has ended',
                         type: 'warning',
                         confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
@@ -49,13 +49,13 @@ if(!empty($_SESSION["mensaje"]))
     }
     elseif ($_SESSION["mensaje"]=="die")
     {
-        //se muestra elsweet alert de editar un usuario
+
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Finalizado',
-                        text: 'Hora terminada',
+                        title: 'Terminated:',
+                        text: 'Hour finished',
                         type: 'success',
                         confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'

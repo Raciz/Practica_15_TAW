@@ -285,7 +285,7 @@ class mvcAlumno
         foreach($data as $rows => $row)
         {
             //se muestra cada una de los alumnos en un option del select
-            echo "<option class='repairtext' value=".$row["matricula"].">".$row["nombre"]."</option>";
+            echo "<option class='repairtext' value=".$row["matricula"].">".$row["nombre"]." ".$row["apellido"]."</option>";
         }
     }
     

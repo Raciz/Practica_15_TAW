@@ -14,27 +14,27 @@ class mvcSession
         //se imprime la informacion de la asistencia en inputs de un formulario
         echo "
               <input type=hidden value=".$actividad." name='actividad'>
-              <img class='pull-left' width='400px' height='400px' src='views/media/images/users/1530326.jpeg'/>
+              <img class='pull-left' width='400px' height='400px' src='".$resp[0]["img"]."'/>
               <div class='text-black' style='margin-left: 420px'>
                 <p>
                     <b>ID:</b>
                     <br>
-                    <input class='form-control' type='text' name='matricula' value=".$resp[0]["matricula"].">
+                    <input class='form-control' type='text' name='matricula' value='".$resp[0]["matricula"]."' readonly>
                   </p>
                   <p>
                     <b>Name:</b>
                     <br>
-                    <input class='form-control' type='text' name='nombre' value=".$resp[0]["nombre"]." ".$resp[0]["apellido"].">
+                    <input class='form-control' type='text' name='nombre' value='".$resp[0]["nombre"]." ".$resp[0]["apellido"]."' readonly>
                   </p>
                   <p>
                     <b>Group:</b>
                     <br>
-                    <input class='form-control' type='text' name='grupo' value=".$resp[0]["grupo"].">
+                    <input class='form-control' type='text' name='grupo' value='".$resp[0]["grupo"]."' readonly>
                   </p>
                   <p>
                     <b>Career:</b>
                     <br>
-                    <input class='form-control' type='text' name='carrera' value=".$resp[0]["carrera"].">
+                    <input class='form-control' type='text' name='carrera' value='".$resp[0]["carrera"]."' readonly>
                   </p>
                   </div>";
     }

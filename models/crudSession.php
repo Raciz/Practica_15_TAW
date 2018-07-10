@@ -8,7 +8,7 @@ class CRUDSession
     public static function mostrarSessionModel($data,$tabla, $tabla2)
     {
         //se prepara la sentencia para realizar la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT a.matricula as matricula, a.nombre as nombre,
+        $stmt = Conexion::conectar() -> prepare("SELECT a.img, a.matricula as matricula, a.nombre as nombre,
                                                 a.apellido as apellido, a.grupo as grupo,
                                                  c.nombre as carrera
                                                         FROM $tabla as a 
@@ -91,7 +91,7 @@ class CRUDSession
             return "success";
         }
         else
-        {            
+        {    
             //en caso de no ser asi nos retorna fail
             return "fail";
         }

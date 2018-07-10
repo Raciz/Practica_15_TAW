@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-07-2018 a las 10:38:42
+-- Tiempo de generación: 26-07-2018 a las 19:16:54
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -32,7 +32,7 @@ USE `CAI`;
 --
 
 CREATE TABLE `actividad` (
-  `id_actividad` int(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id_actividad` int(7) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -42,7 +42,10 @@ CREATE TABLE `actividad` (
 --
 
 INSERT INTO `actividad` (`id_actividad`, `nombre`, `descripcion`) VALUES
-(2, 'BOOK', 'fwegwg');
+(3, 'BOOK', 'read book'),
+(4, 'PC', 'Work in computer'),
+(5, 'Game', 'Play a game'),
+(6, 'Watch Movie', 'See movie in the room');
 
 -- --------------------------------------------------------
 
@@ -64,12 +67,11 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`, `img`) VALUES
-(123, 'safsaf', 'asf', 'EN-122', 'ITI', ''),
-(213, 'asdsf', 'asf', 'EN-143', 'ITI', 'views/media/img/19720186549Captura de pantalla de 2018-07-15 15-15-24.png'),
-(12323, 'Francisco Isaac', 'Perales Morales', 'EN-122', 'ITI', ''),
-(1234241, 'dasf', 'asfasf', NULL, 'ITI', 'views/media/img/19720186856Captura de pantalla de 2018-07-15 14-56-32.png'),
-(2142215, 'Luiz', 'Serra', 'EN-122', 'ISA', ''),
-(2412533, 'Miguel', 'Perez', 'EN-122', 'MECA', '');
+(123, 'Miguel Angel', 'Perez Sanchez', 'EN-122', 'ITI', ''),
+(213, 'Aaron Leonardo', 'Sanchez Martinez', 'EN-143', 'ITI', 'views/media/img/19720186549Captura de pantalla de 2018-07-15 15-15-24.png'),
+(1234241, 'Osiel', 'Gomez Flores', 'EN-143', 'ISA', 'views/media/img/19720186856Captura de pantalla de 2018-07-15 14-56-32.png'),
+(1530061, 'Karla Vanessa', 'Balderrama', 'EN-333', 'PYMES', 'views/media/img/2672018183229avatar-1.jpg'),
+(1530123, 'David', 'Tovias Alanis', 'EN-333', 'MECA', 'views/media/img/2672018183046avatar-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -95,8 +97,9 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `hora_completa`) VALUES
-(1, '2018-07-19', '00:00:00', '03:00:00', 12323, 2, 2, 2, 'gfdfgsdg', 1),
-(2, '2018-07-19', '00:00:00', '03:00:00', 12323, 2, 2, 2, 'gfdfgsdg', 0);
+(1, '2018-07-26', '17:36:44', '18:18:36', 213, 6, 7, 3, 'Brian Becerra', 0),
+(2, '2018-07-26', '17:46:47', '17:50:14', 1234241, 5, 7, 1, 'Brian Becerra', 0),
+(3, '2018-07-26', '18:19:29', '18:35:29', 213, 5, 7, 3, 'Brian Becerra', 0);
 
 -- --------------------------------------------------------
 
@@ -116,7 +119,8 @@ CREATE TABLE `carrera` (
 INSERT INTO `carrera` (`siglas`, `nombre`) VALUES
 ('ISA', 'Automotive systems engineering'),
 ('ITI', ' Engineering in information technology'),
-('MECA', 'Automotive systems engineering');
+('MECA', 'Engineering in mechatronics'),
+('PYMES', 'Engineering in management PYMES');
 
 -- --------------------------------------------------------
 
@@ -135,9 +139,11 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`codigo`, `nivel`, `teacher`) VALUES
-('EN-111', 6, 13),
-('EN-122', 1, 13),
-('EN-143', 3, 15);
+('EN-111', 3, 17),
+('EN-122', 9, 17),
+('EN-143', 3, 15),
+('EN-222', 4, 16),
+('EN-333', 6, 16);
 
 -- --------------------------------------------------------
 
@@ -154,8 +160,9 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`teacher`) VALUES
-(13),
-(15);
+(15),
+(16),
+(17);
 
 -- --------------------------------------------------------
 
@@ -175,8 +182,10 @@ CREATE TABLE `unidad` (
 --
 
 INSERT INTO `unidad` (`id_unidad`, `nombre`, `fecha_inicio`, `fecha_fin`) VALUES
-(2, 'Unidad 1 2018-1', '2018-07-21', '2018-08-21'),
-(4, 'Unidad', '2018-08-21', '2018-09-21');
+(5, 'Unit 1 2018-2', '2018-05-01', '2018-05-31'),
+(6, 'Unit 2 2018-2', '2018-06-01', '2018-06-30'),
+(7, 'Unit 3 2018-2', '2018-07-01', '2018-07-31'),
+(8, 'Unit 4 2018-2', '2018-08-01', '2018-08-31');
 
 -- --------------------------------------------------------
 
@@ -199,8 +208,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`num_empleado`, `nombre`, `username`, `password`, `email`, `tipo`) VALUES
 (12, 'Francisco Isaac Perales Morales', 'admin', 'admin', '1530071@upv.edu.mx', 'Administrator'),
-(13, 'Angela Carrizales', 'angie', 'angie', 'angie@upv.edu.mx', 'Teacher'),
-(15, 'Brian Becerra', 'brian', 'brian', 'Brian@Brian.com', 'Teacher');
+(15, 'Brian Becerra', 'brian', 'brian', 'Brian@Brian.com', 'Teacher'),
+(16, 'Angela Carrizales', 'angie', 'angie', 'angel@gmail.com', 'Teacher'),
+(17, 'Talia Caballero', 'talia', 'talis', 'talia@gmail.com', 'Teacher'),
+(18, 'Mario Rodriguez', 'mario', 'mario', 'mario@gmail.com', 'Administrator');
 
 --
 -- Índices para tablas volcadas
@@ -209,6 +220,9 @@ INSERT INTO `usuario` (`num_empleado`, `nombre`, `username`, `password`, `email`
 --
 -- Indices de la tabla `actividad`
 --
+ALTER TABLE `actividad`
+  ADD PRIMARY KEY (`id_actividad`);
+
 --
 -- Indices de la tabla `alumno`
 --
@@ -265,16 +279,28 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `actividad`
+--
+ALTER TABLE `actividad`
+  MODIFY `id_actividad` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `unidad`
 --
 ALTER TABLE `unidad`
-  MODIFY `id_unidad` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_unidad` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `num_empleado` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `num_empleado` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas

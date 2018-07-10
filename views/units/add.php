@@ -57,7 +57,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-custom waves-effect waves-light">Save changes</button>
+                <button type="submit" class="btn btn-custom waves-effect waves-light">Save</button>
             </div>
         </div>
     </form>

@@ -27,7 +27,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title repairtext">Delete User?</h4>
+                    <h4 class="modal-title repairtext">Delete Student?</h4>
                 </div>
                 <div class="modal-body">
 
