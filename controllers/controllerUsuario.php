@@ -52,8 +52,8 @@ class mvcUsuario
                 <td>".$row["tipo"]."</td>
                 <td>
                     <center>
-                        <a href='index.php?section=users&action=list&edit=".$row["num_empleado"]."'><button class='btn btn-rounded btn-custom'>Edit</button></a>
                         <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#eliminar-modal'>Delete</button>
+                        <a href='index.php?section=users&action=list&edit=".$row["num_empleado"]."'><button class='btn btn-rounded btn-custom'>Edit</button></a>
                     </center>
                 </td>
                 </tr>";
@@ -123,7 +123,6 @@ class mvcUsuario
     //Control para modificar la informacion de un usuario
     public function modificarUsuarioController()
     {
-            print_r($_POST);
         
         //se verifica si mediante el formulario se envio informacion
         if(isset($_POST["id"]))
@@ -146,6 +145,20 @@ class mvcUsuario
                 window.location.replace('index.php?section=users&action=list');
             </script>";
             }
+        }
+    }
+    
+    //Control para mostrar a los teachers en un select
+    public function optionUsuarioController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar su informacion
+        $data = CRUDUsuario::optionUsuarioModel("usuario","teacher");
+
+        //mostramos el nombre de cada una de los teachers
+        foreach($data as $rows => $row)
+        {
+            //se muestra cada una de los teachers en un option del select
+            echo "<option value=".$row["num_empleado"].">".$row["nombre"]."</option>";
         }
     }
 }

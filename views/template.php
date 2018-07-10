@@ -5,6 +5,10 @@ ini_set("display_errors", 1);
 session_start();
 ?>
 
+<?php
+if(!empty($_SESSION["nombre"]))
+{
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -201,10 +205,8 @@ session_start();
                                     <a href="" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="views/media/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:void(0)"><i class="ti-user m-r-10"></i> Profile</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-settings m-r-10"></i> Settings</a></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-lock m-r-10"></i> Lock screen</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="javascript:void(0)"><i class="ti-power-off m-r-10"></i> Logout</a></li>
+                                        <li><a href="index.php?section=logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -231,8 +233,8 @@ session_start();
                                     <img src="views/media/images/users/avatar-1.jpg" alt="" class="thumb-md img-circle">
                                 </div>
                                 <div class="user-info">
-                                    <a href="#">Stanley Jones</a>
-                                    <p class="text-muted m-0">Administrator</p>
+                                    <a href="#"><?php echo $_SESSION["nombre"]; ?></a>
+                                    <p class="text-muted m-0"><?php echo $_SESSION["tipo"] ?></p>
                                 </div>
                             </div>
                             <!--- End User Detail box -->
@@ -249,14 +251,19 @@ session_start();
 
                 <!-- START PAGE CONTENT -->
                 <div id="page-right-content">
-
+<?php
+}
+?>    
                     <?php
                     //creamos un objeto de mvcController
                     $mvc = new mvcController();
                     //y obtenemos el controlador para el redireccionamiento
                     $mvc -> urlController();
                     ?>
-
+<?php
+if(!empty($_SESSION["nombre"]))
+{
+?>
                     <div class="footer">
                         <div>
                             <strong>Angela Carrizales, Brian Becerra y Francisco Perales</strong> - Copyright &copy; 2018
@@ -308,12 +315,7 @@ session_start();
         <script src="views/media/plugins/datatables/dataTables.colVis.js"></script>
         <script src="views/media/plugins/datatables/dataTables.fixedColumns.min.js"></script>
 
-        <!-- init 
-<script src="views/media/pages/jquery.datatables.init.js"></script>
-<script src="views/media/pages/jquery.dashboard.js"></script>
-<script src="views/media/pages/jquery.form-advanced.init.js"></script>
--->
-
+        <script src="views/media/plugins/select2/js/select2.min.js" type="text/javascript"></script>
         <!--Morris Chart-->
         <script src="views/media/plugins/morris/morris.min.js"></script>
         <script src="views/media/plugins/raphael/raphael-min.js"></script>
@@ -334,8 +336,17 @@ session_start();
                 'info'        : true,
                 'autoWidth'   : false
             }
-        )
+        );
         
-        jQuery(".select2").select2();
+        $(".select2").select2
+        (
+            {
+                placeholder: "Choose ...",
+                allowClear: true
+            }
+        );
     </script>
 </html>
+<?php
+}
+?>

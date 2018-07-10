@@ -32,12 +32,13 @@ class CRUDGrupo
     }
 
     //modelo para obtener la informacion de los grupos registrados
-    public static function listadoAlumnoModel($tabla1,$tabla2,$tabla3)
+    public static function listadoGrupoModel($tabla1,$tabla2,$tabla3)
     {
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT g.codigo, g.nivel, u.nombre, FROM $tabla1 as g 
-                                                                                     JOIN $tabla2 as t on t.teacher = g.teacher
-                                                                                     JOIN $tabla3 as u on u.num_empleado = t.teacher");
+        $stmt = Conexion::conectar() -> prepare("SELECT g.codigo as codigo , g.nivel as nivel , u.nombre as teacher 
+                                                 FROM $tabla1 as g 
+                                                 JOIN $tabla2 as t on t.teacher = g.teacher
+                                                 JOIN $tabla3 as u on u.num_empleado = t.teacher");
 
         //se ejecuta la consulta
         $stmt -> execute();
@@ -49,7 +50,7 @@ class CRUDGrupo
         $stmt -> close();
     }
 
-    //modelo para borrar un grupo de la base de datos
+    /*/modelo para borrar un grupo de la base de datos
     public static function eliminarGrupoModel($data,$tabla1,$tabla2)
     {
         //preparamos la sentencia para realizar un update para quitar a los alumnos del grupo a eliminar
@@ -80,7 +81,7 @@ class CRUDGrupo
         $stmt -> close();
     }
 
-    /*/modelo para obtener la informacion de un usuario
+    //modelo para obtener la informacion de un usuario
     public static function editarUsuarioModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el select
@@ -97,7 +98,7 @@ class CRUDGrupo
 
         //cerramos la conexion
         $stmt->close();
-    }*/
+    }
 
     //modelo para modificar la informacion de un usuario registrada en la base de datos
     public static function modificarAlumnoModel($data,$tabla)
@@ -124,6 +125,6 @@ class CRUDGrupo
 
         //cerramos la conexion
         $stmt->close();
-    }
+    }*/
 }
 ?>

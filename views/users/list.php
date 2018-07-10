@@ -2,7 +2,7 @@
 //verificamos si el usuario ya ha iniciado session
 if(!isset($_SESSION["nombre"]))
 {
-    //si no ha iniciado sesion, lo sacamos a la seccion publica
+   //si no ha iniciado sesion, lo redirigimos al login
     echo "<script>
             window.location.replace('index.php');
           </script>";
@@ -42,8 +42,8 @@ if(!isset($_SESSION["nombre"]))
 <!-- end container -->
 
 <?php
-    //incluimos el archivo con el modal para agregar, editar y eliminar usuarios
-    include_once "views/users/add.php";
+//incluimos el archivo con el modal para agregar, editar y eliminar usuarios
+include_once "views/users/add.php";
 include_once "views/users/edit.php";
 #include_once "views/users/delete.php";
 ?>

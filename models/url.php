@@ -10,13 +10,13 @@ class url
         {
             $url = "views/".$section."/".$action.".php";
         }
-        elseif($section == "logout")
+        elseif($section == "logout" || $section == "dashboard")
         {
             $url = "views/modules/".$section.".php";
         }
         else
         {
-            $url = "views/modules/dashboard.php";
+            $url = "views/modules/login.php";
         }
 
         //y se retorna la pagina a redireccionar

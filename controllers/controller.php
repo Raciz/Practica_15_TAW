@@ -54,13 +54,14 @@ class mvcController
                           "password"=>$_POST["password"]);
 
             //se manda al modelo la informacion del login
-            $resp = CRUD::loginModel($data,"Usuario");
+            $resp = CRUD::loginModel($data,"usuario");
 
             //se verifica que la informacion mandada por el formulario sea igual a la devuelta por el modelo
             if($resp["username"] == $_POST["user"]  && $resp["password"] == $_POST["password"])
             {
                 //en caso de que coincida se inicia sesion y se guardan cierto datos del usuario
                 $_SESSION["nombre"] = $resp["nombre"];
+                $_SESSION["tipo"] = $resp["tipo"];
                 $_SESSION["password"] = $resp["password"];
 
                 //si no se direccionara al dashboard

@@ -21,7 +21,7 @@ class mvcGrupo
             {
                 //nos redireccionara al listado de grupos
                 echo "<script>
-                        window.location.replace('index.php?section=grupo&action=listado');
+                        window.location.replace('index.php?section=groups&action=list');
                       </script>";
             }
             else
@@ -38,25 +38,27 @@ class mvcGrupo
         //se le manda al modelo el nombre de la tabla a mostrar la informacion de los grupos
         $data = CRUDGrupo::listadoGrupoModel("grupo","teacher","usuario");
 
-        //se imprime la informacion de cada uno de los usuarios registrados
+        //se imprime la informacion de cada uno de los grupos registrados
         foreach($data as $rows => $row)
         {
             //e imprimimos la informacion de cada uno de los grupos
-            echo "<tr>
+            echo "<tr class='fondoTabla'>
                 <td>".$row["codigo"]."</td>
                 <td>".$row["nivel"]."</td>
                 <td>".$row["teacher"]."</td>
                 <td>
                     <center>
-                        <button title='Eliminar Grupo' class='btn btn-icon btn-danger'><i class='fa fa-trash'></i></button>
-                        <button title='Editar Grupo' class='btn btn-icon btn-warning'><i class='fa fa-edit'></i></button>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#eliminar-modal'>Delete</button>
+                        <a href='index.php?section=groups&action=list&edit=".$row["codigo"]."'>
+                            <button class='btn btn-rounded btn-custom'>Edit</button>
+                        </a>
                     </center>
                 </td>
             </tr>";
         }
     }
 
-    //Control para borrar un grupo del sistema
+    /*/Control para borrar un grupo del sistema
     public function eliminarGrupoController()
     {
         //se verifica si se envio el id del grupo a eliminar
@@ -73,49 +75,66 @@ class mvcGrupo
             {
                 //nos redireccionara al listado de grupos
                 echo "<script>
-                        window.location.replace('index.php?section=usuario&action=listado');
+                        window.location.replace('index.php?section=usuari&action=listado');
                       </script>";
             }
         }
-    }
+    }*/
 
-    /*/Control para poder mostrar la informacion de un alumno a editar
-    public function editarAlumnoController()
+    //Control para poder mostrar la informacion de un grupo a editar
+    public function editarGrupoController()
     {
-        //se obtiene el id del alumno a mostrar su informacion
+        //se obtiene el id del grupo a mostrar su informacion
         $data = $_POST["edit"];
 
-        //se manda el id del alumno y el nombre de la tabla donde esta almacenada
-        $resp = CRUDAlumno::editarAlumnoModel($data,"Alumna");
+        //se manda el id del grupo y el nombre de la tabla donde esta almacenada
+        $resp = CRUDGrupo::editarGrupoModel($data,"grupo");
 
         //se imprime la informacion del grupo en inputs de un formulario
         echo "
-                <input type=hidden value=".$resp["id_alumna"]." name='id'>
+                    <input type=hidden value=".$resp["codigo"]." name='id'>
 
-                <div class='form-group'>
-                        <label>Nombre</label>
-                        <input type='text' value='".$resp["nombre"]."' class='form-control' name='nombre' placeholder='Ingrese Nombre' required>
+                    <div class='form-group'>
+                        <label class='control-label'>Level</label>
+                        <select style='width:100%;' class='form-control select2' name='nivel' required>
+                            <option value=""></option>";
+                            for($i = 1; $i <= 9; $i++)
+                            {
+                                echo "<option value=".$i.">Level ".$i."</option>";
+                            }
+        echo "          </select>
                     </div>
 
                     <div class='form-group'>
-                        <label>Apellido</label>
-                        <input type='text' value='".$resp["apellido"]."' class='form-control' name='apellido' placeholder='Ingrese Apellido' required>
+                        <label class='control-label'>Teacher</label>
+                        <option></option>
+                        <select style='width:100%;' class='form-control select2' id='teacher' name='teacher' required>
+                            <option value=""></option>";
+                            
+                            //creamos un objeto de mvcUsuario
+                            $option = new mvcUsuario();
+
+                            //se manda a llamar el controller para enlistar todos los teachers en el select
+                            $option -> optionUsuarioController();
+                            
+        echo "          </select>
                     </div>
+             ";
  
-        //script para seleccionar en el select el option de la categoria al que pertenece el producto
+        //script para seleccionar en el select el option del teacher al que pertenece el grupo
         echo "<script>
-                var grupo = document.getElementById('grupo');
+                var grupo = document.getElementById('teacher');
 
                 for(var i = 1; i < grupo.options.length; i++)
                 {
-                    if(grupo.options[i].value ==".$resp["grupo"].")
+                    if(grupo.options[i].value ==".$resp["teacher"].")
                     {
                         grupo.selectedIndex = i;
                     }
                 }
                 </script>";
         
-    }*/
+    }
 
     //Control para modificar la informacion de un grupo
     public function modificarGrupoController()
@@ -136,11 +155,11 @@ class mvcGrupo
             {
                 //nos redireccionara al listado de grupos
                 echo "<script>
-                        window.location.replace('index.php?section=grupo&action=listado');
+                        window.location.replace('index.php?section=groups&action=list');
                     </script>";
             }
         }
-    }
+    }*/
 }
 ?>
 

@@ -2,7 +2,7 @@
 //verificamos si el usuario ya ha iniciado session
 if(!isset($_SESSION["nombre"]))
 {
-    //si no ha iniciado sesion, lo sacamos a la seccion publica
+   //si no ha iniciado sesion, lo redirigimos al login
     echo "<script>
             window.location.replace('index.php');
           </script>";

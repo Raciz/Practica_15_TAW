@@ -69,6 +69,21 @@ class CRUDUsuario
         //cerramos la conexion
         $stmt -> close();
     }
+    //modelo para obtener la informacion de los teachers registrados
+    public static function optionUsuarioModel($tabla1,$tabla2)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla1 as u JOIN $tabla2 as t on t.teacher = u.num_empleado");
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
 
     /*/modelo para borrar un usuario de la base de datos
     public static function eliminarUsuarioModel($data,$tabla)
