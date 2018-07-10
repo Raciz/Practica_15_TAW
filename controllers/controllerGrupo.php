@@ -19,6 +19,9 @@ class mvcGrupo
             //en caso de que se haya registrado correctamente
             if($resp == "success")
             {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "add";
+                
                 //nos redireccionara al listado de grupos
                 echo "<script>
                         window.location.replace('index.php?section=groups&action=list');
@@ -48,7 +51,7 @@ class mvcGrupo
                 <td>".$row["teacher"]."</td>
                 <td>
                     <center>
-                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#eliminar-modal'>Delete</button>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["codigo"]."')>Delete</button>
                         <a href='index.php?section=groups&action=list&edit=".$row["codigo"]."'>
                             <button class='btn btn-rounded btn-custom'>Edit</button>
                         </a>
@@ -58,7 +61,7 @@ class mvcGrupo
         }
     }
 
-    /*/Control para borrar un grupo del sistema
+    //Control para borrar un grupo del sistema
     public function eliminarGrupoController()
     {
         //se verifica si se envio el id del grupo a eliminar
@@ -73,13 +76,16 @@ class mvcGrupo
             //en caso de haberse eliminado correctamente
             if($resp == "success")
             {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "delete";
+                
                 //nos redireccionara al listado de grupos
-                echo "<script>
-                        window.location.replace('index.php?section=usuari&action=listado');
-                      </script>";
+                #echo "<script>
+                 #       window.location.replace('index.php?section=groups&action=list');
+                  #    </script>";
             }
         }
-    }*/
+    }
 
     //Control para poder mostrar la informacion de un grupo a editar
     public function editarGrupoController()
@@ -167,6 +173,9 @@ class mvcGrupo
             //en caso de que se haya editado correctamente 
             if($resp == "success")
             {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "edit";
+                
                 //nos redireccionara al listado de grupos
                 echo "<script>
                         window.location.replace('index.php?section=groups&action=list');

@@ -58,8 +58,9 @@ class CRUDUsuario
     public static function listadoUsuarioModel($tabla)
     {
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
-
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE NOT num_empleado = :id");
+        $stmt -> bindParam(":id",$_SESSION["empleado"],PDO::PARAM_INT);
+        
         //se ejecuta la consulta
         $stmt -> execute();
 

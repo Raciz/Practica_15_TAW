@@ -8,25 +8,25 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para eliminar un usuario del sistema
+//verificamos si se debe mandar a llamar el controller para eliminar un grupo del sistema
 if(isset($_GET["action"]) && $_GET["action"]=="delete")
 {
-    //se crea un objeto de mvcUsuario
-    $delete = new mvcUsuario();
+    //se crea un objeto de mvcGrupo
+    $delete = new mvcGrupo();
 
-    //se manda a llamar el controller para eliminar un Usuario
-    $delete -> eliminarUsuarioController();
+    //se manda a llamar el controller para eliminar un Grupo
+    $delete -> eliminarGrupoController();
 }
 ?>
 
-<!-- Modal para eliminar una usuario del sistema -->
+<!-- Modal para eliminar un grupo del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <form id="formDel" action="index.php?section=users&action=delete" method="post">
+        <form id="formDel" action="index.php?section=groups&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Delete User?</h4>
+                    <h4 class="modal-title">Delete Group?</h4>
                 </div>
                 <div class="modal-body">
 
@@ -34,7 +34,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
 
                     <div class="form-group">
                         <label class="control-label">Password</label>
-                        <input type="Password" class="form-control" id="passDel" placeholder="Name" required>
+                        <input type="Password" class="form-control" id="passDel" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -53,13 +53,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     //variable para modificar el formulario
     var form = document.getElementById("formDel");
 
-    //funcion para obtener el id del usuario a eliminar
+    //funcion para obtener el id del grupo a eliminar
     function idDel(del)
     {
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
-        //le asignamos a value del que es el id del usuario a eliminar 
+        //le asignamos a value del que es el id del grupo a eliminar 
         input.setAttribute("value",del);
     }
 

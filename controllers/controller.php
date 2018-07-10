@@ -63,7 +63,7 @@ class mvcController
                 $_SESSION["nombre"] = $resp["nombre"];
                 $_SESSION["tipo"] = $resp["tipo"];
                 $_SESSION["password"] = $resp["password"];
-
+                $_SESSION["empleado"] = $resp["num_empleado"];
                 //si no se direccionara al dashboard
                 echo "<script>
                         window.location.replace('index.php?section=dashboard');
