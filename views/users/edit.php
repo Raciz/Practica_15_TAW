@@ -1,61 +1,60 @@
+<?php
+//verificamos si el usuario ya ha iniciado session
+if(!isset($_SESSION["nombre"]))
+{
+    //si no ha iniciado sesion, lo sacamos a la seccion publica
+    echo "<script>
+            window.location.replace('index.php');
+          </script>";
+}
+
+//verificamos si se debe mandar a llamar el controller para modificar un usuario
+if(isset($_GET["action"]) && $_GET["action"]=="edit")
+{
+    //creamos un objeto de mvcGrupo
+    $edit = new mvcUsuario();
+
+    //se manda a llamar el controller para modificar la informacion de un Grupo
+    $edit -> modificarUsuarioController();
+}
+
+?>
+
+<?php
+if(!empty($_GET["edit"]))
+{
+?>
 <!-- Modal para agregar una nueva carrera -->
-<div id="editar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="editar-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block; padding-right: 15px;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <a href="index.php?section=users&action=list">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </a>
                 <h4 class="modal-title">Edit user</h4>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Name</label>
-                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                        </div>
-                    </div>
+            <form method="post" action="index.php?section=users&action=edit" autocomplete="off">
+                <div class="modal-body">
+                    <?php
+                    //creamos un objeto de mvcUsuario
+                    $edit = new mvcUsuario();
+                    
+                    //mandamos a llamar a el controller para obtener la informacion del usuario
+                    $edit -> editarUsuarioController();
+                    ?> 
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Username</label>
-                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <a href="index.php?section=users&action=list">
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    </a>
+                    <button type="submit" class="btn btn-custom waves-effect waves-light">Save</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Password</label>
-                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">e-mail</label>
-                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Type</label>
-                            <select class="form-control" name="tipo">
-                              <option value="Administrator">Administrator</option>
-                              <option value="Administrator">Teacher</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-custom waves-effect waves-light">Save changes</button>
-            </div>
+            </form>    
         </div>
     </div>
 </div>
 <!-- /.modal -->
+<?php
+}
+?>

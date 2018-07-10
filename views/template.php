@@ -29,6 +29,26 @@ session_start();
         <!-- Custom styles for this template -->
         <link href="views/media/css/style.css" rel="stylesheet">
 
+        <!-- DataTables -->
+        <link href="views/media/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="views/media/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="views/media/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="views/media/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="views/media/plugins/datatables/dataTables.colVis.css" rel="stylesheet" type="text/css"/>
+        <link href="views/media/plugins/datatables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="views/media/plugins/datatables/fixedColumns.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Plugins css-->
+        <link href="views/media/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link rel="stylesheet" href="views/media/plugins/switchery/switchery.min.css">
+        <link href="views/media/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="views/media/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <link href="views/media/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="views/media/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="views/media/plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+        <link href="views/media/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <!-- Summernote css -->
+        <link href="views/media/plugins/summernote/summernote.css" rel="stylesheet" />
     </head>
 
 
@@ -259,15 +279,63 @@ session_start();
         <script src="views/media/js/metisMenu.min.js"></script>
         <script src="views/media/js/jquery.slimscroll.min.js"></script>
 
+        <script src="views/media/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+        <script src="views/media/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <script src="views/media/plugins/switchery/switchery.min.js"></script>
+        <script type="text/javascript" src="views/media/plugins/parsleyjs/parsley.min.js"></script>
+        <script src="views/media/plugins/moment/moment.js"></script>
+        <script src="views/media/plugins/timepicker/bootstrap-timepicker.js"></script>
+        <script src="views/media/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+        <script src="views/media/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="views/media/plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+        <script src="views/media/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="views/media/plugins/summernote/summernote.min.js"></script>
+
+        <!-- Datatable js -->
+        <script src="views/media/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.bootstrap.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="views/media/plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="views/media/plugins/datatables/jszip.min.js"></script>
+        <script src="views/media/plugins/datatables/pdfmake.min.js"></script>
+        <script src="views/media/plugins/datatables/vfs_fonts.js"></script>
+        <script src="views/media/plugins/datatables/buttons.html5.min.js"></script>
+        <script src="views/media/plugins/datatables/buttons.print.min.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="views/media/plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.scroller.min.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.colVis.js"></script>
+        <script src="views/media/plugins/datatables/dataTables.fixedColumns.min.js"></script>
+
+        <!-- init 
+<script src="views/media/pages/jquery.datatables.init.js"></script>
+<script src="views/media/pages/jquery.dashboard.js"></script>
+<script src="views/media/pages/jquery.form-advanced.init.js"></script>
+-->
+
         <!--Morris Chart-->
         <script src="views/media/plugins/morris/morris.min.js"></script>
         <script src="views/media/plugins/raphael/raphael-min.js"></script>
-
-        <!-- Dashboard init -->
-        <script src="views/media/pages/jquery.dashboard.js"></script>
 
         <!-- App Js -->
         <script src="views/media/js/jquery.app.js"></script>
 
     </body>
+
+    <script type="text/javascript">
+        $('#example1').DataTable
+        (
+            {
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            }
+        )
+        
+        jQuery(".select2").select2();
+    </script>
 </html>

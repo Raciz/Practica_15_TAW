@@ -6,25 +6,24 @@ class mvcUsuario
     function agregarUsuarioController()
     {
         //se verifica si mediante el formulario se envio informacion
-        if(isset($_POST["num_empleado"]))
+        if(isset($_POST["nombre"]))
         {
             //se guardan la informacion del usuario
-            $data = array("num_empleado" => $_POST["num_empleado"],
-                          "nombre" => $_POST["nombre"],
+            $data = array("nombre" => $_POST["nombre"],
                           "username" => $_POST["username"],
                           "password" => $_POST["password"],
                           "email" => $_POST["email"],
                           "tipo" => $_POST["tipo"]);
 
             //se manda la informacion al modelo con su respectiva tabla en la que se registrara
-            $resp = CRUDUsuario::agregarUsuarioModel($data,"usuario");
+            $resp = CRUDUsuario::agregarUsuarioModel($data,"usuario","teacher");
 
             //en caso de que se haya registrado correctamente
             if($resp == "success")
             {
                 //nos redireccionara al listado deusuarios
                 echo "<script>
-                        window.location.replace('index.php?section=usuario&action=listado');
+                        window.location.replace('index.php?section=users&action=list');
                       </script>";
             }
             else
@@ -45,22 +44,23 @@ class mvcUsuario
         foreach($data as $rows => $row)
         {
             //e imprimimos la informacion de cada uno de los usuarios
-            echo "<tr>
+            echo "<tr class='fondoTabla'>
                 <td>".$row["num_empleado"]."</td>
                 <td>".$row["nombre"]."</td>
+                <td>".$row["username"]."</td>
                 <td>".$row["email"]."</td>
                 <td>".$row["tipo"]."</td>
                 <td>
                     <center>
-                        <button title='Eliminar Usuario' class='btn btn-icon btn-danger'><i class='fa fa-trash'></i></button>
-                        <button title='Editar Usuario' class='btn btn-icon btn-warning'><i class='fa fa-edit'></i></button>
+                        <a href='index.php?section=users&action=list&edit=".$row["num_empleado"]."'><button class='btn btn-rounded btn-custom'>Edit</button></a>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#eliminar-modal'>Delete</button>
                     </center>
                 </td>
-            </tr>";
+                </tr>";
         }
     }
 
-    //Control para borrar un usuario del sistema
+    /*/Control para borrar un usuario del sistema
     public function eliminarUsuarioController()
     {
         //se verifica si se envio el id del usuario a eliminar
@@ -77,88 +77,63 @@ class mvcUsuario
             {
                 //nos redireccionara al listado deusuarios
                 echo "<script>
-                        window.location.replace('index.php?section=usuario&action=listado');
-                      </script>";
+                window.location.replace('index.php?section=usuario&action=listado');
+            </script>";
             }
         }
-    }
-
-    /*/Control para poder mostrar la informacion de un alumno a editar
-    public function editarAlumnoController()
-    {
-        //se obtiene el id del alumno a mostrar su informacion
-        $data = $_POST["edit"];
-
-        //se manda el id del alumno y el nombre de la tabla donde esta almacenada
-        $resp = CRUDAlumno::editarAlumnoModel($data,"Alumna");
-
-        //se imprime la informacion del grupo en inputs de un formulario
-        echo "
-                <input type=hidden value=".$resp["id_alumna"]." name='id'>
-
-                <div class='form-group'>
-                        <label>Nombre</label>
-                        <input type='text' value='".$resp["nombre"]."' class='form-control' name='nombre' placeholder='Ingrese Nombre' required>
-                    </div>
-
-                    <div class='form-group'>
-                        <label>Apellido</label>
-                        <input type='text' value='".$resp["apellido"]."' class='form-control' name='apellido' placeholder='Ingrese Apellido' required>
-                    </div>
-
-
-                    <div class='form-group'>
-                        <label>Fecha de Nacimiento</label>
-
-                        <div class='input-group date'>
-                            <div class='input-group-addon'>
-                                <i class='fa fa-calendar'></i>
-                            </div>
-                            <input name='fecha' type='text' class='form-control pull-right' id='datepicker2' value='".$resp["fechaNac"]."'>
-                        </div>
-                    </div>
-
-                    <div class='form-group'>
-                        <label>Grupo</label>
-                        <select name='grupo' id='grupo' class='form-control select2' style='width: 100%;' required>";
-
-        //creamos un objeto de mvcGrupo
-        $option = new mvcGrupo();
-
-        //se manda a llamar al control para traer a los grupos en options
-        $option -> optionGrupoController();
-
-        echo"           </select>
-                    </div>";
-        
-        //script para seleccionar en el select el option de la categoria al que pertenece el producto
-        echo "<script>
-                var grupo = document.getElementById('grupo');
-
-                for(var i = 1; i < grupo.options.length; i++)
-                {
-                    if(grupo.options[i].value ==".$resp["grupo"].")
-                    {
-                        grupo.selectedIndex = i;
-                    }
-                }
-                </script>";
-        
     }*/
+
+    //Control para poder mostrar la informacion de un Usuario a editar
+    public function editarUsuarioController()
+    {
+        //se obtiene el id del usuario a mostrar su informacion
+        $data = $_GET["edit"];
+
+        //se manda el id del usuario y el nombre de la tabla donde esta almacenada
+        $resp = CRUDUsuario::editarUsuarioModel($data,"usuario");
+
+        //se imprime la informacion del usuario en inputs de un formulario
+        echo 
+        "
+                    <input type='hidden' name='id' value=".$data.">
+                    <div class='form-group'>
+                        <label class='control-label'>Name</label>
+                        <input type='text' class='form-control' name='nombre' placeholder='Name' value='".$resp["nombre"]."' required>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label'>Username</label>
+                        <input type='text' class='form-control' name='username' placeholder='Username' value='".$resp["username"]."' required>
+                    </div>
+
+
+                    <div class='form-group'>
+                        <label class='control-label'>Password</label>
+                        <input type='password' class='form-control' name='password' placeholder='Password' value='".$resp["password"]."' required>
+                    </div>
+
+
+                    <div class='form-group'>
+                        <label class='control-label'>Email</label>
+                        <input type='email' class='form-control' name='email' placeholder='Email' value='".$resp["email"]."'>
+                    </div>
+        ";
+    }
 
     //Control para modificar la informacion de un usuario
     public function modificarUsuarioController()
     {
+            print_r($_POST);
+        
         //se verifica si mediante el formulario se envio informacion
-        if(isset($_POST["nombre"]))
+        if(isset($_POST["id"]))
         {
             //se guardan la informacion del usuario
             $data = array("id" => $_POST["id"],
                           "nombre" => $_POST["nombre"],
                           "username" => $_POST["username"],
                           "password" => $_POST["password"],
-                          "email" => $_POST["email"],
-                          "tipo" => $_POST["tipo"]);
+                          "email" => $_POST["email"]);
 
             //se manda la informacion del usuario y la tabla en la que esta almacenada
             $resp = CRUDUsuario::modificarUsuarioModel($data,"usuario");
@@ -168,12 +143,11 @@ class mvcUsuario
             {
                 //nos redireccionara al listado de usuarios
                 echo "<script>
-                        window.location.replace('index.php?section=alumno&action=listado');
-                    </script>";
+                window.location.replace('index.php?section=users&action=list');
+            </script>";
             }
         }
     }
-    */
 }
 ?>
 
