@@ -1,11 +1,10 @@
 <!-- Left Menu Start -->
 <ul class="metisMenu nav" id="side-menu">
     <li><a href="index.php?section=dashboard"><i class="ti-home"></i> Dashboard </a></li>
-    <li><a href="index.php?section=usuario&action=listado"><i class="mdi mdi-account-circle"></i> Usuarios </a></li>
-    <li><a href="index.php?section=grupo&action=listado"><i class="mdi mdi-account-multiple"></i> Grupos </a></li>
-    <li><a href="index.php?section=carrera&action=listado"><i class="fa fa-user"></i> Carreras </a></li>
-    <li><a href="index.php?section=alumno&action=listado"><i class="fa fa-user"></i> Alumnos </a></li>
-
+    <li><a href="index.php?section=users&action=list"><i class="mdi mdi-account-circle"></i> Users </a></li>
+    <li><a href="index.php?section=groups&action=list"><i class="mdi mdi-account-multiple"></i> Gruops </a></li>
+    <li><a href="index.php?section=career&action=list"><i class="fa fa-user"></i> Careers </a></li>
+    <li><a href="index.php?section=students&action=list"><i class="fa fa-user"></i> Students </a></li>
     <!--
     <li>
         <a href="javascript: void(0);" aria-expanded="true"><i class="ti-light-bulb"></i> Components <span class="fa arrow"></span></a>

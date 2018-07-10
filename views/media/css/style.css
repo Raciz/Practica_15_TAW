@@ -10,6 +10,7 @@ File: Main file css
   =====================*/
 .topbar .topbar-left {
   float: left;
+  margin-left: 20px;
   position: relative;
   width: 190px;
   z-index: 999; }
@@ -22,7 +23,7 @@ File: Main file css
   line-height: 70px;
   text-transform: uppercase; }
   .logo img {
-    height: 26px; }
+    height: 60px; }
   .logo h1 {
     height: 50px;
     margin: 0 auto;
@@ -31,7 +32,9 @@ File: Main file css
     color: #23b195; }
 
 .navbar-default {
-  background-color: #f5f5f5;
+  background-color: #0D4932; /*ward*/
+  /*background-color: rgba(255, 255, 255, 0.0); /*ward*/
+  border-bottom: 10px solid #126C4A !important;
   border-radius: 0;
   z-index: 99;
   border: none;
@@ -155,7 +158,8 @@ File: Main file css
 
 .sidebar-navigation {
   position: absolute;
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
+  background-color: rgba(255, 255, 255, 0.0); /*ward*/
   width: 240px;
   top: 70px;
   -moz-transition: margin-left 0.3s;
@@ -183,7 +187,8 @@ File: Main file css
       margin-bottom: 0;
       font-size: 13px; }
     .user-details .user-info a {
-      color: #626773;
+      /*color: #626773;*/
+      color: #fff; /*ward*/
       display: block;
       font-weight: 600;
       padding-top: 5px; }
@@ -206,7 +211,9 @@ File: Main file css
 
 .metisMenu.nav > li > a {
   padding: 13px 20px;
-  color: #626773; }
+  /*color: #626773;*/
+  color: rgba(255,255,255,0.8); /*ward*/
+}
   .metisMenu.nav > li > a .label {
     margin-top: 2px; }
   .metisMenu.nav > li > a:hover, .metisMenu.nav > li > a:focus {
@@ -250,8 +257,9 @@ File: Main file css
   border-bottom: 0; }
 
 #page-right-content {
-  background-color: #ffffff;
-  border-left: 6px solid #f5f5f5;
+  /*background-color: #ffffff;*/
+  background-color: rgba(255, 255, 255, 0.0); /*ward*/
+  border-left: 6px solid #126C4A;
   padding: 90px 5px 50px 5px;
   margin-top: -70px;
   margin-left: 240px;
@@ -287,7 +295,8 @@ File: Main file css
     width: 70px; }
 
   .navbar-nav .open .dropdown-menu {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
+    background-color: rgba(255, 255, 255, 0.0); /*ward*/
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     left: auto;
     position: absolute;
@@ -336,14 +345,23 @@ File: Main file css
   color: #ffffff; }
 
 body {
-  background-color: #f5f5f5;
+  background-color: #126C4A;
+
+  /*background-image:url(../images/fondo1.jpg); /*ward*/
+  background-size: 100vw 100vh;
+  background-attachment: fixed;
+  display: flex;
+  min-height: 100vh;
+
   font-family: "Noto Sans", sans-serif;
   color: #676a6c; }
 
 #page-wrapper {
   width: 90%;
   margin: 0 auto;
-  background-color: #ffffff; }
+  background-color: rgba(255, 255, 255, 0.05); /*ward*/
+  /*background-color: #ffffff;*/
+}
 
 /* =============
    Bootstrap-custom
@@ -399,7 +417,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   font-weight: bold;
   border-bottom: 1px solid gainsboro;
-  padding-bottom: 12px; }
+  padding-bottom: 12px;
+  color: #fff}
 
 .font-normal {
   font-weight: normal; }
@@ -2344,3 +2363,7 @@ h3.timeline-title {
   height: 17px; }
 
 /*# sourceMappingURL=style.css.map */
+.fondoTabla{
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+}

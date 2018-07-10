@@ -44,7 +44,6 @@ session_start();
                     <div class="">
                         <a href="index.html" class="logo">
                             <img src="views/media/images/logo.png" alt="logo" class="logo-lg" />
-                            <img src="views/media/images/logo_sm.png" alt="logo" class="logo-sm hidden" />
                         </a>
                     </div>
                 </div>
@@ -64,22 +63,16 @@ session_start();
 
                             <!-- Top nav left menu -->
                             <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="#" style="color: #fff">About</a></li>
+                                <li><a href="#" style="color: #fff">Help</a></li>
+                                <li><a href="#" style="color: #fff">Contact</a></li>
                             </ul>
 
                             <!-- Top nav Right menu -->
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
-                                <li class="hidden-xs">
-                                    <form role="search" class="navbar-left app-search pull-left">
-                                        <input type="text" placeholder="Search..." class="form-control">
-                                        <a href=""><i class="fa fa-search"></i></a>
-                                    </form>
-                                </li>
                                 <li class="dropdown top-menu-item-xs">
                                     <a href="#" data-target="#" class="dropdown-toggle menu-right-item" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="mdi mdi-bell"></i> <span class="label label-danger">3</span>
+                                        <i class="mdi mdi-bell text-white"></i> <span class="label label-danger">3</span>
                                     </a>
                                     <ul class="dropdown-menu p-0 dropdown-menu-lg">
                                         <!--<li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>-->
