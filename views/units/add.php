@@ -42,7 +42,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="field-3" class="control-label repairtext">Beginning date</label>
-                            <input type="date" name="fecha_inicio" class="form-control">
+                            <input type="date" name="inicio" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="field-3" class="control-label repairtext">Finishing date</label>
-                            <input type="date" name="fecha_fin" class="form-control">
+                            <input type="date" name="fin" class="form-control">
                         </div>
                     </div>
                 </div>
