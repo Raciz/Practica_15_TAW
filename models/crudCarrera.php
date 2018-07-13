@@ -47,9 +47,9 @@ class CRUDCarrera
     }
 
     //modelo para borrar una carrera de la base de datos
-    public static function eliminarGrupoModel($data,$tabla1,$tabla2)
+    public static function eliminarCarreraModel($data,$tabla1,$tabla2)
     {
-        //preparamos la sentencia para realizar un update para quitar a los alumnos de la carrera a eliminar
+        //preparamos la sentencia para realizar un delete para eliminar alos alumnos que pertenecen a la carrera a eliminar
         $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE carrera = :id");
 
         //se realiza la asignacion de los datos a actualizar

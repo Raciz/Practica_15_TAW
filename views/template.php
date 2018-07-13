@@ -58,8 +58,6 @@ if(!empty($_SESSION["nombre"]))
         <link href="views/media/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <script src="views/media/plugins/sweet-alert2/sweetalert2.min.js"></script>
     </head>
-
-
     <body>
 
         <div id="page-wrapper">
@@ -244,7 +242,7 @@ if(!empty($_SESSION["nombre"]))
                             <!--- End User Detail box -->
 
                             <?php
-                            require_once("views/modules/menu.php");
+    require_once("views/modules/menu.php");
                             ?>
                         </div>
                     </div>
@@ -255,19 +253,19 @@ if(!empty($_SESSION["nombre"]))
 
                 <!-- START PAGE CONTENT -->
                 <div id="page-right-content">
-<?php
+                    <?php
 }
-?>
+                    ?>
                     <?php
                     //creamos un objeto de mvcController
                     $mvc = new mvcController();
                     //y obtenemos el controlador para el redireccionamiento
                     $mvc -> urlController();
                     ?>
-<?php
-if(!empty($_SESSION["nombre"]))
-{
-?>
+                    <?php
+                    if(!empty($_SESSION["nombre"]))
+                    {
+                    ?>
                     <div class="footer">
                         <div>
                             <strong>Angela Carrizales, Brian Becerra y Francisco Perales</strong> - Copyright &copy; 2018
@@ -351,7 +349,18 @@ if(!empty($_SESSION["nombre"]))
             }
         );
     </script>
+    <style>
+        .repairtext 
+        {
+            color: #000000;
+        }
+        
+        span
+        {
+            color: #000000;
+        }
+    </style>
 </html>
 <?php
-}
+                    }
 ?>

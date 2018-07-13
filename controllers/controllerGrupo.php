@@ -104,12 +104,12 @@ class mvcGrupo
                     <input type=hidden value=".$resp["codigo"]." name='id'>
 
                      <div class='form-group'>
-                        <label class='control-label'>Code</label>
+                        <label class='control-label repairtext'>Code</label>
                         <input type='text' class='form-control' placeholder='Code' value=".$resp["codigo"]." readonly>
                     </div>
 
                     <div class='form-group'>
-                        <label class='control-label'>Level</label>
+                        <label class='control-label repairtext'>Level</label>
                         <select style='width:100%;' class='form-control select2' id='level' name='nivel' required>
                             <option value=''></option>";
                             for($i = 1; $i <= 9; $i++)
@@ -120,8 +120,7 @@ class mvcGrupo
                     </div>
 
                     <div class='form-group'>
-                        <label class='control-label'>Teacher</label>
-                        <option></option>
+                        <label class='control-label repairtext'>Teacher</label>
                         <select style='width:100%;' class='form-control select2' id='teacher' name='teacher' required>
                             <option value=''></option>";
 
@@ -184,6 +183,20 @@ class mvcGrupo
                         window.location.replace('index.php?section=groups&action=list');
                     </script>";
             }
+        }
+    }
+    
+    //Control para mostrar a los grupos en un select
+    public function optionGrupoController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar su informacion
+        $data = CRUDGrupo::optionGrupoModel("grupo");
+
+        //mostramos el nombre de cada una de los teachers
+        foreach($data as $rows => $row)
+        {
+            //se muestra cada una de los teachers en un option del select
+            echo "<option class='repairtext' value=".$row["codigo"].">".$row["codigo"]."</option>";
         }
     }
 }

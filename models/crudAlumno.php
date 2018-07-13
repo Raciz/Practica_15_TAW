@@ -8,13 +8,14 @@ class CRUDAlumno
     public static function agregarAlumnoModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
-        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (matricula,nombre,apellido,carrera) VALUES (:matricula,:nombre,:apellido,:carrera)");
+        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (matricula,nombre,apellido,carrera,grupo) VALUES (:matricula,:nombre,:apellido,:carrera,:grupo)");
 
         //se realiza la asignacion de los datos a insertar
         $stmt -> bindParam(":matricula",$data["matricula"],PDO::PARAM_INT);
         $stmt -> bindParam(":nombre",$data["nombre"],PDO::PARAM_STR);
         $stmt -> bindParam(":apellido",$data["apellido"],PDO::PARAM_STR);
         $stmt -> bindParam(":carrera",$data["carrera"],PDO::PARAM_STR);
+        $stmt -> bindParam(":grupo",$data["grupo"],PDO::PARAM_STR);
 
         //se ejecuta la sentencia
         if($stmt -> execute())
@@ -51,17 +52,16 @@ class CRUDAlumno
     }
 
     //modelo para borrar un grupo de la base de datos
-    public static function eliminarAlumnoModel($data,$tabla1)
+    public static function eliminarAlumnoModel($data,$tabla)
     {
-        //-----------------------------------------
         //preparamos la sentencia para realizar el Delete para eliminar el grupo
-        $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE matricula = :id");
+        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE matricula = :id");
 
         //se realiza la asignacion de los datos a eliminar
-        $stmt2 -> bindParam(":id",$data,PDO::PARAM_INT);
+        $stmt -> bindParam(":id",$data,PDO::PARAM_INT);
 
         //se ejecuta las sentencias
-        if($stmt2 -> execute())
+        if($stmt -> execute())
         {
             //si se ejecuto correctamente nos retorna success
             return "success";
@@ -73,15 +73,14 @@ class CRUDAlumno
         }
 
         //cerramos la conexion
-        $stmt1 -> close();
-        $stmt2 -> close();
+        $stmt -> close();
     }
 
     //modelo para obtener la informacion de un grupo
     public static function editarAlumnoModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el select
-        $stmt = Conexion::conectar()->prepare("SELECT matricula, nombre, apellido, carrera
+        $stmt = Conexion::conectar()->prepare("SELECT matricula, nombre, apellido, carrera, grupo
                                                FROM $tabla 
                                                WHERE matricula = :id");
 
@@ -102,13 +101,14 @@ class CRUDAlumno
     public static function modificarAlumnoModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el update
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido, carrera = :carrera WHERE matricula = :id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido, carrera = :carrera, grupo = :grupo WHERE matricula = :id");
         
         //se realiza la asignacion de los datos para el update
         $stmt -> bindParam(":id", $data["matricula"], PDO::PARAM_INT);
         $stmt -> bindParam(":nombre", $data["nombre"], PDO::PARAM_STR);
         $stmt -> bindParam(":apellido", $data["apellido"], PDO::PARAM_STR);
         $stmt -> bindParam(":carrera", $data["carrera"], PDO::PARAM_STR);
+        $stmt -> bindParam(":grupo", $data["grupo"], PDO::PARAM_STR);
 
         //se ejecuta la sentencia
         if($stmt -> execute())

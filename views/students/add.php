@@ -2,7 +2,7 @@
 //verificamos si el usuario ya ha iniciado session
 if(!isset($_SESSION["nombre"]))
 {
-   //si no ha iniciado sesion, lo redirigimos al login
+    //si no ha iniciado sesion, lo redirigimos al login
     echo "<script>
             window.location.replace('index.php');
           </script>";
@@ -26,27 +26,30 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Add a new student</h4>
+
+                    <h4 class="modal-title repairtext">Add a new student</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="control-label">ID</label>
+
+                        <label class="control-label repairtext">ID</label>
                         <input type="text" class="form-control" name="matricula" placeholder="ID" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">First name</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="nombre" required>
+
+                        <label class="control-label repairtext">First name</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="First Name" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Last name</label>
-                        <input type="text" class="form-control" name="apellido" placeholder="apellido" required>
+
+                        <label class="control-label repairtext">Last name</label>
+                        <input type="text" class="form-control" name="apellido" placeholder="Last Name" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Career</label>
-                        <option></option>
+                        <label class="control-label repairtext">Career</label>
                         <select style="width:100%;" class="form-control select2" name="carrera" required>
                             <option value=""></option>
                             <?php
@@ -59,6 +62,19 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label repairtext">Group</label>
+                        <select style="width:100%;" class="form-control select2" name="grupo" required>
+                            <option value=""></option>
+                            <?php
+                            //creamos un objeto de mvcGrupo
+                            $option = new mvcGrupo();
+
+                            //se manda a llamar el controller para enlistar todos los grupo en el select
+                            $option -> optionGrupoController();
+                            ?>
+                        </select>
+                    </div>
 
                 </div>
                 <div class="modal-footer">

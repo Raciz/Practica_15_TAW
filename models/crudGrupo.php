@@ -49,6 +49,22 @@ class CRUDGrupo
         //cerramos la conexion
         $stmt -> close();
     }
+    
+    //modelo para obtener la informacion de los grupos registrados
+    public static function optionGrupoModel($tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT codigo FROM $tabla");
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
 
     //modelo para borrar un grupo de la base de datos
     public static function eliminarGrupoModel($data,$tabla1,$tabla2)

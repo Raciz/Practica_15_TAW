@@ -106,24 +106,24 @@ class mvcUsuario
         "
                     <input type='hidden' name='id' value=".$data.">
                     <div class='form-group'>
-                        <label class='control-label'>Name</label>
+                        <label class='control-label repairtext'>Name</label>
                         <input type='text' class='form-control' name='nombre' placeholder='Name' value='".$resp["nombre"]."' required>
                     </div>
 
                     <div class='form-group'>
-                        <label class='control-label'>Username</label>
+                        <label class='control-label repairtext'>Username</label>
                         <input type='text' class='form-control' name='username' placeholder='Username' value='".$resp["username"]."' required>
                     </div>
 
 
                     <div class='form-group'>
-                        <label class='control-label'>Password</label>
+                        <label class='control-label repairtext'>Password</label>
                         <input type='password' class='form-control' name='password' placeholder='Password' value='".$resp["password"]."' required>
                     </div>
 
 
                     <div class='form-group'>
-                        <label class='control-label'>Email</label>
+                        <label class='control-label repairtext'>Email</label>
                         <input type='email' class='form-control' name='email' placeholder='Email' value='".$resp["email"]."'>
                     </div>
         ";

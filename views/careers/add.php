@@ -27,13 +27,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Add a new career</h4>
+                <h4 class="modal-title repairtext">Add a new career</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="field-3" class="control-label">Code</label>
+                            <label for="field-3" class="control-label repairtext">Code</label>
                             <input type="text" name="siglas" class="form-control" id="field-3" placeholder="Code">
                         </div>
                     </div>
@@ -41,7 +41,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="field-3" class="control-label">Name</label>
+                            <label for="field-3" class="control-label repairtext">Name</label>
                             <input type="text" name="nombre" class="form-control" id="field-3" placeholder="Name">
                         </div>
                     </div>

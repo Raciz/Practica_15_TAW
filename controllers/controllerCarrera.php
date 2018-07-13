@@ -60,7 +60,7 @@ class mvcCarrera
     }
 
     //Control para borrar una carrera del sistema
-    public function eliminarGrupoController()
+    public function eliminarCarreraController()
     {
         //se verifica si se envio el id de la carrera a eliminar
         if(isset($_POST["del"]))
@@ -78,9 +78,9 @@ class mvcCarrera
                 $_SESSION["mensaje"] = "delete";
 
                 //nos redireccionara al listado de grupos
-                #echo "<script>
-                 #       window.location.replace('index.php?section=groups&action=list');
-                  #    </script>";
+                echo "<script>
+                        window.location.replace('index.php?section=careers&action=list');
+                      </script>";
             }
         }
     }
@@ -99,13 +99,13 @@ class mvcCarrera
                     <input type=hidden value=".$resp["siglas"]." name='siglas'>
 
                     <div class='form-group'>
-                        <label class='control-label'>Name</label>
-                        <input type='text' class='form-control' placeholder='Codigo' value=".$resp["siglas"]." readonly>
+                        <label class='control-label repairtext'>Code</label>
+                        <input type='text' class='form-control' placeholder='Code' value=".$resp["siglas"]." readonly>
                     </div>
 
                     <div class='form-group'>
-                        <label class='control-label'>Name</label>
-                        <input type='text' name='nombre' class='form-control' placeholder='Nombre' value=".$resp["nombre"]." required>
+                        <label class='control-label repairtext'>Name</label>
+                        <input type='text' name='nombre' class='form-control' placeholder='Name' value='".$resp["nombre"]."' required>
                     </div>";
     }
 
@@ -146,7 +146,7 @@ class mvcCarrera
         foreach($data as $rows => $row)
         {
             //se muestra cada una de los teachers en un option del select
-            echo "<option value=".$row["siglas"].">".$row["nombre"]."</option>";
+            echo "<option value='".$row["siglas"]."'>".$row["nombre"]."</option>";
         }
     }
 }

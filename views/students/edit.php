@@ -32,7 +32,8 @@ if(!empty($_GET["edit"]))
                 <a href="index.php?section=students&action=list">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </a>
-                <h4 class="modal-title">Edit student</h4>
+                        
+                <h4 class="modal-title repairtext">Edit student</h4>
             </div>
             <form method="post" action="index.php?section=students&action=edit" autocomplete="off">
                 <div class="modal-body">

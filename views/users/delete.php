@@ -26,14 +26,14 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Delete User?</h4>
+                    <h4 class="modal-title repairtext">Delete User?</h4>
                 </div>
                 <div class="modal-body">
 
                     <input type="hidden" id="del" name="del">
 
                     <div class="form-group">
-                        <label class="control-label">Password</label>
+                        <label class="control-label repairtext">Password</label>
                         <input type="Password" class="form-control" id="passDel" placeholder="Name" required>
                     </div>
                 </div>

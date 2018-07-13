@@ -26,33 +26,33 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Add a new user</h4>
+                    <h4 class="modal-title repairtext">Add a new user</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="control-label">Name</label>
+                        <label class="control-label repairtext">Name</label>
                         <input type="text" class="form-control" name="nombre" placeholder="Name" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Username</label>
+                        <label class="control-label repairtext">Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
 
 
                     <div class="form-group">
-                        <label class="control-label">Password</label>
+                        <label class="control-label repairtext">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Password" required>
                     </div>
 
 
                     <div class="form-group">
-                        <label class="control-label">Email</label>
+                        <label class="control-label repairtext">Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Email">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Type</label>
+                        <label class="control-label repairtext">Type</label>
                         <select style="width:100%;" class="form-control select2" name="tipo" required>
                             <option value=""></option>
                             <option value="Teacher">Teacher</option>

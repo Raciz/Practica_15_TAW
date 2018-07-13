@@ -12,7 +12,8 @@ class mvcAlumno
             $data = array("matricula" => $_POST["matricula"],
                           "nombre" => $_POST["nombre"],
                           "apellido" => $_POST["apellido"],
-                          "carrera" => $_POST["carrera"]);
+                          "carrera" => $_POST["carrera"],
+                          "grupo" => $_POST["grupo"]);
 
             //se manda la informacion al modelo con su respectiva tabla en la que se registrara
             $resp = CRUDAlumno::agregarAlumnoModel($data,"alumno");
@@ -83,9 +84,9 @@ class mvcAlumno
                 $_SESSION["mensaje"] = "delete";
 
                 //nos redireccionara al listado de Alumnos
-                #echo "<script>
-                 #       window.location.replace('index.php?section=groups&action=list');
-                  #    </script>";
+                echo "<script>
+                        window.location.replace('index.php?section=students&action=list');
+                      </script>";
             }
         }
     }
@@ -99,30 +100,28 @@ class mvcAlumno
         //se manda el id del Alumno y el nombre de la tabla donde esta almacenada
         $resp = CRUDAlumno::editarAlumnoModel($data,"alumno");
         
-        echo "<script> alert(".$resp["matricula"]."); </script>";
         //se imprime la informacion del Alumno en inputs de un formulario
         echo "
                     <input type=hidden value=".$resp["matricula"]." name='matricula'>
 
                      <div class='form-group'>
-                        <label class='control-label'>ID</label>
+                        <label class='control-label repairtext'>ID</label>
                         <input type='text' class='form-control' placeholder='Code' readonly value=".$resp["matricula"].">
                     </div>
 
                     <div class='form-group'>
-                        <label class='control-label'>First name</label>
-                        <input type='text' name='nombre' class='form-control' placeholder='Code' value=".$resp["nombre"]." required>
+                        <label class='control-label repairtext'>First name</label>
+                        <input type='text' name='nombre' class='form-control' placeholder='Code' value='".$resp["nombre"]."' required>
                     </div>
 
                     <div class='form-group'>
-                        <label class='control-label'>Last name</label>
-                        <input type='text' name='apellido' class='form-control' placeholder='Code' value=".$resp["apellido"]." required>
+                        <label class='control-label repairtext'>Last name</label>
+                        <input type='text' name='apellido' class='form-control' placeholder='Code' value='".$resp["apellido"]."' required>
                     </div>";
                         
         echo "
-
                     <div class='form-group'>
-                        <label class='control-label'>Career</label>
+                        <label class='control-label repairtext'>Career</label>
                         <select style='width:100%;' class='form-control select2' id='career' name='carrera' required>
                             <option value=''></option>";
 
@@ -133,17 +132,38 @@ class mvcAlumno
                             $option -> optionCarreraController();
 
         echo "         </select>
-            </div> ";
+                    </div>
+                    
+                    <div class='form-group'>
+                        <label class='control-label repairtext'>Career</label>
+                        <select style='width:100%;' class='form-control select2' id='grupo' name='grupo' required>
+                            <option value=''></option>";
+                            //creamos un objeto de mvcGrupo
+                            $option = new mvcGrupo();
+
+                            //se manda a llamar el controller para enlistar todos los grupos en el select
+                            $option -> optionGrupoController();
+         echo "         </select>
+                    </div>";                   
 
         //script para seleccionar en el select el option de la carrera al que pertenece el Alumno
         echo "<script>
                 var career = document.getElementById('career');
+                var grupo = document.getElementById('grupo');
 
                 for(var i = 1; i < career.options.length; i++)
                 {
-                    if(career.options[i].value ==".$resp["carrera"].")
+                    if(career.options[i].value =='".$resp["carrera"]."')
                     {
                         career.selectedIndex = i;
+                    }
+                }
+                
+                for(var i = 1; i < grupo.options.length; i++)
+                {
+                    if(grupo.options[i].value =='".$resp["grupo"]."')
+                    {
+                        grupo.selectedIndex = i;
                     }
                 }
             </script>";
@@ -160,7 +180,8 @@ class mvcAlumno
             $data = array("matricula" => $_POST["matricula"],
                           "nombre" => $_POST["nombre"],
                           "apellido" => $_POST["apellido"],
-                          "carrera" => $_POST["carrera"]);
+                          "carrera" => $_POST["carrera"],
+                          "grupo" => $_POST["grupo"]);
 
             //se manda la informacion del Alumno y la tabla en la que esta almacenada
             $resp = CRUDAlumno::modificarAlumnoModel($data,"alumno");
