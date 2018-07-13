@@ -12,10 +12,10 @@ if(!isset($_SESSION["nombre"]))
 if(isset($_GET["action"]) && $_GET["action"]=="add")
 {
     //se crea un objeto de mvcUsuario
-    $add = new mvcUsuario();
+    $add = new mvcAlumno();
 
     //se manda a llamar el controller para agregar un nuevo usuario al sistema
-    $add -> agregarUsuarioController();
+    $add -> agregarAlumnoController();
 }
 ?>
 
@@ -31,34 +31,31 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="control-label">ID</label>
-                        <input type="text" class="form-control" name="id" placeholder="ID" required>
+                        <input type="text" class="form-control" name="matricula" placeholder="ID" required>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">First name</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="First name" required>
+                        <input type="text" class="form-control" name="nombre" placeholder="nombre" required>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Last name</label>
-                        <input type="text" class="form-control" name="apellido" placeholder="Last name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Group</label>
-                        <select style="width:100%;" class="form-control select2" name="group" required>
-                            <option value=""></option>
-                            <option value="ENG-1">ENG-1</option>
-                            <option value="ENG-2">ENG-2</option>
-                        </select>
+                        <input type="text" class="form-control" name="apellido" placeholder="apellido" required>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Career</label>
-                        <select style="width:100%;" class="form-control select2" name="career" required>
+                        <option></option>
+                        <select style="width:100%;" class="form-control select2" name="carrera" required>
                             <option value=""></option>
-                            <option value="ITI">ITI</option>
-                            <option value="Meca">Meca</option>
+                            <?php
+                            //creamos un objeto de mvcUsuario
+                            $option = new mvcCarrera();
+
+                            //se manda a llamar el controller para enlistar todos los teachers en el select
+                            $option -> optionCarreraController();
+                            ?>
                         </select>
                     </div>
 

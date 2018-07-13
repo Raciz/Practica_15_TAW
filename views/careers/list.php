@@ -1,3 +1,73 @@
+<?php
+//verificamos si el usuario ya ha iniciado session
+if(!isset($_SESSION["nombre"]))
+{
+   //si no ha iniciado sesion, lo redirigimos al login
+    echo "<script>
+            window.location.replace('index.php');
+          </script>";
+}
+
+//verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
+if(!empty($_SESSION["mensaje"]))
+{
+    //si session en mensaje es agregar un usuario
+    if($_SESSION["mensaje"]=="add")
+    {
+        //se muestra el sweet alert de agregar un usuario
+        echo"<script>
+                    swal
+                    (
+                        {
+                            title: 'Success:',
+                            text: 'se ha registrado una nueva carrera en el sistema',
+                            type: 'success',
+                            confirmButtonText: 'Continuar',
+                            confirmButtonColor: '#4fa7f3'
+                        }
+                    )
+            </script>";
+    }
+    //si session en mensaje es eliminar un usuario
+    elseif ($_SESSION["mensaje"]=="delete")
+    {
+        //se muestra el sweet alert de eliminar un usuario
+        echo"<script>
+                swal
+                (
+                    {
+                        title: 'Advertencia:',
+                        text: 'se ha eliminado una carrera del sistema',
+                        type: 'warning',
+                        confirmButtonText: 'Continuar',
+                        confirmButtonColor: '#4fa7f3'
+                    }
+                )
+            </script>";
+
+    }
+    //si session en mensaje es editar un usuario
+    elseif ($_SESSION["mensaje"]=="edit")
+    {
+        //se muestra elsweet alert de editar un usuario
+        echo"<script>
+                swal
+                (
+                    {
+                        title: 'Editado Exitoso',
+                        text: 'se ha editado la informacion de una carrera',
+                        type: 'success',
+                        confirmButtonText: 'Continuar',
+                        confirmButtonColor: '#4fa7f3'
+                    }
+                )
+            </script>";
+
+    }
+    //se elimina el contenido de session en mensaje
+    $_SESSION["mensaje"]="";
+}
+?>
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -13,30 +83,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="fondoTabla">
-              <td><?php echo "ITI-2010" ?></td>
-              <td><?php echo "Ingeniería en Tecnologías de la Información" ?></td>
-              <td>
-                <button class="btn btn-rounded btn-custom" data-toggle="modal" data-target="#editar-modal">Edit</button>
-                <button class="btn btn-rounded btn-danger" id="eliminar">Delete</button>
-              </td>
-            </tr>
-            <tr class="fondoTabla">
-              <td><?php echo "ITI-2010" ?></td>
-              <td><?php echo "Ingeniería en Tecnologías de la Información" ?></td>
-              <td>
-                <button class="btn btn-rounded btn-custom" data-toggle="modal" data-target="#editar-modal">Edit</button>
-                <button class="btn btn-rounded btn-danger" id="eliminar">Delete</button>
-              </td>
-            </tr>
-            <tr class="fondoTabla">
-              <td><?php echo "ITI-2010" ?></td>
-              <td><?php echo "Ingeniería en Tecnologías de la Información" ?></td>
-              <td>
-                <button class="btn btn-rounded btn-custom" data-toggle="modal" data-target="#editar-modal">Edit</button>
-                <button class="btn btn-rounded btn-danger" id="eliminar">Delete</button>
-              </td>
-            </tr>
+            <?php
+              //creamos un objeto de mvcCarrera
+              $list = new mvcCarrera();
+
+              //se manda a llamar el control para enlistar a las carreras
+              $list -> listadoCarreraController();
+            ?>
           </tbody>
         </table>
       </div>
@@ -44,59 +97,9 @@
   </div>
 </div>
 <!-- end container -->
-
-
-<!-- Modal para agregar una nueva carrera -->
-<div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Add a new career</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Name</label>
-                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-custom waves-effect waves-light">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.modal -->
-
-
-<!-- Modal para editar una nueva carrera -->
-<div id="editar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Edit career</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-3" class="control-label">Name</label>
-                            <input type="text" class="form-control" id="field-3" placeholder="Address">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-custom waves-effect waves-light">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /.modal -->
+<?php
+//incluimos el archivo con el modal para agregar, editar y eliminar carreras
+include_once "views/careers/add.php";
+include_once "views/careers/edit.php";
+include_once "views/careers/delete.php";
+?>

@@ -20,7 +20,7 @@ if(!empty($_SESSION["mensaje"]))
                     (
                         {
                             title: 'Registro Exitoso:',
-                            text: 'se ha registrado un nuevo usuario en el sistema',
+                            text: 'se ha registrado un nuevo alumno en el sistema',
                             type: 'success',
                             confirmButtonText: 'Continuar',
                             confirmButtonColor: '#4fa7f3'
@@ -37,7 +37,7 @@ if(!empty($_SESSION["mensaje"]))
                 (
                     {
                         title: 'Advertencia:',
-                        text: 'se ha eliminado un usuario del sistema',
+                        text: 'se ha eliminado un alumno del sistema',
                         type: 'warning',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -55,7 +55,7 @@ if(!empty($_SESSION["mensaje"]))
                 (
                     {
                         title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de un usuario',
+                        text: 'se ha editado la informacion de un alumno',
                         type: 'success',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -88,10 +88,10 @@ if(!empty($_SESSION["mensaje"]))
                     <tbody>
                         <?php
                         //creamos un objeto de mvcUsuario
-                        //$list = new mvcUsuario();
+                        $list = new mvcAlumno();
 
                         //se manda a llamar el control para enlistar a los usuarios
-                        //$list -> listadoUsuarioController();
+                        $list -> listadoAlumnoController();
                         ?>
                     </tbody>
                 </table>
