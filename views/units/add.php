@@ -8,14 +8,14 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe llamar al controller para agregar un nueva carrera
+//verificamos si se debe llamar al controller para agregar un nueva unidad
 if(isset($_GET["action"]) && $_GET["action"]=="add")
 {
-    //se crea un objeto de mvcCarrera
-    $add = new mvcCarrera();
+    //se crea un objeto de mvcUnidad
+    $add = new mvcUnidad();
 
-    //se manda a llamar el controller para agregar una nueva carrera al sistema
-    $add -> agregarCarreraController();
+    //se manda a llamar el controller para agregar una nueva unidad al sistema
+    $add -> agregarUnidadController();
 }
 ?>
 
@@ -42,7 +42,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="field-3" class="control-label repairtext">Beginning date</label>
-                            <input type="date" name="fecha_inicio" class="form-control" id="field-3">
+                            <input type="date" name="fecha_inicio" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -50,14 +50,14 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="field-3" class="control-label repairtext">Finishing date</label>
-                            <input type="date" name="fecha_fin" class="form-control" id="field-3">
+                            <input type="date" name="fecha_fin" class="form-control">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-custom waves-effect waves-light">Save changes</button>
+                <button type="submit" class="btn btn-custom waves-effect waves-light">Save</button>
             </div>
         </div>
     </form>
