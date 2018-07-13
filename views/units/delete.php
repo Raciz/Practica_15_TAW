@@ -8,25 +8,25 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para eliminar una carrera del sistema
+//verificamos si se debe mandar a llamar el controller para eliminar unidad del sistema
 if(isset($_GET["action"]) && $_GET["action"]=="delete")
 {
-    //se crea un objeto de mvcCarrera
-    $delete = new mvcCarrera();
+    //se crea un objeto de mvcUnidad
+    $delete = new mvcUnidad();
 
-    //se manda a llamar el controller para eliminar una carrera
-    $delete -> eliminarCarreraController();
+    //se manda a llamar el controller para eliminar una unidad
+    $delete -> eliminarUnidadController();
 }
 ?>
 
-<!-- Modal para eliminar una carrera del sistema -->
+<!-- Modal para eliminar una unidad del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <form id="formDel" action="index.php?section=careers&action=delete" method="post">
+        <form id="formDel" action="index.php?section=units&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title repairtext">Delete Career?</h4>
+                    <h4 class="modal-title repairtext">Delete Unit?</h4>
                 </div>
                 <div class="modal-body">
 
@@ -53,13 +53,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     //variable para modificar el formulario
     var form = document.getElementById("formDel");
 
-    //funcion para obtener el id de la carrera a eliminar
+    //funcion para obtener el id de la unidad a eliminar
     function idDel(del)
     {
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
-        //le asignamos a value del que es el id de la carrera a eliminar 
+        //le asignamos a value del que es el id de la unidad a eliminar 
         input.setAttribute("value",del);
     }
 

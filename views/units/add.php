@@ -8,14 +8,14 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe llamar al controller para agregar un nueva carrera
+//verificamos si se debe llamar al controller para agregar un nueva unidad
 if(isset($_GET["action"]) && $_GET["action"]=="add")
 {
-    //se crea un objeto de mvcCarrera
-    $add = new mvcCarrera();
+    //se crea un objeto de mvcUnidad
+    $add = new mvcUnidad();
 
-    //se manda a llamar el controller para agregar una nueva carrera al sistema
-    $add -> agregarCarreraController();
+    //se manda a llamar el controller para agregar una nueva unidad al sistema
+    $add -> agregarUnidadController();
 }
 ?>
 

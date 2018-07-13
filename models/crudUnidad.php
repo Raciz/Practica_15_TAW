@@ -8,7 +8,7 @@ class CRUDUnidad
     public static function agregarUnidadModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
-        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (nombre,,) VALUES (:nombre,:inicio,:fin)");
+        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (nombre,fecha_inicio,fecha_fin) VALUES (:nombre,:inicio,:fin)");
 
         //se realiza la asignacion de los datos a insertar
         $stmt -> bindParam(":nombre",$data["nombre"],PDO::PARAM_STR);
@@ -31,12 +31,11 @@ class CRUDUnidad
         $stmt -> close();
     }
 
-    /*/modelo para obtener la informacion de losusuarios registrados
-    public static function listadoUsuarioModel($tabla)
+    //modelo para obtener la informacion de las unidades registradas
+    public static function listadoUnidadModel($tabla)
     {
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE NOT num_empleado = :id");
-        $stmt -> bindParam(":id",$_SESSION["empleado"],PDO::PARAM_INT);
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
         
         //se ejecuta la consulta
         $stmt -> execute();
@@ -47,47 +46,19 @@ class CRUDUnidad
         //cerramos la conexion
         $stmt -> close();
     }
-    //modelo para obtener la informacion de los teachers registrados
-    public static function optionUsuarioModel($tabla1,$tabla2)
+    
+
+    //modelo para borrar una de la base de datos
+    public static function eliminarUnidadModel($data,$tabla)
     {
-        //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla1 as u JOIN $tabla2 as t on t.teacher = u.num_empleado");
-
-        //se ejecuta la consulta
-        $stmt -> execute();
-
-        //retornamos la informacion de la tabla
-        return $stmt -> fetchAll();
-
-        //cerramos la conexion
-        $stmt -> close();
-    }
-
-    //modelo para borrar un usuario de la base de datos
-    public static function eliminarUsuarioModel($data,$tabla1,$tabla2,$tabla3)
-    {
-            
-        //preparamos la sentencia para realizar un update para quitar la relacion del usuario y grupos
-        $stmt1 = Conexion::conectar() -> prepare("UPDATE $tabla1 SET teacher = NULL WHERE teacher = :id");
-
-        //se realiza la asignacion de los datos a modificar
-        $stmt1 -> bindParam(":id",$data,PDO::PARAM_INT);
-        //-------------------------------------------------------------------------------
-        //preparamos la sentencia para realizar el Delete del usuario en la tabla teacher
-        $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla2 WHERE teacher = :id");
+        //preparamos la sentencia para realizar el Delete de la unidad
+        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE id_unidad = :id");
 
         //se realiza la asignacion de los datos a eliminar
-        $stmt2 -> bindParam(":id",$data,PDO::PARAM_INT);
-        //-------------------------------------------------------------------------------
-        //preparamos la sentencia para realizar el Delete del usuario de la tabla de usuarios
-        $stmt3 = Conexion::conectar() -> prepare("DELETE FROM $tabla3 WHERE num_empleado = :id");
-
-        //se realiza la asignacion de los datos a eliminar
-        $stmt3 -> bindParam(":id",$data,PDO::PARAM_INT);
-        
+        $stmt -> bindParam(":id",$data,PDO::PARAM_INT);
         
         //se ejecuta las sentencias
-        if($stmt1 -> execute() && $stmt2 -> execute() && $stmt3 -> execute())
+        if($stmt -> execute())
         {
             //si se ejecuto correctamente nos retorna success
             return "success";
@@ -99,16 +70,14 @@ class CRUDUnidad
         }
 
         //cerramos la conexion
-        $stmt1 -> close();
-        $stmt2 -> close();
-        $stmt3 -> close();
+        $stmt -> close();
     }
 
-    //modelo para obtener la informacion de un usuario
-    public static function editarUsuarioModel($data,$tabla)
+    //modelo para obtener la informacion de una unidad
+    public static function editarUnidadModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el select
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE num_empleado = :id");
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id_unidad = :id");
 
         //se realiza la asignacion de los datos para la consulta
         $stmt->bindParam(":id",$data, PDO::PARAM_INT);	
@@ -124,17 +93,16 @@ class CRUDUnidad
     }
 
     //modelo para modificar la informacion de un usuario registrada en la base de datos
-    public static function modificarUsuarioModel($data,$tabla)
+    public static function modificarUnidadModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el update
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, username = :username, password = :password, email = :email WHERE num_empleado = :id");
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, fecha_inicio = :inicio, fecha_fin = :fin WHERE id_unidad = :id");
 
         //se realiza la asignacion de los datos para el update
-        $stmt -> bindParam(":id", $data["id"], PDO::PARAM_INT);
         $stmt -> bindParam(":nombre",$data["nombre"],PDO::PARAM_STR);
-        $stmt -> bindParam(":username",$data["username"],PDO::PARAM_STR);
-        $stmt -> bindParam(":password",$data["password"],PDO::PARAM_STR);
-        $stmt -> bindParam(":email",$data["email"],PDO::PARAM_STR);
+        $stmt -> bindParam(":inicio",$data["inicio"],PDO::PARAM_STR);
+        $stmt -> bindParam(":fin",$data["fin"],PDO::PARAM_STR);
+        $stmt -> bindParam(":id",$data["id"],PDO::PARAM_INT);
 
         //se ejecuta la sentencia
         if($stmt -> execute())
@@ -150,6 +118,6 @@ class CRUDUnidad
 
         //cerramos la conexion
         $stmt->close();
-    }*/
+    }
 }
 ?>
