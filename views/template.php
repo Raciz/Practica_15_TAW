@@ -350,11 +350,11 @@ if(!empty($_SESSION["nombre"]))
         );
     </script>
     <style>
-        .repairtext 
+        .repairtext
         {
             color: #000000;
         }
-        
+
         span
         {
             color: #000000;
