@@ -97,15 +97,16 @@ class mvcAlumno
         $data = $_GET["edit"];
 
         //se manda el id del Alumno y el nombre de la tabla donde esta almacenada
-        $resp = CRUDAlumno::editarAlumnoModel($data,"alumno","carrera");
-
+        $resp = CRUDAlumno::editarAlumnoModel($data,"alumno");
+        
+        echo "<script> alert(".$resp["matricula"]."); </script>";
         //se imprime la informacion del Alumno en inputs de un formulario
         echo "
                     <input type=hidden value=".$resp["matricula"]." name='matricula'>
 
                      <div class='form-group'>
                         <label class='control-label'>ID</label>
-                        <input type='text' class='form-control' placeholder='Code' value=".$resp["matricula"]." readonly>
+                        <input type='text' class='form-control' placeholder='Code' readonly value=".$resp["matricula"].">
                     </div>
 
                     <div class='form-group'>
@@ -118,7 +119,7 @@ class mvcAlumno
                         <input type='text' name='apellido' class='form-control' placeholder='Code' value=".$resp["apellido"]." required>
                     </div>";
                         
-        echo "</select>
+        echo "
 
                     <div class='form-group'>
                         <label class='control-label'>Career</label>
@@ -131,7 +132,8 @@ class mvcAlumno
                             //se manda a llamar el controller para enlistar todos las carreras en el select
                             $option -> optionCarreraController();
 
-        echo "         </div> </select>";
+        echo "         </select>
+            </div> ";
 
         //script para seleccionar en el select el option de la carrera al que pertenece el Alumno
         echo "<script>

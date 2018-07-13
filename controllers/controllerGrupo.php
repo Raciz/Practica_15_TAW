@@ -83,9 +83,9 @@ class mvcGrupo
                 $_SESSION["mensaje"] = "delete";
 
                 //nos redireccionara al listado de grupos
-                #echo "<script>
-                 #       window.location.replace('index.php?section=groups&action=list');
-                  #    </script>";
+                echo "<script>
+                        window.location.replace('index.php?section=groups&action=list');
+                      </script>";
             }
         }
     }
@@ -135,7 +135,7 @@ class mvcGrupo
                     </div>
              ";
 
-        //script para seleccionar en el select el option del teacher al que pertenece el grupo
+        //script para seleccionar en el select el option del teacher y level al que pertenece el grupo
         echo "<script>
                 var teacher = document.getElementById('teacher');
                 var level = document.getElementById('level');

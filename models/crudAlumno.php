@@ -78,12 +78,12 @@ class CRUDAlumno
     }
 
     //modelo para obtener la informacion de un grupo
-    public static function editarAlumnoModel($data,$tabla1,$tabla2)
+    public static function editarAlumnoModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el select
-        $stmt = Conexion::conectar()->prepare("SELECT a.matricula as matricula , a.nombre as nombre, a.apellido as apellido, a.siglas as carrera
-                                                 FROM $tabla1 as a 
-                                               WHERE a.matricula = :id");
+        $stmt = Conexion::conectar()->prepare("SELECT matricula, nombre, apellido, carrera
+                                               FROM $tabla 
+                                               WHERE matricula = :id");
 
         //se realiza la asignacion de los datos para la consulta
         $stmt->bindParam(":id",$data, PDO::PARAM_INT);	
