@@ -8,14 +8,14 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe llamar al controller para agregar un nueva unidad
+//verificamos si se debe llamar al controller para agregar un nueva carrera
 if(isset($_GET["action"]) && $_GET["action"]=="add")
 {
-    //se crea un objeto de mvcUnidad
-    $add = new mvcUnidad();
+    //se crea un objeto de mvcCarrera
+    $add = new mvcCarrera();
 
-    //se manda a llamar el controller para agregar una nueva unidad al sistema
-    $add -> agregarUnidadController();
+    //se manda a llamar el controller para agregar una nueva carrera al sistema
+    $add -> agregarCarreraController();
 }
 ?>
 
@@ -57,7 +57,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-custom waves-effect waves-light">Save</button>
+                <button type="submit" class="btn btn-custom waves-effect waves-light">Save changes</button>
             </div>
         </div>
     </form>

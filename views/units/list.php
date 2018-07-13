@@ -11,16 +11,16 @@ if(!isset($_SESSION["nombre"]))
 //verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
 if(!empty($_SESSION["mensaje"]))
 {
-    //si session en mensaje es agregar una unidad
+    //si session en mensaje es agregar un usuario
     if($_SESSION["mensaje"]=="add")
     {
-        //se muestra el sweet alert de agregar una unidad
+        //se muestra el sweet alert de agregar un usuario
         echo"<script>
                     swal
                     (
                         {
                             title: 'Success:',
-                            text: 'se ha registrado una nueva unidad en el sistema',
+                            text: 'se ha registrado una nueva carrera en el sistema',
                             type: 'success',
                             confirmButtonText: 'Continuar',
                             confirmButtonColor: '#4fa7f3'
@@ -28,16 +28,16 @@ if(!empty($_SESSION["mensaje"]))
                     )
             </script>";
     }
-    //si session en mensaje es eliminar una unidad
+    //si session en mensaje es eliminar un usuario
     elseif ($_SESSION["mensaje"]=="delete")
     {
-        //se muestra el sweet alert de eliminar una unidad
+        //se muestra el sweet alert de eliminar un usuario
         echo"<script>
                 swal
                 (
                     {
                         title: 'Advertencia:',
-                        text: 'se ha eliminado una unidad del sistema',
+                        text: 'se ha eliminado una carrera del sistema',
                         type: 'warning',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -46,16 +46,16 @@ if(!empty($_SESSION["mensaje"]))
             </script>";
 
     }
-    //si session en mensaje es editar una unidad
+    //si session en mensaje es editar un usuario
     elseif ($_SESSION["mensaje"]=="edit")
     {
-        //se muestra elsweet alert de editar una unidad
+        //se muestra elsweet alert de editar un usuario
         echo"<script>
                 swal
                 (
                     {
                         title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de una unidad',
+                        text: 'se ha editado la informacion de una carrera',
                         type: 'success',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -74,7 +74,7 @@ if(!empty($_SESSION["mensaje"]))
       <h4 class="m-t-0 header-title">Units</h4>
       <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
       <div class="table-responsive m-b-20">
-        <table id="example1" class="table">
+        <table id="datatable" class="table">
           <thead>
             <tr>
               <th>Name</th>
