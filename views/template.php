@@ -53,7 +53,7 @@ if(!empty($_SESSION["nombre"]))
         <link href="views/media/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
         <!-- Summernote css -->
         <link href="views/media/plugins/summernote/summernote.css" rel="stylesheet" />
-        
+
         <!-- Sweet Alert -->
         <link href="views/media/plugins/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
         <script src="views/media/plugins/sweet-alert2/sweetalert2.min.js"></script>
@@ -238,7 +238,7 @@ if(!empty($_SESSION["nombre"]))
                                 </div>
                                 <div class="user-info">
                                     <a href="#"><?php echo $_SESSION["nombre"]; ?></a>
-                                    <p class="text-muted m-0"><?php echo $_SESSION["tipo"] ?></p>
+                                    <p class="text-white m-0"><?php echo $_SESSION["tipo"] ?></p>
                                 </div>
                             </div>
                             <!--- End User Detail box -->
@@ -257,7 +257,7 @@ if(!empty($_SESSION["nombre"]))
                 <div id="page-right-content">
 <?php
 }
-?>    
+?>
                     <?php
                     //creamos un objeto de mvcController
                     $mvc = new mvcController();
@@ -320,7 +320,7 @@ if(!empty($_SESSION["nombre"]))
         <script src="views/media/plugins/datatables/dataTables.fixedColumns.min.js"></script>
 
         <script src="views/media/plugins/select2/js/select2.min.js" type="text/javascript"></script>
-        
+
         <!--Morris Chart-->
         <script src="views/media/plugins/morris/morris.min.js"></script>
         <script src="views/media/plugins/raphael/raphael-min.js"></script>
@@ -342,7 +342,7 @@ if(!empty($_SESSION["nombre"]))
                 'autoWidth'   : false
             }
         );
-        
+
         $(".select2").select2
         (
             {

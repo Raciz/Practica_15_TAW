@@ -169,7 +169,7 @@ File: Main file css
   background-repeat: repeat;
   z-index: 99; }
 
-.user-details {
+.user-details { /*ward*/
   min-height: 80px;
   padding: 20px;
   position: relative; }
@@ -217,7 +217,7 @@ File: Main file css
   .metisMenu.nav > li > a .label {
     margin-top: 2px; }
   .metisMenu.nav > li > a:hover, .metisMenu.nav > li > a:focus {
-    color: #626773;
+    color: #fff;
     background: transparent; }
   .metisMenu.nav > li > a i {
     display: inline-block;
@@ -354,7 +354,7 @@ body {
   min-height: 100vh;
 
   font-family: "Noto Sans", sans-serif;
-  color: #676a6c; }
+  color: #fff; }
 
 #page-wrapper {
   width: 90%;

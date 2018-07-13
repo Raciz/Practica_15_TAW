@@ -21,7 +21,7 @@ class mvcGrupo
             {
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "add";
-                
+
                 //nos redireccionara al listado de grupos
                 echo "<script>
                         window.location.replace('index.php?section=groups&action=list');
@@ -55,6 +55,7 @@ class mvcGrupo
                         <a href='index.php?section=groups&action=list&edit=".$row["codigo"]."'>
                             <button class='btn btn-rounded btn-custom'>Edit</button>
                         </a>
+                        <button class='btn btn-rounded btn-warning'>Students</button>
                     </center>
                 </td>
             </tr>";
@@ -78,7 +79,7 @@ class mvcGrupo
             {
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "delete";
-                
+
                 //nos redireccionara al listado de grupos
                 #echo "<script>
                  #       window.location.replace('index.php?section=groups&action=list');
@@ -99,12 +100,12 @@ class mvcGrupo
         //se imprime la informacion del grupo en inputs de un formulario
         echo "
                     <input type=hidden value=".$resp["codigo"]." name='id'>
-                    
+
                      <div class='form-group'>
                         <label class='control-label'>Code</label>
                         <input type='text' class='form-control' placeholder='Code' value=".$resp["codigo"]." readonly>
                     </div>
-                    
+
                     <div class='form-group'>
                         <label class='control-label'>Level</label>
                         <select style='width:100%;' class='form-control select2' id='level' name='nivel' required>
@@ -121,17 +122,17 @@ class mvcGrupo
                         <option></option>
                         <select style='width:100%;' class='form-control select2' id='teacher' name='teacher' required>
                             <option value=''></option>";
-                            
+
                             //creamos un objeto de mvcUsuario
                             $option = new mvcUsuario();
 
                             //se manda a llamar el controller para enlistar todos los teachers en el select
                             $option -> optionUsuarioController();
-                            
+
         echo "          </select>
                     </div>
              ";
- 
+
         //script para seleccionar en el select el option del teacher al que pertenece el grupo
         echo "<script>
                 var teacher = document.getElementById('teacher');
@@ -144,7 +145,7 @@ class mvcGrupo
                         teacher.selectedIndex = i;
                     }
                 }
-                
+
                 for(var i = 1; i < level.options.length; i++)
                 {
                     if(level.options[i].value ==".$resp["nivel"].")
@@ -153,7 +154,7 @@ class mvcGrupo
                     }
                 }
                 </script>";
-        
+
     }
 
     //Control para modificar la informacion de un grupo
@@ -170,12 +171,12 @@ class mvcGrupo
             //se manda la informacion del grupo y la tabla en la que esta almacenada
             $resp = CRUDGrupo::modificarGrupoModel($data,"grupo");
 
-            //en caso de que se haya editado correctamente 
+            //en caso de que se haya editado correctamente
             if($resp == "success")
             {
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "edit";
-                
+
                 //nos redireccionara al listado de grupos
                 echo "<script>
                         window.location.replace('index.php?section=groups&action=list');
