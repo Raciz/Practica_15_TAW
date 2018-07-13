@@ -199,5 +199,102 @@ class mvcAlumno
             }
         }
     }
+//------------------------------------------------------------------------------------- 
+    //Control para mostrar a los alumnos sin grupo en un select
+    public function optionAlumnoController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar su informacion
+        $data = CRUDAlumno::optionAlumnoModel("alumno");
+
+        //mostramos el nombre de cada uno de los alumnos
+        foreach($data as $rows => $row)
+        {
+            //se muestra cada una de los alumnos en un option del select
+            echo "<option class='repairtext' value=".$row["matricula"].">".$row["nombre"]."</option>";
+        }
+    }
+    
+    //Control para manejar el ingreso del alumno al grupo
+    function agregarAlumnoGrupoController()
+    {
+        //se verifica si mediante el formulario se envio informacion
+        if(isset($_POST["matricula"]))
+        {
+            //se guardan la informacion del grupo y alumno
+            $data = array("matricula" => $_POST["matricula"],
+                          "grupo" => $_POST["grupo"]);
+
+            //se manda la informacion al modelo con su respectiva tabla en la que se registrara
+            $resp = CRUDAlumno::agregarAlumnoGrupoModel($data,"alumno");
+
+            //en caso de que se haya registrado correctamente
+            if($resp == "success")
+            {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "add";
+                
+                //nos redireccionara al listado de alumnos del grupo
+                echo "<script>
+                        window.location.replace('index.php?section=groups&action=students&group=".$data["grupo"]."');
+                      </script>";
+            }
+            else
+            {
+                //sino mandara un mensaje de error
+                echo "error";
+            }
+        }
+    }
+    
+    //Control para mostrar un listado de los Alumnos en el grupo
+    function listadoAlumnoGrupoController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar la informacion de los alumnos del grupo
+        $data = CRUDAlumno::listadoAlumnoGrupoModel($_GET["group"],"alumno");
+
+        //se imprime la informacion de cada uno de los Alumnos en el grupo
+        foreach($data as $rows => $row)
+        {
+            //e imprimimos la informacion de cada uno de los Alumnos
+            echo "<tr class='fondoTabla'>
+                <td>".$row["matricula"]."</td>
+                <td>".$row["nombre"]."</td>
+                <td>".$row["apellido"]."</td>
+                <td>".$row["carrera"]."</td>
+                <td>
+                    <center>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["matricula"]."')>Delete</button>
+                    </center>
+                </td>
+            </tr>";
+        }
+    }
+    
+    //Control para borrar un alumno del grupo
+    public function eliminarAlumnoGrupoController()
+    {
+        //se verifica si se envio el id del alumno a eliminar del grupo
+        if(isset($_POST["del"]))
+        {
+            //de ser asi se guarda la informacion
+            $data = array ("matricula" => $_POST["del"],
+                           "grupo" => $_POST["grupo"]);
+
+            //y se manda al modelo el informacio y el nombre de la tabla de donde se va a eliminar
+            $resp = CRUDAlumno::eliminarAlumnoGrupoModel($data,"alumno");
+
+            //en caso de haberse eliminado correctamente
+            if($resp == "success")
+            {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "delete";
+
+                //nos redireccionara al listado de Alumnos del grupo
+                echo "<script>
+                        window.location.replace('index.php?section=groups&action=students&group=".$data["grupo"]."');
+                      </script>";
+            }
+        }
+    }
 }
 ?>
