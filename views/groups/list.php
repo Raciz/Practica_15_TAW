@@ -77,7 +77,7 @@ if(!empty($_SESSION["mensaje"]))
             <div class="table-responsive m-b-20">
                 <table id="example1" class="table">
                     <thead>
-                        <tr class="fondoTabla">
+                        <tr>
                             <th>ID</th>
                             <th>Level</th>
                             <th>Teacher</th>

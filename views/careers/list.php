@@ -76,7 +76,7 @@ if(!empty($_SESSION["mensaje"]))
       <div class="table-responsive m-b-20">
         <table id="datatable" class="table">
           <thead>
-            <tr class="fondoTabla">
+            <tr>
               <th>Key</th>
               <th>Name</th>
               <th>Options</th>

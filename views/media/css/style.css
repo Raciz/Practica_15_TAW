@@ -170,6 +170,9 @@ File: Main file css
   z-index: 99; }
 
 .user-details { /*ward*/
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), #126C4A);
+  border-top: 10px solid #126C4A !important;
+  border-bottom: 2px solid #fff;
   min-height: 80px;
   padding: 20px;
   position: relative; }
@@ -240,7 +243,7 @@ File: Main file css
   padding-left: 48px; }
 
 .nav-second-level.nav li.active a {
-  color: #4b4e57; }
+  color: #0D4932; }
 
 .nav-third-level.nav > li > a {
   padding-left: 58px; }
@@ -249,9 +252,10 @@ File: Main file css
   color: #4b4e57; }
 
 .metisMenu.nav > li.active > a {
-  color: #23b195; }
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff; }
   .metisMenu.nav > li.active > a li.active a {
-    color: #23b195; }
+    color: #0D4932; }
 
 .metisMenu.nav > li:last-child a {
   border-bottom: 0; }
@@ -271,7 +275,7 @@ File: Main file css
   transition: margin-left 0.3s; }
 
 .footer {
-  border-top: 2px solid #f5f5f5;
+  border-top: 5px solid #126C4A;
   bottom: 0;
   left: 0;
   padding: 14px 20px;
@@ -359,7 +363,8 @@ body {
 #page-wrapper {
   width: 90%;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.05); /*ward*/
+  /*background-color: rgba(255, 255, 255, 0.15); /*ward*/
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.15));
   /*background-color: #ffffff;*/
 }
 
@@ -408,8 +413,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6px 20px; }
 
 .card-box {
-  background-color: #ffffff;
-  border: 2px solid #f5f5f5;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.0)); /*ward*/
   padding: 20px;
   margin-bottom: 20px; }
 
@@ -2364,6 +2368,11 @@ h3.timeline-title {
 
 /*# sourceMappingURL=style.css.map */
 .fondoTabla{
-  background-color: rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0.0));
   color: #fff;
+}
+
+table > thead > tr{
+  background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.0));
+
 }

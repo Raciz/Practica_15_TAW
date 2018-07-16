@@ -76,7 +76,7 @@ if(!empty($_SESSION["mensaje"]))
             <div class="table-responsive m-b-20">
                 <table id="example1" class="table">
                     <thead>
-                        <tr class="fondoTabla">
+                        <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Username</th>
@@ -107,7 +107,3 @@ include_once "views/users/add.php";
 include_once "views/users/edit.php";
 include_once "views/users/delete.php";
 ?>
-
-
-
-
