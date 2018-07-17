@@ -5,6 +5,8 @@
     <li><a href="index.php?section=groups&action=list"><i class="mdi mdi-account-multiple"></i> Groups </a></li>
     <li><a href="index.php?section=careers&action=list"><i class="fa fa-user"></i> Careers </a></li>
     <li><a href="index.php?section=students&action=list"><i class="fa fa-user"></i> Students </a></li>
+    <li><a href="index.php?section=activities&action=list"><i class="mdi mdi-brush"></i> Activities </a></li>
+    <li><a href="index.php?section=units&action=list"><i class="fa fa-folder"></i> Units </a></li>
     <!--
     <li>
         <a href="javascript: void(0);" aria-expanded="true"><i class="ti-light-bulb"></i> Components <span class="fa arrow"></span></a>
