@@ -20,7 +20,7 @@ if(!empty($_SESSION["mensaje"]))
                     (
                         {
                             title: 'Success:',
-                            text: 'se ha registrado una nueva carrera en el sistema',
+                            text: 'se ha registrado una nueva actividad en el sistema',
                             type: 'success',
                             confirmButtonText: 'Continuar',
                             confirmButtonColor: '#4fa7f3'
@@ -37,7 +37,7 @@ if(!empty($_SESSION["mensaje"]))
                 (
                     {
                         title: 'Advertencia:',
-                        text: 'se ha eliminado una carrera del sistema',
+                        text: 'se ha eliminado una actividad del sistema',
                         type: 'warning',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -55,7 +55,7 @@ if(!empty($_SESSION["mensaje"]))
                 (
                     {
                         title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de una carrera',
+                        text: 'se ha editado la informacion de una actividad',
                         type: 'success',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -84,11 +84,11 @@ if(!empty($_SESSION["mensaje"]))
           </thead>
           <tbody>
             <?php
-              //creamos un objeto de mvcCarrera
-              //$list = new mvcCarrera();
+              //creamos un objeto de mvcActividad
+              $list = new mvcActividad();
 
-              //se manda a llamar el control para enlistar a las carreras
-              //$list -> listadoCarreraController();
+              //se manda a llamar el control para enlistar a las actividades
+              $list -> listadoActividadController();
             ?>
           </tbody>
         </table>
@@ -98,7 +98,7 @@ if(!empty($_SESSION["mensaje"]))
 </div>
 <!-- end container -->
 <?php
-//incluimos el archivo con el modal para agregar, editar y eliminar carreras
+//incluimos el archivo con el modal para agregar, editar y eliminar actividades
 include_once "views/activities/add.php";
 include_once "views/activities/edit.php";
 include_once "views/activities/delete.php";

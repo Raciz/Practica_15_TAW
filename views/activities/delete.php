@@ -8,25 +8,25 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para eliminar una carrera del sistema
+//verificamos si se debe mandar a llamar el controller para eliminar una actividad del sistema
 if(isset($_GET["action"]) && $_GET["action"]=="delete")
 {
-    //se crea un objeto de mvcCarrera
-    $delete = new mvcCarrera();
+    //se crea un objeto de mvcActividad
+    $delete = new mvcActividad();
 
-    //se manda a llamar el controller para eliminar una carrera
-    $delete -> eliminarCarreraController();
+    //se manda a llamar el controller para eliminar una actividad
+    $delete -> eliminarActividadController();
 }
 ?>
 
-<!-- Modal para eliminar una carrera del sistema -->
+<!-- Modal para eliminar una actividad del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <form id="formDel" action="index.php?section=careers&action=delete" method="post">
+        <form id="formDel" action="index.php?section=activities&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title repairtext">Delete Career?</h4>
+                    <h4 class="modal-title repairtext">Delete Activity?</h4>
                 </div>
                 <div class="modal-body">
 

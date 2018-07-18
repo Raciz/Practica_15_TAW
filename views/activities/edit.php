@@ -8,14 +8,14 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para modificar una carrera
+//verificamos si se debe mandar a llamar el controller para modificar una actividad
 if(isset($_GET["action"]) && $_GET["action"]=="edit")
 {
-    //creamos un objeto de mvcCarrera
-    $edit = new mvcCarrera();
+    //creamos un objeto de mvcActividad
+    $edit = new mvcActividad();
 
-    //se manda a llamar el controller para modificar la informacion de una carrera
-    $edit -> modificarCarreraController();
+    //se manda a llamar el controller para modificar la informacion de una actividad
+    $edit -> modificarActividadController();
 }
 ?>
 
@@ -23,7 +23,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="edit")
 if(!empty($_GET["edit"]))
 {
 ?>
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar una nueva actividad -->
 <div id="editar-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block; padding-right: 15px;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -36,11 +36,11 @@ if(!empty($_GET["edit"]))
             <form method="post" action="index.php?section=activities&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php
-                    //creamos un objeto de mvcUsuario
-                    //$edit = new mvcCarrera();
+                    //creamos un objeto de mvcActividad
+                    $edit = new mvcActividad();
 
-                    //mandamos a llamar a el controller para obtener la informacion del usuario
-                    //$edit -> editarCarreraController();
+                    //mandamos a llamar a el controller para obtener la informacion de la actividad
+                    $edit -> editarActividadController();
                     ?>
                 </div>
                 <div class="modal-footer">
