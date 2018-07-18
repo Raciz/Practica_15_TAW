@@ -892,7 +892,8 @@ h1, h2, h3, h4, h5, h6 {
    Panels
  =============*/
 .panel {
-  border: 2px solid #f5f5f5;
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: 1px solid #fff;
   box-shadow: none;
   margin-bottom: 20px; }
   .panel .panel-body {
@@ -910,12 +911,17 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px 4px 0 0; }
 
 .panel-default > .panel-heading {
-  background-color: #f5f5f5;
-  border-bottom: none;
-  color: #7a7d84; }
+  background-color: rgba(0, 0, 0, 0.3);
+
+  margin: 1px;
+  color: #fff; }
+
+.panel-default > .panel-body{
+  background-color: rgba(0, 0, 0, 0);
+}
 
 .panel-title {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 0;
   margin-top: 0; }
