@@ -125,5 +125,93 @@ class CRUDAlumno
         //cerramos la conexion
         $stmt->close();
     }
+    
+    //----------------------------------------------------------------------------------------
+    
+    //modelo para obtener la informacion de los alumnos sin grupos
+    public static function optionAlumnoModel($tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE grupo is NULL");
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+    
+    //modelo para registrar un alumno al grupo en la base de datos
+    public static function agregarAlumnoGrupoModel($data,$tabla)
+    {
+        //se prepara la sentencia para realizar el update
+        $stmt = Conexion::conectar() -> prepare("UPDATE $tabla SET grupo = :grupo WHERE matricula = :matricula");
+
+        //se realiza la asignacion de los datos a insertar
+        $stmt -> bindParam(":matricula",$data["matricula"],PDO::PARAM_INT);
+        $stmt -> bindParam(":grupo",$data["grupo"],PDO::PARAM_STR);
+
+        //se ejecuta la sentencia
+        if($stmt -> execute())
+        {   
+            //si se ejecuto correctamente nos retorna success
+            return "success";
+        }
+        else
+        {            
+            //en caso de no ser asi nos retorna fail
+            return "fail";
+        }
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+    
+    //modelo para obtener la informacion de los alumnos en el grupos
+    public static function listadoAlumnoGrupoModel($data,$tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE grupo = :grupo");
+        $stmt -> bindParam(":grupo",$data,PDO::PARAM_STR);
+
+        
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+    
+    //modelo para borrar un alumno de un grupo 
+    public static function eliminarAlumnoGrupoModel($data,$tabla)
+    {
+        //preparamos la sentencia para realizar un update
+        $stmt = Conexion::conectar() -> prepare("UPDATE $tabla SET grupo = NULL WHERE matricula = :id");
+
+        //se realiza la asignacion de los datos a eliminar
+        $stmt -> bindParam(":id",$data["matricula"],PDO::PARAM_INT);
+
+        //se ejecuta las sentencias
+        if($stmt -> execute())
+        {
+            //si se ejecuto correctamente nos retorna success
+            return "success";
+        }
+        else
+        {
+            //en caso de no ser asi nos retorna fail
+            return "fail";
+        }
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+ 
 }
 ?>

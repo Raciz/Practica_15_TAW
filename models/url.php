@@ -18,7 +18,6 @@ class url
         {
             $url = "views/modules/login.php";
         }
-
         //y se retorna la pagina a redireccionar
         return $url;
     }

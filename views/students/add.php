@@ -64,7 +64,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 
                     <div class="form-group">
                         <label class="control-label repairtext">Group</label>
-                        <select style="width:100%;" class="form-control select2" name="grupo" required>
+                        <select style="width:100%;" class="form-control select2" name="grupo">
                             <option value=""></option>
                             <?php
                             //creamos un objeto de mvcGrupo

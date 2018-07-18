@@ -8,21 +8,21 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe llamar al controller para agregar un nueva carrera
+//verificamos si se debe llamar al controller para agregar un nueva actividad
 if(isset($_GET["action"]) && $_GET["action"]=="add")
 {
-    //se crea un objeto de mvcCarrera
-    $add = new mvcCarrera();
+    //se crea un objeto de mvcActividad
+    $add = new mvcActividad();
 
-    //se manda a llamar el controller para agregar una nueva carrera al sistema
-    $add -> agregarCarreraController();
+    //se manda a llamar el controller para agregar una nueva actividad al sistema
+    $add -> agregarActividadController();
 }
 ?>
 
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar una nueva actividad -->
 <div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <!--Formulario para agregar un nuevo grupo-->
+        <!--Formulario para agregar una nueva actividad-->
         <form action="index.php?section=activities&action=add" method="post">
         <div class="modal-content">
             <div class="modal-header">

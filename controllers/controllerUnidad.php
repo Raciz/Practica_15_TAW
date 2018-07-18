@@ -1,0 +1,170 @@
+<?php
+
+class mvcUnidad
+{
+    //Control para manejar el registro de una nueva unidad
+    function agregarUnidadController()
+    {
+        //se verifica si mediante el formulario se envio informacion
+        if(isset($_POST["nombre"]))
+        {
+            //se guardan la informacion de la unidad
+            $data = array("nombre" => $_POST["nombre"],
+                          "inicio" => $_POST["inicio"],
+                          "fin" => $_POST["fin"]);
+
+            //se manda la informacion al modelo con su respectiva tabla en la que se registrara
+            $resp = CRUDUsuario::agregarUsuarioModel($data,"unidad");
+
+            //en caso de que se haya registrado correctamente
+            if($resp == "success")
+            {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "add";
+                
+                //nos redireccionara al listado de unidades
+                echo "<script>
+                        window.location.replace('index.php?section=units&action=list');
+                      </script>";
+            }
+        }
+    }
+
+    /*/Control para mostrar un listado de los usuarios registrados en el sistema
+    function listadoUsuarioController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar la informacion de los usuarios
+        $data = CRUDUsuario::listadoUsuarioModel("usuario");
+
+        //se imprime la informacion de cada uno de los usuarios registrados
+        foreach($data as $rows => $row)
+        {
+            //e imprimimos la informacion de cada uno de los usuarios
+            echo "<tr class='fondoTabla'>
+                <td>".$row["num_empleado"]."</td>
+                <td>".$row["nombre"]."</td>
+                <td>".$row["username"]."</td>
+                <td>".$row["email"]."</td>
+                <td>".$row["tipo"]."</td>
+                <td>
+                    <center>
+                        <button class='btn btn-rounded btn-danger' data-toggle='modal' data-target='#delete-modal' onclick='idDel(".$row["num_empleado"].")'> Delete </button>
+                        
+                        <a href='index.php?section=users&action=list&edit=".$row["num_empleado"]."'>
+                            <button class='btn btn-rounded btn-custom'>Edit</button>
+                        </a>
+                    </center>
+                </td>
+                </tr>";
+        }
+    }
+
+    //Control para borrar un usuario del sistema
+    public function eliminarUsuarioController()
+    {
+        //se verifica si se envio el id del usuario a eliminar
+        if(isset($_POST["del"]))
+        {
+            //de ser asi se guarda el id del usuario
+            $data = $_POST["del"];
+
+            //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
+            $resp = CRUDUsuario::eliminarUsuarioModel($data,"grupo","teacher","usuario");
+
+            //en caso de haberse eliminado correctamente
+            if($resp == "success")
+            {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "delete";
+                
+                //nos redireccionara al listado de usuarios
+                echo "<script>
+                        window.location.replace('index.php?section=users&action=list');
+                      </script>";
+            }
+        }
+    }
+
+    //Control para poder mostrar la informacion de un Usuario a editar
+    public function editarUsuarioController()
+    {
+        //se obtiene el id del usuario a mostrar su informacion
+        $data = $_GET["edit"];
+
+        //se manda el id del usuario y el nombre de la tabla donde esta almacenada
+        $resp = CRUDUsuario::editarUsuarioModel($data,"usuario");
+
+        //se imprime la informacion del usuario en inputs de un formulario
+        echo 
+        "
+                    <input type='hidden' name='id' value=".$data.">
+                    <div class='form-group'>
+                        <label class='control-label repairtext'>Name</label>
+                        <input type='text' class='form-control' name='nombre' placeholder='Name' value='".$resp["nombre"]."' required>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label repairtext'>Username</label>
+                        <input type='text' class='form-control' name='username' placeholder='Username' value='".$resp["username"]."' required>
+                    </div>
+
+
+                    <div class='form-group'>
+                        <label class='control-label repairtext'>Password</label>
+                        <input type='password' class='form-control' name='password' placeholder='Password' value='".$resp["password"]."' required>
+                    </div>
+
+
+                    <div class='form-group'>
+                        <label class='control-label repairtext'>Email</label>
+                        <input type='email' class='form-control' name='email' placeholder='Email' value='".$resp["email"]."'>
+                    </div>
+        ";
+    }
+
+    //Control para modificar la informacion de un usuario
+    public function modificarUsuarioController()
+    {
+        
+        //se verifica si mediante el formulario se envio informacion
+        if(isset($_POST["id"]))
+        {
+            //se guardan la informacion del usuario
+            $data = array("id" => $_POST["id"],
+                          "nombre" => $_POST["nombre"],
+                          "username" => $_POST["username"],
+                          "password" => $_POST["password"],
+                          "email" => $_POST["email"]);
+
+            //se manda la informacion del usuario y la tabla en la que esta almacenada
+            $resp = CRUDUsuario::modificarUsuarioModel($data,"usuario");
+
+            //en caso de que se haya editado correctamente 
+            if($resp == "success")
+            {
+                //asignamos el tipo de mensaje a mostrar
+                $_SESSION["mensaje"] = "edit";
+                
+                //nos redireccionara al listado de usuarios
+                echo "<script>
+                        window.location.replace('index.php?section=users&action=list');
+                      </script>";
+            }
+        }
+    }
+    
+    //Control para mostrar a los teachers en un select
+    public function optionUsuarioController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar su informacion
+        $data = CRUDUsuario::optionUsuarioModel("usuario","teacher");
+
+        //mostramos el nombre de cada una de los teachers
+        foreach($data as $rows => $row)
+        {
+            //se muestra cada una de los teachers en un option del select
+            echo "<option value=".$row["num_empleado"].">".$row["nombre"]."</option>";
+        }
+    }*/
+}
+?>

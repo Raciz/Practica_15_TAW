@@ -8,29 +8,30 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para eliminar una actividad del sistema
-if(isset($_GET["action"]) && $_GET["action"]=="delete")
+//verificamos si se debe mandar a llamar el controller para eliminar un alumno del grupo 
+if(isset($_GET["action"]) && $_GET["action"]=="del-student")
 {
-    //se crea un objeto de mvcActividad
-    $delete = new mvcActividad();
+    //se crea un objeto de mvcAlumno
+    $delete = new mvcAlumno();
 
-    //se manda a llamar el controller para eliminar una actividad
-    $delete -> eliminarActividadController();
+    //se manda a llamar el controller para eliminar un alumno del grupo
+    $delete -> eliminarAlumnoGrupoController();
 }
 ?>
 
-<!-- Modal para eliminar una actividad del sistema -->
+<!-- Modal para eliminar un alumno del grupo-->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <form id="formDel" action="index.php?section=activities&action=delete" method="post">
+        <form id="formDel" action="index.php?section=groups&action=del-student" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title repairtext">Delete Activity?</h4>
+                    <h4 class="modal-title repairtext">Delete student of the group?</h4>
                 </div>
                 <div class="modal-body">
 
                     <input type="hidden" id="del" name="del">
+                    <input type="hidden" name="grupo" value="<?php echo $_GET["group"]; ?>">
 
                     <div class="form-group">
                         <label class="control-label repairtext">Password</label>
@@ -53,13 +54,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     //variable para modificar el formulario
     var form = document.getElementById("formDel");
 
-    //funcion para obtener el id de la carrera a eliminar
+    //funcion para obtener el id del alumno a eliminar del grupo
     function idDel(del)
     {
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
-        //le asignamos a value del que es el id de la carrera a eliminar 
+        //le asignamos a value del que es el id del alumno a eliminar del grupo 
         input.setAttribute("value",del);
     }
 

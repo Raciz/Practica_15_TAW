@@ -55,8 +55,8 @@ class mvcGrupo
                         <a href='index.php?section=groups&action=list&edit=".$row["codigo"]."'>
                             <button class='btn btn-rounded btn-custom'>Edit</button>
                         </a>
-                        <a href='index.php?section=groups&action=students'>
-                        <button class='btn btn-rounded btn-warning'>Students</button>
+                        <a href='index.php?section=groups&action=students&group=".$row["codigo"]."'>
+                            <button class='btn btn-rounded btn-warning'>Students</button>
                         </a>
                     </center>
                 </td>

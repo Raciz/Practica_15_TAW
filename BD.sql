@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-07-2018 a las 17:11:15
+-- Tiempo de generación: 14-07-2018 a las 00:06:16
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -32,7 +32,7 @@ USE `CAI`;
 --
 
 CREATE TABLE `actividad` (
-  `id_actividad` int(7) NOT NULL,
+  `id_actividad` int(7) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(20) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -50,6 +50,14 @@ CREATE TABLE `alumno` (
   `grupo` varchar(7) DEFAULT NULL,
   `carrera` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `alumno`
+--
+
+INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`) VALUES
+(123, 'safsaf', 'asf', 'EN-143', 'ITI'),
+(12323, 'Francisco Isaac', 'Perales Morales', 'EN-122', 'ITI');
 
 -- --------------------------------------------------------
 
@@ -80,6 +88,13 @@ CREATE TABLE `carrera` (
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `carrera`
+--
+
+INSERT INTO `carrera` (`siglas`, `nombre`) VALUES
+('ITI', ' Engineering in information technology');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +112,7 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`codigo`, `nivel`, `teacher`) VALUES
+('EN-122', 1, 13),
 ('EN-143', 3, 15);
 
 -- --------------------------------------------------------
