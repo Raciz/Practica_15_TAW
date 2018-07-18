@@ -12,7 +12,7 @@ class mvcTeacher
         foreach($data as $rows => $row)
         {
             $size = CRUDAlumno::listadoAlumnoGrupoModel($row["codigo"],"alumno");
-            
+
             //e imprimimos la informacion de cada uno de los grupos
             echo "<tr class='fondoTabla'>
                 <td>".$row["codigo"]."</td>
@@ -28,7 +28,7 @@ class mvcTeacher
             </tr>";
         }
     }
-    
+
     //Control para mostrar un listado de los grupos que le pertenecen al teacher
     function listadoAlumnoTeacherController()
     {
@@ -41,13 +41,13 @@ class mvcTeacher
             $careers[] = $data[$i]["carrera"];
         }
         $careers = array_unique($careers);
-    
+
         //se imprime la informacion de los alumnos del grupo separados por carrera
         foreach($careers as $rows => $row)
         {            
             //e imprimimos la informacion de cada uno de los grupos
             echo
-            "
+                "
             <div class='col-lg-12'>
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
@@ -55,7 +55,7 @@ class mvcTeacher
                     </div>
                     <div class='panel-body'>
                       <div class='table-responsive m-b-20'>
-                          <table class='datatable' class='table'>
+                          <table class='table data'>
                               <thead>
                                   <tr>
                                       <th>ID</th>
@@ -65,24 +65,24 @@ class mvcTeacher
                                   </tr>
                               </thead>
                               <tbody>";
-                                foreach($data as $rows2 => $row2)
-                                {
-                                    if($row2["carrera"] == $row)
-                                    {
-                                        echo
-                                        "
+            foreach($data as $rows2 => $row2)
+            {
+                if($row2["carrera"] == $row)
+                {
+                    echo
+                        "
                                         <tr class='fondoTabla'>
                                             <td>".$row2["matricula"]."</td>
                                             <td>".$row2["nombre"]."</td>
                                             <td>".$row2["apellido"]."</td>
                                             <td>
-                                                <a href='index.php?section=groups&action=student-record'><button class='btn btn-rounded btn-warning' type='button' name='button'>View CAI hours</button></a>
+                                                <a href='index.php?section=groups&action=student-record&student=".$row2["matricula"]."'><button class='btn btn-rounded btn-warning' type='button' name='button'>View CAI hours</button></a>
                                             </td>
                                         </tr>
                                         ";   
-                                    }                                    
-                                }
-        echo "                          
+                }                                    
+            }
+            echo "                          
                               </tbody>
                           </table>
                       </div>
@@ -91,6 +91,33 @@ class mvcTeacher
             </div>
             ";
         }
+    }
+
+    //Control para mostrar la informacion de un alumno
+    function dataAlumnoController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar la informacion de los grupos del teacher
+        $data = CRUDTeacher::dataAlumnoModel($_GET["student"],"alumno");
+
+        //se imprime la informacion del alumno
+        echo
+        "
+        <img class='pull-left' width='400px' height='400px' src='views/media/images/users/1530326.jpeg'/>
+        <div class='text-white' style='margin-left: 420px'>
+            <p>
+                <b>ID:</b><br>".$data["matricula"]."
+            </p>
+            <p>
+                <b>Name:</b><br>".$data["nombre"]." ".$data["apellido"]."
+            </p>
+            <p>
+                <b>Group:</b><br>".$data["grupo"]."
+            </p>
+            <p>
+                <b>Career:</b><br>".$data["carrera"]."
+            </p>
+        </div>
+        ";
     }
 }
 ?>

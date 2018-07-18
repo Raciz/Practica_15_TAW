@@ -41,5 +41,24 @@ class CRUDTeacher
         //cerramos la conexion
         $stmt -> close();
     }
+    
+    //modelo para obtener la informacion de un alumno
+    public static function dataAlumnoModel($student,$tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE matricula = :matricula");
+        
+        //asignamos los datos para el select
+        $stmt -> bindParam(":matricula",$student,PDO::PARAM_INT);
+        
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetch();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
 }
 ?>
