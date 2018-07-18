@@ -78,7 +78,7 @@ if(!empty($_SESSION["mensaje"]))
                                   <td>Angela Judith</td>
                                   <td>Carrizales Pérez</td>
                                   <td>
-                                    <button class="btn btn-rounded btn-warning" type="button" name="button">View CAI hours</button>
+                                    <a href="index.php?section=groups&action=student-record"><button class="btn btn-rounded btn-warning" type="button" name="button">View CAI hours</button></a>
                                   </td>
                                 </tr>
                                   <?php

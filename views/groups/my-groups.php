@@ -30,7 +30,7 @@ if(!isset($_SESSION["nombre"]))
                         <td>9</td>
                         <td>1 student</td>
                         <td>
-                          <button class="btn btn-rounded btn-warning" type="button" name="button">View Students</button>
+                          <a href="index.php?section=groups&action=my-students"><button class="btn btn-rounded btn-warning" type="button" name="button">View Students</button></a>
                         </td>
                       </tr>
                         <?php
