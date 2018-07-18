@@ -24,14 +24,6 @@ if(!isset($_SESSION["nombre"]))
                         </tr>
                     </thead>
                     <tbody>
-                      <tr class='fondoTabla'>
-                        <td>EN-203</td>
-                        <td>9</td>
-                        <td>1 student</td>
-                        <td>
-                          <a href="index.php?section=groups&action=my-students"><button class="btn btn-rounded btn-warning" type="button" name="button">View Students</button></a>
-                        </td>
-                      </tr>
                         <?php
                         //creamos un objeto de mvcTeacher
                         $list = new mvcTeacher();
