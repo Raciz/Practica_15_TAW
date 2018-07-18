@@ -420,7 +420,7 @@ h1, h2, h3, h4, h5, h6 {
 .header-title {
   margin-top: 0;
   font-weight: bold;
-  border-bottom: 1px solid gainsboro;
+  border-bottom: 2px solid gainsboro;
   padding-bottom: 12px;
   color: #fff}
 
@@ -493,6 +493,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-white {
   color: #ffffff; }
+
+.text-black {
+  color: #000000;}
 
 .text-danger {
   color: #d57171; }
