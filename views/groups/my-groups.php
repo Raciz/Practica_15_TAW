@@ -7,7 +7,6 @@ if(!isset($_SESSION["nombre"]))
             window.location.replace('index.php');
           </script>";
 }
-
 ?>
 
 <div class="container">
@@ -34,11 +33,11 @@ if(!isset($_SESSION["nombre"]))
                         </td>
                       </tr>
                         <?php
-                        //creamos un objeto de mvcGrupo
-                        //$list = new mvcGrupo();
+                        //creamos un objeto de mvcTeacher
+                        $list = new mvcTeacher();
 
-                        //se manda a llamar el control para enlistar a los grupos
-                        //$list -> listadoGrupoController();
+                        //se manda a llamar el control para enlistar a los grupos del teacher
+                        $list -> listadoGrupoTeacherController();
                         ?>
                     </tbody>
                 </table>
