@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-07-2018 a las 00:06:16
+-- Tiempo de generación: 19-07-2018 a las 06:15:18
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -32,10 +32,17 @@ USE `CAI`;
 --
 
 CREATE TABLE `actividad` (
-  `id_actividad` int(7) NOT NULL AUTO_INCREMENT,
+  `id_actividad` int(7) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `actividad`
+--
+
+INSERT INTO `actividad` (`id_actividad`, `nombre`, `descripcion`) VALUES
+(2, 'BOOK', 'fwegwg');
 
 -- --------------------------------------------------------
 
@@ -48,16 +55,21 @@ CREATE TABLE `alumno` (
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `grupo` varchar(7) DEFAULT NULL,
-  `carrera` varchar(7) NOT NULL
+  `carrera` varchar(7) NOT NULL,
+  `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `alumno`
 --
 
-INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`) VALUES
-(123, 'safsaf', 'asf', 'EN-143', 'ITI'),
-(12323, 'Francisco Isaac', 'Perales Morales', 'EN-122', 'ITI');
+INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`, `img`) VALUES
+(123, 'safsaf', 'asf', 'EN-122', 'ITI', ''),
+(213, 'asdsf', 'asf', 'EN-143', 'ITI', 'views/media/img/19720186549Captura de pantalla de 2018-07-15 15-15-24.png'),
+(12323, 'Francisco Isaac', 'Perales Morales', 'EN-122', 'ITI', ''),
+(1234241, 'dasf', 'asfasf', NULL, 'ITI', 'views/media/img/19720186856Captura de pantalla de 2018-07-15 14-56-32.png'),
+(2142215, 'Luiz', 'Serra', 'EN-122', 'ISA', ''),
+(2412533, 'Miguel', 'Perez', 'EN-122', 'MECA', '');
 
 -- --------------------------------------------------------
 
@@ -77,6 +89,13 @@ CREATE TABLE `asistencia` (
   `teacher` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`) VALUES
+(1, '2018-07-18', '00:00:00', '06:00:00', 12323, 2, 2, 2, 'gdssdbdsabx');
+
 -- --------------------------------------------------------
 
 --
@@ -93,7 +112,9 @@ CREATE TABLE `carrera` (
 --
 
 INSERT INTO `carrera` (`siglas`, `nombre`) VALUES
-('ITI', ' Engineering in information technology');
+('ISA', 'Automotive systems engineering'),
+('ITI', ' Engineering in information technology'),
+('MECA', 'Automotive systems engineering');
 
 -- --------------------------------------------------------
 
@@ -112,6 +133,7 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`codigo`, `nivel`, `teacher`) VALUES
+('EN-111', 6, 13),
 ('EN-122', 1, 13),
 ('EN-143', 3, 15);
 
@@ -145,6 +167,14 @@ CREATE TABLE `unidad` (
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `unidad`
+--
+
+INSERT INTO `unidad` (`id_unidad`, `nombre`, `fecha_inicio`, `fecha_fin`) VALUES
+(2, 'Unidad 1 2018-1', '2018-07-21', '2018-08-21'),
+(4, 'Unidad', '2018-08-21', '2018-09-21');
 
 -- --------------------------------------------------------
 
@@ -239,7 +269,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `unidad`
 --
 ALTER TABLE `unidad`
-  MODIFY `id_unidad` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_unidad` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
