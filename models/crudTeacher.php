@@ -69,7 +69,7 @@ class CRUDTeacher
                                                  FROM $tabla1 as a
                                                  JOIN $tabla2 as u on u.id_unidad = a.unidad
                                                  JOIN $tabla3 as ac on ac.id_actividad = a.actividad
-                                                 WHERE a.alumno = :matricula");
+                                                 WHERE a.alumno = :matricula && hora_completa = 1");
         
         //asignamos los datos para el select
         $stmt -> bindParam(":matricula",$student,PDO::PARAM_INT);
