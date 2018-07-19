@@ -74,7 +74,7 @@ if(!empty($_SESSION["mensaje"]))
       <h4 class="m-t-0 header-title">Activities</h4>
       <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
       <div class="table-responsive m-b-20">
-        <table id="datatable" class="table">
+        <table id="example1" class="table">
           <thead>
             <tr>
               <th>Name</th>
