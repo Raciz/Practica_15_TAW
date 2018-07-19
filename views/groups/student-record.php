@@ -40,7 +40,7 @@ if(!isset($_SESSION["nombre"]))
                         <?php
                         //creamos un objeto de mvcTeacher
                         $list = new mvcTeacher();
-                        
+
                         //llamamos el controler para mostrar las horas de cai realizadas por el alumno
                         $list -> horasAlumnoController();
                         ?>

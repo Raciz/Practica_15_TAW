@@ -83,5 +83,24 @@ class CRUDTeacher
         //cerramos la conexion
         $stmt -> close();
     }
+    
+    //modelo para obtener el nombre de la carrera
+    public static function nombreCarreraModel($carrera,$tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT nombre FROM $tabla WHERE siglas = :siglas");
+        
+        //asignamos los datos para el select
+        $stmt -> bindParam(":siglas",$carrera,PDO::PARAM_STR);
+        
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetch();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
 }
 ?>

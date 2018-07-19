@@ -8,14 +8,14 @@ class CRUDAlumno
     public static function agregarAlumnoModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
-        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (matricula,nombre,apellido,grupo,carrera) VALUES (:matricula,:nombre,:apellido,:grupo,:carrera)");
+        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (matricula,nombre,apellido,carrera,img) VALUES (:matricula,:nombre,:apellido,:carrera,:img)");
 
         //se realiza la asignacion de los datos a insertar
         $stmt -> bindParam(":matricula",$data["matricula"],PDO::PARAM_INT);
         $stmt -> bindParam(":nombre",$data["nombre"],PDO::PARAM_STR);
         $stmt -> bindParam(":apellido",$data["apellido"],PDO::PARAM_STR);
         $stmt -> bindParam(":carrera",$data["carrera"],PDO::PARAM_STR);
-        $stmt -> bindParam(":grupo",$data["grupo"],PDO::PARAM_STR);
+        $stmt -> bindParam(":img",$data["img"],PDO::PARAM_STR);
 
         //se ejecuta la sentencia
         if($stmt -> execute())

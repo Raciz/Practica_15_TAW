@@ -16,8 +16,8 @@ class mvcTeacher
             //e imprimimos la informacion de cada uno de los grupos
             echo "<tr class='fondoTabla'>
                 <td>".$row["codigo"]."</td>
-                <td>".$row["nivel"]."</td>
-                <td>".count($size)." Students</td>
+                <td>Level ".$row["nivel"]."</td>
+                <td>".count($size)." Student(s)</td>
                 <td>
                     <center>
                         <a href='index.php?section=groups&action=my-students&group=".$row["codigo"]."'><button class='btn btn-rounded btn-warning' type='button' name='button'>
@@ -45,13 +45,14 @@ class mvcTeacher
         //se imprime la informacion de los alumnos del grupo separados por carrera
         foreach($careers as $rows => $row)
         {            
+            $name = CRUDTeacher::nombreCarreraModel($row,"carrera");
             //e imprimimos la informacion de cada uno de los grupos
             echo
                 "
             <div class='col-lg-12'>
                 <div class='panel panel-default'>
                     <div class='panel-heading'>
-                        <h3 class='panel-title'>".$row."</h3>
+                        <h3 class='panel-title'>".$name["nombre"]."</h3>
                     </div>
                     <div class='panel-body'>
                       <div class='table-responsive m-b-20'>
@@ -76,7 +77,9 @@ class mvcTeacher
                                             <td>".$row2["nombre"]."</td>
                                             <td>".$row2["apellido"]."</td>
                                             <td>
-                                                <a href='index.php?section=groups&action=student-record&student=".$row2["matricula"]."'><button class='btn btn-rounded btn-warning' type='button' name='button'>View CAI hours</button></a>
+                                                <a href='index.php?section=groups&action=student-record&student=".$row2["matricula"]."'>
+                                                    <button class='btn btn-rounded btn-warning' type='button' name='button'>View CAI hours</button>
+                                                </a>
                                             </td>
                                         </tr>
                                         ";   
@@ -99,6 +102,7 @@ class mvcTeacher
         //se le manda al modelo el nombre de la tabla a mostrar la informacion de los grupos del teacher
         $data = CRUDTeacher::dataAlumnoModel($_GET["student"],"alumno");
 
+        $name = CRUDTeacher::nombreCarreraModel($data["carrera"],"carrera");
         //se imprime la informacion del alumno
         echo
             "
@@ -114,7 +118,7 @@ class mvcTeacher
                 <b>Group:</b><br>".$data["grupo"]."
             </p>
             <p>
-                <b>Career:</b><br>".$data["carrera"]."
+                <b>Career:</b><br>".$name["nombre"]."
             </p>
         </div>
         ";

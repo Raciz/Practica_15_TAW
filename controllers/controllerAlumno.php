@@ -13,8 +13,83 @@ class mvcAlumno
                           "nombre" => $_POST["nombre"],
                           "apellido" => $_POST["apellido"],
                           "carrera" => $_POST["carrera"],
-                          "grupo" => $_POST["grupo"]);
+                          "img" => "views/media/img/noimg.png");
 
+            //se verifica si se envio una imagen del boleto
+            if(!empty($_FILES["img"]["name"]))
+            {
+                //se extrae el tipo de la imagen
+                $type = $_FILES["img"]["type"];
+
+                //se extrae el tamaño de la imagen
+                $size = $_FILES["img"]["size"];
+
+                //se extrae el nombre de la imagen
+                $name = $_FILES["img"]["name"];
+
+                //se extrae la ubicacion temporal de la imagen
+                $tmp = $_FILES["img"]["tmp_name"];
+
+                //se obtiene la fecha y hora en la que fue sibida la imagen
+                $date = getdate();
+                
+                //se verifica si se envio una imagen jpg o png
+                if($type == "image/jpeg" || $type == "image/png")
+                {
+                    //en caso de que si sea png o jpg
+                    //se verifica que el tamaño de la imagen no supere los 5MB
+                    if($size < 5000000)
+                    {
+                        //en caso de que no supere el tamaño de 5MB
+                        //se mueve la imagen a la carpeta de imagenes de los boletos
+                        if(!move_uploaded_file($tmp, "./views/media/img/".$date["mday"].$date["mon"].$date["year"].$date["hours"].$date["minutes"].$date["seconds"].$name))
+                        {
+                            //en caso de que no se pudiera mover se asigna el error copy en session error
+                            $_SESSION["error"] = "copy";
+
+                            //nos redireccionamos al formulario de registro
+                            echo "<script>
+                                    window.location.replace('index.php?section=students&action=list');
+                                 </script>";
+                            //y se detiene la ejecucion del script
+                            exit;
+                        }
+                        else
+                        {
+                            //asignamos en data el url real de la imagen
+                            $data["img"] = "views/media/img/".$date["mday"].$date["mon"].$date["year"].$date["hours"].$date["minutes"].$date["seconds"].$name;
+                        }
+                    }
+                    else
+                    {
+                        //en caso de que la imagen supere el el tamaño de 300KB se asigna el error size en session error
+                        $_SESSION["error"] = "size";
+
+                        //nos redireccionamos al formulario de registro
+                        echo "<script>
+                                    window.location.replace('index.php?section=students&action=list');
+                              </script>";
+
+                        //y se detiene la ejecucion del script
+                        exit;
+                    }
+                }
+                else
+                {
+                    //en caso de que la imagen no sea png o jpg se asigna el error type en session error
+                    $_SESSION["error"] = "type";
+
+                    //nos redireccionamos al formulario de registro
+                    echo "<script>
+                            window.location.replace('index.php?section=students&action=list');
+                          </script>";
+
+                    //y se detiene la ejecucion del script
+                    exit;
+                }
+            }
+
+            
             //se manda la informacion al modelo con su respectiva tabla en la que se registrara
             $resp = CRUDAlumno::agregarAlumnoModel($data,"alumno");
 
