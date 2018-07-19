@@ -60,5 +60,28 @@ class CRUDTeacher
         //cerramos la conexion
         $stmt -> close();
     }
+    
+    //modelo para obtener las horas de cai del alumno
+    public static function horasAlumnoModel($student,$tabla1,$tabla2,$tabla3)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT a.fecha, a.hora_entrada, a.hora_salida, u.nombre as unidad, ac.nombre as actividad 
+                                                 FROM $tabla1 as a
+                                                 JOIN $tabla2 as u on u.id_unidad = a.unidad
+                                                 JOIN $tabla3 as ac on ac.id_actividad = a.actividad
+                                                 WHERE a.alumno = :matricula");
+        
+        //asignamos los datos para el select
+        $stmt -> bindParam(":matricula",$student,PDO::PARAM_INT);
+        
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
 }
 ?>

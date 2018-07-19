@@ -101,7 +101,7 @@ class mvcTeacher
 
         //se imprime la informacion del alumno
         echo
-        "
+            "
         <img class='pull-left' width='400px' height='400px' src='views/media/images/users/1530326.jpeg'/>
         <div class='text-white' style='margin-left: 420px'>
             <p>
@@ -118,6 +118,28 @@ class mvcTeacher
             </p>
         </div>
         ";
+    }
+
+    //Control para mostrar las horas de cai del alumno
+    function horasAlumnoController()
+    {
+        //se le manda al modelo para obtener las hora de cai del alumno
+        $data = CRUDTeacher::horasAlumnoModel($_GET["student"],"asistencia","unidad","actividad");
+
+        foreach($data as $rows => $row)
+        {
+            //se imprime la informacion de las horas de cai
+            echo
+            "
+            <tr class='fondoTabla'>
+                <td>".$row["fecha"]."</td>
+                <td>".$row["hora_entrada"]."</td>
+                <td>".$row["hora_salida"]."</td>
+                <td>".$row["actividad"]."</td>
+                <td>".$row["unidad"]."</td>
+            </tr>
+            ";
+        }
     }
 }
 ?>

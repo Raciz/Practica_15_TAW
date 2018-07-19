@@ -37,13 +37,13 @@ if(!isset($_SESSION["nombre"]))
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class='fondoTabla'>
-                            <td>17/August/2018</td>
-                            <td>9:45 am</td>
-                            <td>1:55 pm</td>
-                            <td>Book</td>
-                            <td>1</td>
-                        </tr>
+                        <?php
+                        //creamos un objeto de mvcTeacher
+                        $list = new mvcTeacher();
+                        
+                        //llamamos el controler para mostrar las horas de cai realizadas por el alumno
+                        $list -> horasAlumnoController();
+                        ?>
                     </tbody>
                 </table>
             </div>
