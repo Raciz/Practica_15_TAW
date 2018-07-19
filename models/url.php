@@ -10,7 +10,7 @@ class url
         {
             $url = "views/".$section."/".$action.".php";
         }
-        elseif($section == "sessions" && ($action == "actual" || $action == "student_data" || $action == "add"))
+        elseif($section == "sessions" && ($action == "actual" || $action == "student_data" || $action == "add" || $action == "delete"))
         {
             $url = "views/".$section."/".$action.".php";
         }

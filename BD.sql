@@ -271,6 +271,9 @@ ALTER TABLE `unidad`
 ALTER TABLE `usuario`
   MODIFY `num_empleado` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
+ALTER TABLE `asistencia`
+  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- Restricciones para tablas volcadas
 --

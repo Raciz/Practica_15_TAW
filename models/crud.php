@@ -22,4 +22,18 @@ class CRUD
         //cerramos la conexion
         $stmt->close();
     }
+
+    public static function dashModel($tabla){
+                //preparamos la sentencia para realizar el select
+        $stmt = Conexion::conectar()->prepare("SELECT COUNT(*) FROM $tabla"); 
+
+        //se ejecuta la sentencia
+        $stmt->execute();
+
+        //retornamos la fila obtenida con el select
+        return $stmt->fetch();
+
+        //cerramos la conexion
+        $stmt->close();
+    }
 }

@@ -8,14 +8,14 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para modificar una carrera
+//verificamos si se debe mandar a llamar el controller para agregar el usuario a la sesión
 if(isset($_GET["action"]) && $_GET["action"]=="student_data")
 {
-    //creamos un objeto de mvcCarrera
-    $edit = new mvcCarrera();
+    //creamos un objeto de mvcSession
+    $add = new mvcSession();
 
-    //se manda a llamar el controller para modificar la informacion de una carrera
-    $edit -> modificarCarreraController();
+    //se manda a llamar el controller para agregar al alumno a la sesión
+    $add -> agregarSessionController();
 }
 
 if(!empty($_GET["student_data"]))
@@ -31,25 +31,25 @@ if(!empty($_GET["student_data"]))
                 </a>
                 <h4 class="modal-title" id="myLargeModalLabel">Student data</h4>
             </div>
+            <form method="post" action="index.php?section=sessions&action=student_data" autocomplete="off">
             <div class="modal-body">
                 <div class="clearfix">
-                    <img class="pull-left" width="400px" height="400px" src="views/media/images/users/1530326.jpeg"/>
-                    <div class="text-black" style="margin-left: 420px">
-                        <?php
-                        //creamos un objeto de mvcUsuario
-                        $edit = new mvcSession();
+                    <?php
+                    //creamos un objeto de mvcSession
+                    $edit = new mvcSession();
 
-                        //mandamos a llamar a el controller para obtener la informacion del usuario
-                        $edit -> mostrarSessionController($_POST["alumno"]);
-                        ?>
-                    </div>
+                    //mandamos a llamar a el controller para obtener la informacion del alumno
+                    $edit -> mostrarSessionController($_POST["alumno"], $_POST["actividad"]);
+                    ?>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="index.php?section=sessions&action=actual">
-                    <button type="button" class="btn btn-custom waves-effect">Close</button>
-                </a>            
+                    <button type="button" class="btn btn-default waves-effect">Close</button>
+                </a>
+                <button type="submit" class="btn btn-custom waves-effect waves-light">Add Student</button>
             </div>
+        </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

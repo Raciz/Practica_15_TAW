@@ -14,6 +14,7 @@ if(!empty($_SESSION["mensaje"]))
     //si session en mensaje es agregar un usuario
     if($_SESSION["mensaje"]=="add")
     {
+        $_SESSION["tiempo"] = date("H:i:s");
         //se muestra el sweet alert de agregar un usuario
         echo"<script>
                     swal
@@ -37,7 +38,7 @@ if(!empty($_SESSION["mensaje"]))
                 (
                     {
                         title: 'Advertencia:',
-                        text: 'se ha eliminado un alumno del sistema',
+                        text: 'se ha finalizado la hora de CAI del alumno',
                         type: 'warning',
                         confirmButtonText: 'Continuar',
                         confirmButtonColor: '#4fa7f3'
@@ -63,6 +64,20 @@ if(!empty($_SESSION["mensaje"]))
                 )
             </script>";
 
+    }elseif ($_SESSION["mensaje"]=="die"){
+                //se muestra elsweet alert de editar un usuario
+        echo"<script>
+                swal
+                (
+                    {
+                        title: 'Finalizado',
+                        text: 'Hora terminada',
+                        type: 'success',
+                        confirmButtonText: 'Continuar',
+                        confirmButtonColor: '#4fa7f3'
+                    }
+                )
+            </script>";
     }
     //se elimina el contenido de session en mensaje
     $_SESSION["mensaje"]="";
@@ -73,11 +88,17 @@ if(!empty($_SESSION["mensaje"]))
         <div class="col-sm-12">
             <h4 class="m-t-0 header-title">Actual session</h4>
             <div class="pull-right" style="margin-top: -56px">
-              <b>Unit: </b> 1
+              <!--<b>Unit: </b> 1-->
+                <?php
+                //creamos un objeto de mvcSession
+                $list = new mvcSession();
+                //se manda a llamar el control para enlistar a los alumnos de la sesión
+                $r = $list -> todasHoras(date("H:i:s"));
+                echo date("H:i:s");
+                ?>
               <br>
-              <b>Session hour: </b> 9:45 - 10:39
             </div>
-            <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add student</button>
+            <?php if($r!="Fuera"){ ?><button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add student</button><?php } ?>
             <div class="table-responsive m-b-20">
                 <table id="example1" class="table">
                     <thead>
@@ -87,15 +108,16 @@ if(!empty($_SESSION["mensaje"]))
                             <th>Group</th>
                             <th>Career</th>
                             <th>Activity</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        //creamos un objeto de mvcUsuario
-                        //$list = new mvcAlumno();
+                        //creamos un objeto de mvcSession
+                        $list = new mvcSession();
 
-                        //se manda a llamar el control para enlistar a los usuarios
-                        //$list -> listadoAlumnoController();
+                        //se manda a llamar el control para enlistar a los alumnos de la sesión
+                        $list -> listadoSessionController();
                         ?>
                     </tbody>
                 </table>
@@ -109,4 +131,5 @@ if(!empty($_SESSION["mensaje"]))
 //incluimos el archivo con el modal para agregar, editar y eliminar estudiantes
 include_once "views/sessions/add.php";
 include_once "views/sessions/student_data.php";
+include_once "views/sessions/delete.php";
 ?>

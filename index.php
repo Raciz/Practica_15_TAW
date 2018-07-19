@@ -17,6 +17,7 @@ require_once("models/crudAlumno.php");
 require_once("models/crudActividad.php");
 require_once("models/crudUnidad.php");
 require_once("models/crudTeacher.php");
+require_once("models/crudSession.php");
 require_once("models/crud.php");
 require_once("models/url.php");
 

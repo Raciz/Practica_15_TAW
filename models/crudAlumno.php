@@ -217,7 +217,7 @@ class CRUDAlumno
     public static function optionAlumnosModel($tabla)
     {
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE grupo IS NOT NULL");
 
         //se ejecuta la consulta
         $stmt -> execute();
