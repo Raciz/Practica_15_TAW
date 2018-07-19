@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-07-2018 a las 06:15:18
+-- Tiempo de generación: 19-07-2018 a las 07:14:45
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -86,15 +86,9 @@ CREATE TABLE `asistencia` (
   `actividad` int(7) NOT NULL,
   `unidad` int(7) NOT NULL,
   `nivel` int(1) DEFAULT NULL,
-  `teacher` varchar(50) DEFAULT NULL
+  `teacher` varchar(50) DEFAULT NULL,
+  `hora_completa` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `asistencia`
---
-
-INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`) VALUES
-(1, '2018-07-18', '00:00:00', '06:00:00', 12323, 2, 2, 2, 'gdssdbdsabx');
 
 -- --------------------------------------------------------
 

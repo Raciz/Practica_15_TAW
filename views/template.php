@@ -89,10 +89,17 @@ if(!empty($_SESSION["nombre"]))
 
                             <!-- Top nav left menu -->
                             <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
+                                <?php
+                                if($_SESSION["tipo"]=="Administrator")
+                                {
+                                ?>
                                 <li><a href="#" style="color: #fff">About</a></li>
                                 <li><a href="#" style="color: #fff">Help</a></li>
                                 <li><a href="#" style="color: #fff">Contact</a></li>
                                 <li><a href="index.php?section=sessions&action=actual" style="color: #fff">CAI sessions</a></li>
+                                <?php
+                                }
+                                ?>
                             </ul>
 
                             <!-- Top nav Right menu -->
@@ -222,165 +229,165 @@ if(!empty($_SESSION["nombre"]))
 
             <!-- Page content start -->
             <div class="page-contentbar">
-              <!-- Se verifica que la sección no sea la de las sesiones de cai porque esa no lleva menú -->
+                <!-- Se verifica que la sección no sea la de las sesiones de cai porque esa no lleva menú -->
                 <?php if($_GET["section"] != "sessions"): ?>
-                  <!--left navigation start-->
-                  <aside class="sidebar-navigation">
-                      <div class="scrollbar-wrapper">
-                          <div>
-                              <button type="button" class="button-menu-mobile btn-mobile-view visible-xs visible-sm">
-                                  <i class="mdi mdi-close"></i>
-                              </button>
-                              <!-- User Detail box -->
-                              <div class="user-details">
-                                  <div class="pull-left">
-                                      <img src="views/media/images/users/avatar-1.jpg" alt="" class="thumb-md img-circle">
-                                  </div>
-                                  <div class="user-info">
-                                      <a href="#"><?php echo $_SESSION["nombre"]; ?></a>
-                                      <p class="text-white m-0"><?php echo $_SESSION["tipo"] ?></p>
-                                  </div>
-                              </div>
-                              <!--- End User Detail box -->
+                <!--left navigation start-->
+                <aside class="sidebar-navigation">
+                    <div class="scrollbar-wrapper">
+                        <div>
+                            <button type="button" class="button-menu-mobile btn-mobile-view visible-xs visible-sm">
+                                <i class="mdi mdi-close"></i>
+                            </button>
+                            <!-- User Detail box -->
+                            <div class="user-details">
+                                <div class="pull-left">
+                                    <img src="views/media/images/users/avatar-1.jpg" alt="" class="thumb-md img-circle">
+                                </div>
+                                <div class="user-info">
+                                    <a href="#"><?php echo $_SESSION["nombre"]; ?></a>
+                                    <p class="text-white m-0"><?php echo $_SESSION["tipo"] ?></p>
+                                </div>
+                            </div>
+                            <!--- End User Detail box -->
 
-                              <?php
-                                require_once("views/modules/menu.php");
-                              ?>
-                          </div>
-                      </div>
-                      <!--Scrollbar wrapper-->
+                            <?php
+    require_once("views/modules/menu.php");
+                            ?>
+                        </div>
+                    </div>
+                    <!--Scrollbar wrapper-->
 
-                  </aside>
-                  <!--left navigation end-->
-              <?php endif ?>
+                </aside>
+                <!--left navigation end-->
+                <?php endif ?>
 
                 <!-- START PAGE CONTENT -->
                 <?php if($_GET["section"] != "sessions"): ?>
-                  <div id="page-right-content">
-                <?php else: ?>
-                  <div id="page-right-content" style="margin-left: -5px !important">
-                <?php endif ?>
-                    <?php
+                <div id="page-right-content">
+                    <?php else: ?>
+                    <div id="page-right-content" style="margin-left: -5px !important">
+                        <?php endif ?>
+                        <?php
 }
-                    ?>
-                    <?php
-                    //creamos un objeto de mvcController
-                    $mvc = new mvcController();
-                    //y obtenemos el controlador para el redireccionamiento
-                    $mvc -> urlController();
-                    ?>
-                    <?php
-                    if(!empty($_SESSION["nombre"]))
-                    {
-                    ?>
-                    <div class="footer">
-                        <div>
-                            <strong>Angela Carrizales, Brian Becerra y Francisco Perales</strong> - Copyright &copy; 2018
-                        </div>
-                    </div> <!-- end footer -->
+                        ?>
+                        <?php
+                        //creamos un objeto de mvcController
+                        $mvc = new mvcController();
+                        //y obtenemos el controlador para el redireccionamiento
+                        $mvc -> urlController();
+                        ?>
+                        <?php
+                        if(!empty($_SESSION["nombre"]))
+                        {
+                        ?>
+                        <div class="footer">
+                            <div>
+                                <strong>Angela Carrizales, Brian Becerra y Francisco Perales</strong> - Copyright &copy; 2018
+                            </div>
+                        </div> <!-- end footer -->
+
+                    </div>
+                    <!-- End #page-right-content -->
 
                 </div>
-                <!-- End #page-right-content -->
-
+                <!-- end .page-contentbar -->
             </div>
-            <!-- end .page-contentbar -->
-        </div>
-        <!-- End #page-wrapper -->
+            <!-- End #page-wrapper -->
 
 
 
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="views/media/js/jquery-2.1.4.min.js"></script>
-        <script src="views/media/js/bootstrap.min.js"></script>
-        <script src="views/media/js/metisMenu.min.js"></script>
-        <script src="views/media/js/jquery.slimscroll.min.js"></script>
+            <!-- js placed at the end of the document so the pages load faster -->
+            <script src="views/media/js/jquery-2.1.4.min.js"></script>
+            <script src="views/media/js/bootstrap.min.js"></script>
+            <script src="views/media/js/metisMenu.min.js"></script>
+            <script src="views/media/js/jquery.slimscroll.min.js"></script>
 
-        <script src="views/media/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
-        <script src="views/media/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
-        <script src="views/media/plugins/switchery/switchery.min.js"></script>
-        <script type="text/javascript" src="views/media/plugins/parsleyjs/parsley.min.js"></script>
-        <script src="views/media/plugins/moment/moment.js"></script>
-        <script src="views/media/plugins/timepicker/bootstrap-timepicker.js"></script>
-        <script src="views/media/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-        <script src="views/media/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-        <script src="views/media/plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
-        <script src="views/media/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="views/media/plugins/summernote/summernote.min.js"></script>
+            <script src="views/media/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.min.js"></script>
+            <script src="views/media/plugins/bootstrap-filestyle/js/bootstrap-filestyle.min.js" type="text/javascript"></script>
+            <script src="views/media/plugins/switchery/switchery.min.js"></script>
+            <script type="text/javascript" src="views/media/plugins/parsleyjs/parsley.min.js"></script>
+            <script src="views/media/plugins/moment/moment.js"></script>
+            <script src="views/media/plugins/timepicker/bootstrap-timepicker.js"></script>
+            <script src="views/media/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+            <script src="views/media/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+            <script src="views/media/plugins/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+            <script src="views/media/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+            <script src="views/media/plugins/summernote/summernote.min.js"></script>
 
-        <!-- Datatable js -->
-        <script src="views/media/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.bootstrap.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.buttons.min.js"></script>
-        <script src="views/media/plugins/datatables/buttons.bootstrap.min.js"></script>
-        <script src="views/media/plugins/datatables/jszip.min.js"></script>
-        <script src="views/media/plugins/datatables/pdfmake.min.js"></script>
-        <script src="views/media/plugins/datatables/vfs_fonts.js"></script>
-        <script src="views/media/plugins/datatables/buttons.html5.min.js"></script>
-        <script src="views/media/plugins/datatables/buttons.print.min.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.keyTable.min.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.responsive.min.js"></script>
-        <script src="views/media/plugins/datatables/responsive.bootstrap.min.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.scroller.min.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.colVis.js"></script>
-        <script src="views/media/plugins/datatables/dataTables.fixedColumns.min.js"></script>
+            <!-- Datatable js -->
+            <script src="views/media/plugins/datatables/jquery.dataTables.min.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.bootstrap.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.buttons.min.js"></script>
+            <script src="views/media/plugins/datatables/buttons.bootstrap.min.js"></script>
+            <script src="views/media/plugins/datatables/jszip.min.js"></script>
+            <script src="views/media/plugins/datatables/pdfmake.min.js"></script>
+            <script src="views/media/plugins/datatables/vfs_fonts.js"></script>
+            <script src="views/media/plugins/datatables/buttons.html5.min.js"></script>
+            <script src="views/media/plugins/datatables/buttons.print.min.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.keyTable.min.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.responsive.min.js"></script>
+            <script src="views/media/plugins/datatables/responsive.bootstrap.min.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.scroller.min.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.colVis.js"></script>
+            <script src="views/media/plugins/datatables/dataTables.fixedColumns.min.js"></script>
 
-        <script src="views/media/plugins/select2/js/select2.min.js" type="text/javascript"></script>
+            <script src="views/media/plugins/select2/js/select2.min.js" type="text/javascript"></script>
 
-        <!--Morris Chart-->
-        <script src="views/media/plugins/morris/morris.min.js"></script>
-        <script src="views/media/plugins/raphael/raphael-min.js"></script>
+            <!--Morris Chart-->
+            <script src="views/media/plugins/morris/morris.min.js"></script>
+            <script src="views/media/plugins/raphael/raphael-min.js"></script>
 
-        <!-- App Js -->
-        <script src="views/media/js/jquery.app.js"></script>
+            <!-- App Js -->
+            <script src="views/media/js/jquery.app.js"></script>
 
-    </body>
+            </body>
 
-    <script type="text/javascript">
-        $('#example1').DataTable
-        (
+        <script type="text/javascript">
+            $('#example1').DataTable
+            (
+                {
+                    'paging'      : true,
+                    'lengthChange': false,
+                    'searching'   : true,
+                    'ordering'    : true,
+                    'info'        : true,
+                    'autoWidth'   : false
+                }
+            );
+
+            $('.data').DataTable
+            (
+                {
+
+                    'paging'      : true,
+                    'lengthChange': false,
+                    'searching'   : true,
+                    'ordering'    : true,
+                    'info'        : true,
+                    'autoWidth'   : false
+                }
+            );
+
+            $(".select2").select2
+            (
+                {
+                    placeholder: "Choose ...",
+                    allowClear: true
+                }
+            );
+        </script>
+        <style>
+            .repairtext
             {
-                'paging'      : true,
-                'lengthChange': false,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : false
+                color: #000000;
             }
-        );
-        
-        $('.data').DataTable
-        (
-            {
-                
-                'paging'      : true,
-                'lengthChange': false,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : false
-            }
-        );
-        
-        $(".select2").select2
-        (
-            {
-                placeholder: "Choose ...",
-                allowClear: true
-            }
-        );
-    </script>
-    <style>
-        .repairtext
-        {
-            color: #000000;
-        }
 
-        span
-        {
-            color: #000000;
-        }
-    </style>
-</html>
-<?php
-                    }
-?>
+            span
+            {
+                color: #000000;
+            }
+        </style>
+        </html>
+    <?php
+                        }
+    ?>

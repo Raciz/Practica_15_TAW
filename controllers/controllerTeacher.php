@@ -106,7 +106,7 @@ class mvcTeacher
         //se imprime la informacion del alumno
         echo
             "
-        <img class='pull-left' width='400px' height='400px' src='views/media/images/users/1530326.jpeg'/>
+        <img class='pull-left' width='400px' height='400px' src='".$data["img"]."'>
         <div class='text-white' style='margin-left: 420px'>
             <p>
                 <b>ID:</b><br>".$data["matricula"]."
