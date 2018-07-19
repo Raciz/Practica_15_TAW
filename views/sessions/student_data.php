@@ -8,17 +8,20 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe llamar al controller para agregar un nuevo grupo
-if(isset($_GET["action"]) && $_GET["action"]=="add")
+//verificamos si se debe mandar a llamar el controller para modificar una carrera
+if(isset($_GET["action"]) && $_GET["action"]=="student_data")
 {
-    //se crea un objeto de mvcGrupo
-    $add = new mvcGrupo();
+    //creamos un objeto de mvcCarrera
+    $edit = new mvcCarrera();
 
-    //se manda a llamar el controller para agregar un nuevo grupo al sistema
-    $add -> agregarGrupoController();
+    //se manda a llamar el controller para modificar la informacion de una carrera
+    $edit -> modificarCarreraController();
 }
 ?>
-
+<?php
+if(!empty($_GET["student_data"]))
+{
+?>
 <!--  Modal content for the above example -->
 <div id="datos-alumno" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-lg">
@@ -31,26 +34,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
               <div class="clearfix">
                 <img class="pull-left" width="400px" height="400px" src="views/media/images/users/1530326.jpeg"/>
                 <div class="text-black" style="margin-left: 420px">
-                  <p>
-                    <b>ID:</b>
-                    <br>
-                    1530326
-                  </p>
-                  <p>
-                    <b>Name:</b>
-                    <br>
-                    Angy Carreón Peréz
-                  </p>
-                  <p>
-                    <b>Group:</b>
-                    <br>
-                    ENG-9A
-                  </p>
-                  <p>
-                    <b>Career:</b>
-                    <br>
-                    Ingeniería en Tecnologías de la Información
-                  </p>
+                    <?php
+                    //creamos un objeto de mvcUsuario
+                    $edit = new mvcSession();
+
+                    //mandamos a llamar a el controller para obtener la informacion del usuario
+                    $edit -> mostrarSessionController($_POST["alumno"]);
+                    ?>
                 </div>
               </div>
             </div>
@@ -61,3 +51,4 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<?php } ?>

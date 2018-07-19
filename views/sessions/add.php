@@ -23,7 +23,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 <div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <!--Formulario para agregar un nuevo grupo-->
-        <form action="index.php?section=groups&action=add" method="post">
+        <form action="index.php?section=sessions&action=actual&student_data=1" method="post" id="formulario">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -33,21 +33,29 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 
                   <div class="form-group">
                       <label class="control-label repairtext">Student</label>
-                      <select style="width:100%;" class="form-control select2" name="nivel" required>
+                      <select style="width:100%;" class="form-control select2" id="alumno" name="alumno" required>
                           <option value=""></option>
-                          <option value="">Student 1</option>
-                          <option value="">Student 2</option>
-                          <option value="">Student 3</option>
+                            <?php
+                            //creamos un objeto de mvcAlumno
+                            $option1 = new mvcAlumno();
+
+                            //se manda a llamar el controller para enlistar todos los alumnos en el select
+                            $option1 -> optionAlumnosController();
+                            ?>
                       </select>
                   </div>
 
                     <div class="form-group">
                         <label class="control-label repairtext">Activity</label>
-                        <select style="width:100%;" class="form-control select2" name="nivel" required>
+                        <select style="width:100%;" class="form-control select2" id="actividad" name="actividad" required>
                             <option value=""></option>
-                            <option value="">Activity 1</option>
-                            <option value="">Activity 2</option>
-                            <option value="">Activity 3</option>
+                            <?php
+                            //creamos un objeto de mvcActividad
+                            $option2 = new mvcActividad();
+
+                            //se manda a llamar el controller para enlistar todas las actividades en el select
+                            $option2 -> optionActividadController();
+                            ?>
                         </select>
                     </div>
 
@@ -56,8 +64,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-custom waves-effect waves-light">Continue</button>
                 </div>
-                </form>
+              </form>
             </div>
     </div>
 </div>
-<!-- /.modal -->

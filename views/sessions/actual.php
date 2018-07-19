@@ -78,7 +78,6 @@ if(!empty($_SESSION["mensaje"]))
               <b>Session hour: </b> 9:45 - 10:39
             </div>
             <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add student</button>
-            <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#datos-alumno">estudiante (prueba)</button>
             <div class="table-responsive m-b-20">
                 <table id="example1" class="table">
                     <thead>

@@ -9,6 +9,7 @@ require_once("controllers/controllerActividad.php");
 require_once("controllers/controllerUnidad.php");
 require_once("controllers/controller.php");
 require_once("controllers/controllerTeacher.php");
+require_once("controllers/controllerSession.php");
 require_once("models/crudGrupo.php");
 require_once("models/crudCarrera.php");
 require_once("models/crudUsuario.php");
