@@ -296,5 +296,19 @@ class mvcAlumno
             }
         }
     }
+
+    //Control para mostrar a los alumnos en un select
+    public function optionAlumnosController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar su informacion
+        $data = CRUDAlumno::optionAlumnosModel("alumno");
+
+        //mostramos el nombre de cada una de los alumnos
+        foreach($data as $rows => $row)
+        {
+            //se muestra cada una de los alumnos en un option del select
+            echo "<option value='".$row["matricula"]."'>".$row["nombre"]." ".$row["apellido"]."</option>";
+        }
+    }
 }
 ?>

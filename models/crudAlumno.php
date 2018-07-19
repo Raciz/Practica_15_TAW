@@ -8,7 +8,7 @@ class CRUDAlumno
     public static function agregarAlumnoModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
-        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (matricula,nombre,apellido,carrera,grupo) VALUES (:matricula,:nombre,:apellido,:carrera,:grupo)");
+        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (matricula,nombre,apellido,grupo,carrera) VALUES (:matricula,:nombre,:apellido,:grupo,:carrera)");
 
         //se realiza la asignacion de los datos a insertar
         $stmt -> bindParam(":matricula",$data["matricula"],PDO::PARAM_INT);
@@ -208,6 +208,22 @@ class CRUDAlumno
             //en caso de no ser asi nos retorna fail
             return "fail";
         }
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+
+    //modelo para obtener la informacion de los alumnos registrados
+    public static function optionAlumnosModel($tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
 
         //cerramos la conexion
         $stmt -> close();
