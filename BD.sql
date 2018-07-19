@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-07-2018 a las 07:14:45
+-- Tiempo de generación: 19-07-2018 a las 10:38:42
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -32,7 +32,7 @@ USE `CAI`;
 --
 
 CREATE TABLE `actividad` (
-  `id_actividad` int(7) NOT NULL,
+  `id_actividad` int(7) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nombre` varchar(20) NOT NULL,
   `descripcion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -89,6 +89,14 @@ CREATE TABLE `asistencia` (
   `teacher` varchar(50) DEFAULT NULL,
   `hora_completa` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `hora_completa`) VALUES
+(1, '2018-07-19', '00:00:00', '03:00:00', 12323, 2, 2, 2, 'gfdfgsdg', 1),
+(2, '2018-07-19', '00:00:00', '03:00:00', 12323, 2, 2, 2, 'gfdfgsdg', 0);
 
 -- --------------------------------------------------------
 
@@ -201,9 +209,6 @@ INSERT INTO `usuario` (`num_empleado`, `nombre`, `username`, `password`, `email`
 --
 -- Indices de la tabla `actividad`
 --
-ALTER TABLE `actividad`
-  ADD PRIMARY KEY (`id_actividad`);
-
 --
 -- Indices de la tabla `alumno`
 --
@@ -270,9 +275,6 @@ ALTER TABLE `unidad`
 --
 ALTER TABLE `usuario`
   MODIFY `num_empleado` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
-ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas

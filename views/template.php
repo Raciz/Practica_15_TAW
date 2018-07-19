@@ -88,6 +88,10 @@ if(!empty($_SESSION["nombre"]))
                             </div>
 
                             <!-- Top nav left menu -->
+                            <?php
+                            if($_SESSION["tipo"]=="Administrator")
+                            {
+                            ?>
                             <ul class="nav navbar-nav hidden-sm hidden-xs top-navbar-items">
                                <!-- <li><a href="#" style="color: #fff">About</a></li>
                                 <li><a href="#" style="color: #fff">Help</a></li>
@@ -95,7 +99,9 @@ if(!empty($_SESSION["nombre"]))
                                 <li><a href="index.php?section=dashboard" style="color: #fff">Home</a></li>
                                 <li><a href="index.php?section=sessions&action=actual" style="color: #fff">CAI sessions</a></li>
                             </ul>
-
+                            <?php
+                            }
+                            ?>
                             <!-- Top nav Right menu -->
                             <ul class="nav navbar-nav navbar-right top-navbar-items-right pull-right">
                                <!-- <li class="dropdown top-menu-item-xs">

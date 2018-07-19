@@ -64,10 +64,21 @@ class mvcController
                 $_SESSION["tipo"] = $resp["tipo"];
                 $_SESSION["password"] = $resp["password"];
                 $_SESSION["empleado"] = $resp["num_empleado"];
-                //si no se direccionara al dashboard
-                echo "<script>
+                
+                if($_SESSION["tipo"]=="Administrator")
+                {
+                    //si no se direccionara al dashboard
+                    echo "<script>
                         window.location.replace('index.php?section=dashboard');
                       </script>";
+                }
+                else if($_SESSION["tipo"]=="Teacher")	
+                {	
+                    //se direccionara al listado de grupos del teacher
+                    echo "<script>	
+                        window.location.replace('index.php?section=groups&action=my-groups');	
+                      </script>";	
+                } 
             }
         }
     }

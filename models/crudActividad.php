@@ -8,7 +8,7 @@ class CRUDActividad
     public static function agregarActividadModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
-        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (id_actividad,nombre,descripcion) VALUES (2,:nombre,:descripcion)");
+        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla (nombre,descripcion) VALUES (:nombre,:descripcion)");
 
         //se realiza la asignacion de los datos a insertar
         $stmt -> bindParam(":nombre",$data["nombre"],PDO::PARAM_STR);
