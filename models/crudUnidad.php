@@ -48,7 +48,7 @@ class CRUDUnidad
     }
     
 
-    //modelo para borrar una de la base de datos
+    //modelo para borrar una unidad de la base de datos
     public static function eliminarUnidadModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el Delete de la unidad

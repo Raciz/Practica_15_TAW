@@ -33,6 +33,7 @@ if(!empty($_GET["edit"]))
                 </a>
                 <h4 class="modal-title repairtext">Edit unit</h4>
             </div>
+          <!--formulario para modificar la informacion de la unidad-->
             <form method="post" action="index.php?section=units&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php

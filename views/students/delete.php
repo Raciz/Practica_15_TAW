@@ -22,6 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
 <!-- Modal para eliminar una usuario del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
+        <!--formulario para la confirmacion del borrado del estudiante-->
         <form id="formDel" action="index.php?section=students&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
@@ -53,13 +54,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     //variable para modificar el formulario
     var form = document.getElementById("formDel");
 
-    //funcion para obtener el id del usuario a eliminar
+    //funcion para obtener el id del alumno a eliminar
     function idDel(del)
     {
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
-        //le asignamos a value del que es el id del usuario a eliminar 
+        //le asignamos a value del que es el id del alumno a eliminar 
         input.setAttribute("value",del);
     }
 
@@ -82,9 +83,9 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
                 (
                     {
                         title: 'Error:',
-                        text: 'Contraseña Incorrecta',
+                        text: 'Incorrect password',
                         type: 'error',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )

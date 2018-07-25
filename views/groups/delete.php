@@ -22,7 +22,8 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
 <!-- Modal para eliminar un grupo del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <form id="formDel" action="index.php?section=groups&action=delete" method="post">
+      <!--Formulario para confirmar el borrado del grupo-->  
+      <form id="formDel" action="index.php?section=groups&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -82,9 +83,9 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
                 (
                     {
                         title: 'Error:',
-                        text: 'Contraseña Incorrecta',
+                        text: 'Incorrect password',
                         type: 'error',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )

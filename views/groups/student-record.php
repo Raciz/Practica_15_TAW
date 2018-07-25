@@ -15,7 +15,10 @@ if(!isset($_SESSION["nombre"]))
             <h4 class="m-t-0 header-title">Student data</h4>
             <div class="clearfix">
                 <?php
+                //creamos un objeto de mvcTeacher
                 $info = new mvcTeacher();
+              
+                //mandamos a llamar el controller para obtener la informacion del alumno
                 $info -> dataAlumnoController();
                 ?>
             </div>
@@ -26,6 +29,7 @@ if(!isset($_SESSION["nombre"]))
         <div class="col-sm-12" style="margin-top: 20px">
             <h4 class="m-t-0 header-title">CAI record</h4>
             <div class="table-responsive m-b-20">
+                <!--tabla para mostrar las horas de cai realizadas por el alumno-->
                 <table id="example1" class="table">
                     <thead>
                         <tr>

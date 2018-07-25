@@ -21,13 +21,16 @@ class CRUDSession
         //se ejecuta la sentencia
         $stmt -> execute();
 
+        //retornamos los datos
         return $stmt -> fetchAll();
 
         //cerramos la conexion
         $stmt -> close();
     }
 
-    public static function unidadesSessionModel($data,$tabla){
+    //modelo para obtener a la unidad a la que pertenece la hora de cai
+    public static function unidadesSessionModel($data,$tabla)
+    {
         //preparamos la sentencia para realizar el select
         $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE :fecha >= fecha_inicio AND :fecha <= fecha_fin");
 
@@ -44,7 +47,9 @@ class CRUDSession
         $stmt->close();
     }
 
-    public static function grupoSessionModel($data,$tabla1,$tabla2){
+    //modelo para obtener el nivel y el teacher del grupo del alumno
+    public static function grupoSessionModel($data,$tabla1,$tabla2)
+    {
         //preparamos la sentencia para realizar el select
         $stmt = Conexion::conectar()->prepare("SELECT g.nivel as nivel, u.nombre as teacher 
                                             FROM $tabla1 as g 
@@ -64,7 +69,7 @@ class CRUDSession
         $stmt->close();
     }
 
-    //modelo para registrar un asistencia en la base de datos
+    //modelo para registrar una asistencia en la base de datos
     public static function agregarSessionModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
@@ -94,6 +99,7 @@ class CRUDSession
         //cerramos la conexion
         $stmt -> close();
     }
+    
     //modelo para mostrar informacion de la asistencia
     public static function listadoSessionModel($tabla1,$tabla2, $tabla3, $tabla4, $tabla5)
     {
@@ -110,13 +116,16 @@ class CRUDSession
         //se ejecuta la sentencia
         $stmt -> execute();
 
+        //retornamos las filas obtenidas
         return $stmt -> fetchAll();
 
         //cerramos la conexion
         $stmt -> close();
     }
 
-    public static function horasSessionModel($data,$tabla){
+    //modelo para 
+    public static function horasSessionModel($data,$tabla)
+    {
         //preparamos la sentencia para realizar el select
         $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id_asistencia = :id");
 
@@ -133,7 +142,7 @@ class CRUDSession
         $stmt->close();
     }
 
-    //modelo para modificar la asistencia del alumno
+    //modelo para finalizar la asistencia del alumno
     public static function finalizarSessionModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el update
@@ -160,7 +169,7 @@ class CRUDSession
         $stmt->close();
     }
 
-        //modelo para modificar la asistencia del alumno
+    //modelo para terminar la asistencia del alumno
     public static function terminarSessionModel($hora,$c, $tabla)
     {
         //preparamos la sentencia para realizar el update

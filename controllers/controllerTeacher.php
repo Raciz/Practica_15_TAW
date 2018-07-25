@@ -34,18 +34,23 @@ class mvcTeacher
     {
         //se le manda al modelo el nombre de la tabla a mostrar la informacion de los grupos del teacher
         $data = CRUDTeacher::listadoAlumnoTeacherModel($_GET["group"],"alumno");
-
+        
+        //se obtienen las diferentes carreras a las que pertecene los alumnos del grupo
         $careers = [];
         for($i = 0; $i < count($data); $i++)
         {
             $careers[] = $data[$i]["carrera"];
         }
+      
+        //se eliminan las repeticiones de los grupos
         $careers = array_unique($careers);
 
         //se imprime la informacion de los alumnos del grupo separados por carrera
         foreach($careers as $rows => $row)
-        {            
+        {      
+            //se obtiene el nombre completo de la carrera
             $name = CRUDTeacher::nombreCarreraModel($row,"carrera");
+          
             //e imprimimos la informacion de cada uno de los grupos
             echo
                 "
@@ -99,10 +104,12 @@ class mvcTeacher
     //Control para mostrar la informacion de un alumno
     function dataAlumnoController()
     {
-        //se le manda al modelo el nombre de la tabla a mostrar la informacion de los grupos del teacher
+        //se le manda al modelo el nombre de la tabla a mostrar la informacion del alumno
         $data = CRUDTeacher::dataAlumnoModel($_GET["student"],"alumno");
-
+        
+        //se obtiene el nombre completo de la carrera
         $name = CRUDTeacher::nombreCarreraModel($data["carrera"],"carrera");
+        
         //se imprime la informacion del alumno
         echo
             "

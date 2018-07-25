@@ -92,7 +92,7 @@ class mvcUnidad
         //se manda el id de la unidad y el nombre de la tabla donde esta almacenada
         $resp = CRUDUnidad::editarUnidadModel($data,"unidad");
 
-        //se imprime la informacion de la en inputs de un formulario
+        //se imprime la informacion de la unidad en inputs de un formulario
         echo 
             "
                 <input type='hidden' name='id' value=".$resp["id_unidad"].">
@@ -136,7 +136,7 @@ class mvcUnidad
                           "inicio" => $_POST["inicio"],
                           "fin" => $_POST["fin"]);
 
-            //se manda la informacion de la y la tabla en la que esta almacenada
+            //se manda la informacion de la unidad y la tabla en la que esta almacenada
             $resp = CRUDUnidad::modificarUnidadModel($data,"unidad");
 
             //en caso de que se haya editado correctamente 
@@ -145,7 +145,7 @@ class mvcUnidad
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "edit";
 
-                //nos redireccionara al listado de usuarios
+                //nos redireccionara al listado de unidades
                 echo "<script>
                         window.location.replace('index.php?section=units&action=list');
                       </script>";

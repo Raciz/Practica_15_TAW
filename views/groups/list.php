@@ -11,53 +11,53 @@ if(!isset($_SESSION["nombre"]))
 //verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
 if(!empty($_SESSION["mensaje"]))
 {
-    //si session en mensaje es agregar un usuario
+    //si session en mensaje es agregar un grupo
     if($_SESSION["mensaje"]=="add")
     {
-        //se muestra el sweet alert de agregar un usuario
+        //se muestra el sweet alert de agregar un grupo
         echo"<script>
                     swal
                     (
                         {
-                            title: 'Registro Exitoso:',
-                            text: 'se ha registrado un nuevo grupo en el sistema',
+                            title: 'Successful registration:',
+                            text: 'a new group has been registered in the system',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'Continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
             </script>";
     }
-    //si session en mensaje es eliminar un usuario
+    //si session en mensaje es eliminar un grupo
     elseif ($_SESSION["mensaje"]=="delete")
     {
-        //se muestra el sweet alert de eliminar un usuario
+        //se muestra el sweet alert de eliminar un grupo
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha eliminado un grupo del sistema',
+                        title: 'Warning:',
+                        text: 'a group has been removed from the system',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
             </script>";
 
     }
-    //si session en mensaje es editar un usuario
+    //si session en mensaje es editar un grupo
     elseif ($_SESSION["mensaje"]=="edit")
     {
-        //se muestra elsweet alert de editar un usuario
+        //se muestra elsweet alert de editar un grupo
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de un grupo',
+                        title: 'Successful Edited:',
+                        text: 'the information of a group has been edited',
                         type: 'success',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -75,7 +75,8 @@ if(!empty($_SESSION["mensaje"]))
             <h4 class="m-t-0 header-title">Groups</h4>
             <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
             <div class="table-responsive m-b-20">
-                <table id="example1" class="table">
+              <!--tabla para mostrar los grupos del sistema-->  
+              <table id="example1" class="table">
                     <thead>
                         <tr>
                             <th>ID</th>

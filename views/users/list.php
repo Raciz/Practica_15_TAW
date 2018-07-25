@@ -19,10 +19,10 @@ if(!empty($_SESSION["mensaje"]))
                     swal
                     (
                         {
-                            title: 'Registro Exitoso:',
-                            text: 'se ha registrado un nuevo usuario en el sistema',
+                            title: 'Successful registration:',
+                            text: 'a new user has been registered in the system',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'Continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
@@ -36,10 +36,10 @@ if(!empty($_SESSION["mensaje"]))
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha eliminado un usuario del sistema',
+                        title: 'Warning:',
+                        text: 'a user has been removed from the system',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -54,10 +54,10 @@ if(!empty($_SESSION["mensaje"]))
                 swal
                 (
                     {
-                        title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de un usuario',
+                        title: 'Successful Edited',
+                        text: 'a user´s information has been edited',
                         type: 'success',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -74,6 +74,7 @@ if(!empty($_SESSION["mensaje"]))
             <h4 class="m-t-0 header-title">Users</h4>
             <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
             <div class="table-responsive m-b-20">
+                <!--tabla para mostrar a los usuarios registrados en el sistema-->
                 <table id="example1" class="table">
                     <thead>
                         <tr>

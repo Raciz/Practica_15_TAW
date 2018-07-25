@@ -2,7 +2,10 @@
     <!--Contenido de la vista-->
 
     <?php
+        //creamos un objeto de mvcController
         $ct = new mvcController();
+  
+        //obtenemos la informacion de distintas partes del sistema
         $uno  = $ct -> dash("usuario");
         $dos  = $ct -> dash("grupo");
         $tres  = $ct -> dash("alumno");

@@ -45,7 +45,6 @@ class CRUDUsuario
         }
         else
         {
-            print_r($stmt -> errorInfo());
             //en caso de no ser asi nos retorna fail
             return "fail";
         }
@@ -54,7 +53,7 @@ class CRUDUsuario
         $stmt -> close();
     }
 
-    //modelo para obtener la informacion de losusuarios registrados
+    //modelo para obtener la informacion de los usuarios registrados
     public static function listadoUsuarioModel($tabla)
     {
         //preparamos la consulta
@@ -70,6 +69,7 @@ class CRUDUsuario
         //cerramos la conexion
         $stmt -> close();
     }
+    
     //modelo para obtener la informacion de los teachers registrados
     public static function optionUsuarioModel($tabla1,$tabla2)
     {

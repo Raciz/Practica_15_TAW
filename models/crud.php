@@ -23,8 +23,10 @@ class CRUD
         $stmt->close();
     }
 
-    public static function dashModel($tabla){
-                //preparamos la sentencia para realizar el select
+    //modelo para obtener diferente informacion acerca del sistema 
+    public static function dashModel($tabla)
+    {
+        //preparamos la sentencia para realizar el select
         $stmt = Conexion::conectar()->prepare("SELECT COUNT(*) FROM $tabla"); 
 
         //se ejecuta la sentencia

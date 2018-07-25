@@ -2,15 +2,16 @@
 
 class mvcSession
 {
-    //Control para poder mostrar la informacion de una carrera a editar
+    //Control para poder mostrar la informacion de una asistencia
     public function mostrarSessionController($id, $actividad)
     {
-        //se obtiene el id de la carrera a mostrar su informacion
+        //se obtiene el id de la asistencia a mostrar su informacion
         $data = $id;
 
-        //se manda el id de la carrera y el nombre de la tabla donde esta almacenada
+        //se manda el id de la asistencia y el nombre de la tabla donde esta almacenada
         $resp = CRUDSession::mostrarSessionModel($data,"alumno","carrera");
-        //se imprime la informacion de la carrera en inputs de un formulario
+      
+        //se imprime la informacion de la asistencia en inputs de un formulario
         echo "
               <input type=hidden value=".$actividad." name='actividad'>
               <img class='pull-left' width='400px' height='400px' src='views/media/images/users/1530326.jpeg'/>
@@ -38,26 +39,37 @@ class mvcSession
                   </div>";
     }
 
-    function todasHoras($horaActual){
+    function todasHoras($horaActual)
+    {
       $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","13:55:00","14:45:00",
                     "15:40:00","16:35:00","17:30:00");
       $valor = -1;
-      for($i=0;$i<10;$i++){
+      
+      for($i=0;$i<10;$i++)
+      {
         $fecha1 = new DateTime($data[$i]);//fecha inicial
         $fecha2 = new DateTime($horaActual);//fecha de cierre
 
         $intervalo = $fecha1->diff($fecha2);
         $intervalo = $intervalo->format('%H %i %s');
-        if($intervalo<"00:10:00"){
+        
+        if($intervalo<"00:10:00")
+        {
           $valor = $i;
           break;
-        }else{
+        }
+        else
+        {
           $valor = -1;
         }
       }
-      if($valor==-1){
+      
+      if($valor==-1)
+      {
         return "Fuera";
-      }else{
+      }
+      else
+      {
         return $data[$valor];
       }
     }
@@ -169,7 +181,7 @@ class mvcSession
         }
     }
 
-        //Control para editar la hora de salida de la asistencia del alumno
+    //Control para terminar la hora de salida de la asistencia del alumno
     public function terminarSessionController()
     {
         //se verifica si se envio el id del grupo a eliminar
@@ -184,7 +196,7 @@ class mvcSession
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "die";
 
-                //nos redireccionara al listado de grupos
+                //nos redireccionara a la sesion actual
                 echo "<script>
                         window.location.replace('index.php?section=sessions&action=actual');
                       </script>";

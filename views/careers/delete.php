@@ -22,6 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
 <!-- Modal para eliminar una carrera del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
+        <!--Formulario para la confirmacion de borrado de la carrera-->
         <form id="formDel" action="index.php?section=careers&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,9 +83,9 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
                 (
                     {
                         title: 'Error:',
-                        text: 'Contraseña Incorrecta',
+                        text: 'Incorrect password',
                         type: 'error',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )

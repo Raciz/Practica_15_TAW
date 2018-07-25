@@ -22,7 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 <!-- Modal para agregar una nueva carrera -->
 <div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <!--Formulario para agregar un nuevo grupo-->
+        <!--Formulario para agregar una nueva carrera-->
         <form action="index.php?section=careers&action=add" method="post">
         <div class="modal-content">
             <div class="modal-header">

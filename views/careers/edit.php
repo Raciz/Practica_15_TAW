@@ -33,6 +33,7 @@ if(!empty($_GET["edit"]))
                 </a>
                 <h4 class="modal-title repairtext">Edit career</h4>
             </div>
+            <!--Formulario para editar la informacion de la carrera-->
             <form method="post" action="index.php?section=careers&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php

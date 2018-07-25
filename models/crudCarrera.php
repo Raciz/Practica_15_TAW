@@ -31,10 +31,10 @@ class CRUDCarrera
     }
 
     //modelo para obtener la informacion de las carreras registrados
-    public static function listadoCarreraModel($tabla1)
+    public static function listadoCarreraModel($tabla)
     {
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT siglas, nombre FROM $tabla1");
+        $stmt = Conexion::conectar() -> prepare("SELECT siglas, nombre FROM $tabla");
 
         //se ejecuta la consulta
         $stmt -> execute();
@@ -49,12 +49,14 @@ class CRUDCarrera
     //modelo para borrar una carrera de la base de datos
     public static function eliminarCarreraModel($data,$tabla1,$tabla2)
     {
-        //preparamos la sentencia para realizar un delete para eliminar alos alumnos que pertenecen a la carrera a eliminar
+        //preparamos la sentencia para realizar un delete para eliminar a los alumnos que pertenecen a la carrera a eliminar
         $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE carrera = :id");
 
         //se realiza la asignacion de los datos a actualizar
         $stmt1 -> bindParam(":id",$data,PDO::PARAM_STR);
+      
         //-----------------------------------------
+      
         //preparamos la sentencia para realizar el Delete para eliminar la carrera
         $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla2 WHERE siglas = :id");
 
@@ -123,7 +125,7 @@ class CRUDCarrera
         $stmt->close();
     }
 
-    //modelo para obtener la informacion de los teachers registrados
+    //modelo para obtener la informacion de las carreras registrados
     public static function optionCarreraModel($tabla1)
     {
         //preparamos la consulta

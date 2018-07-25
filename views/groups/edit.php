@@ -33,6 +33,7 @@ if(!empty($_GET["edit"]))
                 </a>
                 <h4 class="modal-title repairtext">Edit user</h4>
             </div>
+            <!--Formulario para editar la informacion del grupo-->
             <form method="post" action="index.php?section=groups&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php

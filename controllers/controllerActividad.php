@@ -21,7 +21,7 @@ class mvcActividad
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "add";
 
-                //nos redireccionara al listado de grupos
+                //nos redireccionara al listado de actividades
                 echo "<script>
                         window.location.replace('index.php?section=activities&action=list');
                       </script>";

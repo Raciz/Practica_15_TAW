@@ -21,9 +21,9 @@ if(!empty($_SESSION["mensaje"]))
                     (
                         {
                             title: 'Registro Exitoso:',
-                            text: 'se ha registrado un nuevo alumno en el sistema',
+                            text: 'se ha registrado un nuevo alumno en la session',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'Continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
@@ -40,32 +40,16 @@ if(!empty($_SESSION["mensaje"]))
                         title: 'Advertencia:',
                         text: 'se ha finalizado la hora de CAI del alumno',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
             </script>";
 
     }
-    //si session en mensaje es editar un usuario
-    elseif ($_SESSION["mensaje"]=="edit")
+    elseif ($_SESSION["mensaje"]=="die")
     {
         //se muestra elsweet alert de editar un usuario
-        echo"<script>
-                swal
-                (
-                    {
-                        title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de un alumno',
-                        type: 'success',
-                        confirmButtonText: 'Continuar',
-                        confirmButtonColor: '#4fa7f3'
-                    }
-                )
-            </script>";
-
-    }elseif ($_SESSION["mensaje"]=="die"){
-                //se muestra elsweet alert de editar un usuario
         echo"<script>
                 swal
                 (
@@ -73,7 +57,7 @@ if(!empty($_SESSION["mensaje"]))
                         title: 'Finalizado',
                         text: 'Hora terminada',
                         type: 'success',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -128,7 +112,7 @@ if(!empty($_SESSION["mensaje"]))
 <!-- end container -->
 
 <?php
-//incluimos el archivo con el modal para agregar, editar y eliminar estudiantes
+//incluimos el archivo para agregar, eliminar y mostrar los datos de un alumno en la session
 include_once "views/sessions/add.php";
 include_once "views/sessions/student_data.php";
 include_once "views/sessions/delete.php";

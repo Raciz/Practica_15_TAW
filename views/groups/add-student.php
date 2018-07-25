@@ -14,7 +14,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add-student")
     //se crea un objeto de mvcAlumno
     $add = new mvcAlumno();
 
-    //se manda a llamar el controller para agregar un nuevo alumno al grupo grupo 
+    //se manda a llamar el controller para agregar un nuevo alumno al grupo 
     $add -> agregarAlumnoGrupoController();
 }
 ?>
@@ -22,7 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add-student")
 <!-- Modal para agregar un nuevo alumno al grupo-->
 <div id="agregar-alumno-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <!--Formulario para agregar un nuevo grupo-->
+        <!--Formulario para agregar un nuevo alumno al grupo-->
         <form action="index.php?section=groups&action=add-student" method="post">
             <div class="modal-content">
                 <div class="modal-header">

@@ -164,7 +164,7 @@ class mvcGrupo
         //se verifica si mediante el formulario se envio informacion
         if(isset($_POST["id"]))
         {
-            //se guardan la informacion del usuario
+            //se guardan la informacion del del grupo
             $data = array("id" => $_POST["id"],
                           "nivel" => $_POST["nivel"],
                           "teacher" => $_POST["teacher"]);
@@ -192,10 +192,10 @@ class mvcGrupo
         //se le manda al modelo el nombre de la tabla a mostrar su informacion
         $data = CRUDGrupo::optionGrupoModel("grupo");
 
-        //mostramos el nombre de cada una de los teachers
+        //mostramos a cada uno de los grupos en el select
         foreach($data as $rows => $row)
         {
-            //se muestra cada una de los teachers en un option del select
+            //se muestra cada una de los grupos en un option del select
             echo "<option class='repairtext' value=".$row["codigo"].">".$row["codigo"]."</option>";
         }
     }

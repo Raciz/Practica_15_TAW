@@ -15,6 +15,7 @@ $login -> loginController();
     <link rel="stylesheet" href="views/media/css/login.css">
 </head>
 <body>
+    <!--formulario para iniciar sesion en el sistema-->
     <form method="post" autocomplete="off">
         <h2>Login</h2>
         <p align="center"><img src="views/media/img/logo.png" width="106.96" height="90.3"></p>

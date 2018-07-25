@@ -19,10 +19,10 @@ if(!empty($_SESSION["mensaje"]))
                     swal
                     (
                         {
-                            title: 'Success:',
-                            text: 'se ha registrado una nueva unidad en el sistema',
+                            title: 'Successful registration:',
+                            text: 'a new unit has been registered in the system',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'Continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
@@ -36,10 +36,10 @@ if(!empty($_SESSION["mensaje"]))
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha eliminado una unidad del sistema',
+                        title: 'Warning:',
+                        text: 'a unit of the system has been removed',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -49,15 +49,15 @@ if(!empty($_SESSION["mensaje"]))
     //si session en mensaje es editar una unidad
     elseif ($_SESSION["mensaje"]=="edit")
     {
-        //se muestra elsweet alert de editar una unidad
+        //se muestra el sweet alert de editar una unidad
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de una unidad',
+                        title: 'Successful Edited:',
+                        text: 'the information of a unit has been edited',
                         type: 'success',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -74,6 +74,7 @@ if(!empty($_SESSION["mensaje"]))
       <h4 class="m-t-0 header-title">Units</h4>
       <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
       <div class="table-responsive m-b-20">
+        <!--tabla para mostrar la informacion de las unidades registradas-->
         <table id="example1" class="table">
           <thead>
             <tr>
@@ -99,7 +100,7 @@ if(!empty($_SESSION["mensaje"]))
 </div>
 <!-- end container -->
 <?php
-//incluimos el archivo con el modal para agregar, editar y eliminar carreras
+//incluimos el archivo con el modal para agregar, editar y eliminar unidades
 include_once "views/units/add.php";
 include_once "views/units/edit.php";
 include_once "views/units/delete.php";

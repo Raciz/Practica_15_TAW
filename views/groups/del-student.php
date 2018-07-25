@@ -22,6 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="del-student")
 <!-- Modal para eliminar un alumno del grupo-->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
+        <!--Formulario para confirmar el borrado del alumno del grupo-->
         <form id="formDel" action="index.php?section=groups&action=del-student" method="post">
             <div class="modal-content">
                 <div class="modal-header">
@@ -83,9 +84,9 @@ if(isset($_GET["action"]) && $_GET["action"]=="del-student")
                 (
                     {
                         title: 'Error:',
-                        text: 'Contraseña Incorrecta',
+                        text: 'Incorrect password',
                         type: 'error',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )

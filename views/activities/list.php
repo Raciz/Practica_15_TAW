@@ -11,53 +11,53 @@ if(!isset($_SESSION["nombre"]))
 //verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
 if(!empty($_SESSION["mensaje"]))
 {
-    //si session en mensaje es agregar un usuario
+    //si session en mensaje es agregar una actividad
     if($_SESSION["mensaje"]=="add")
     {
-        //se muestra el sweet alert de agregar un usuario
+        //se muestra el sweet alert de agregar una actividad
         echo"<script>
                     swal
                     (
                         {
-                            title: 'Success:',
-                            text: 'se ha registrado una nueva actividad en el sistema',
+                            title: 'Successful registration:',
+                            text: 'a new activity has been registered in the system',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
             </script>";
     }
-    //si session en mensaje es eliminar un usuario
+    //si session en mensaje es eliminar una actividad
     elseif ($_SESSION["mensaje"]=="delete")
     {
-        //se muestra el sweet alert de eliminar un usuario
+        //se muestra el sweet alert de eliminar una actividad
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha eliminado una actividad del sistema',
+                        title: 'Warning:',
+                        text: 'a activity has been removed from the system',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
             </script>";
 
     }
-    //si session en mensaje es editar un usuario
+    //si session en mensaje es editar una actividad
     elseif ($_SESSION["mensaje"]=="edit")
     {
-        //se muestra elsweet alert de editar un usuario
+        //se muestra elsweet alert de editar una actividad
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de una actividad',
+                        title: 'Successful Edited',
+                        text: 'the information of an activity has been edited',
                         type: 'success',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -68,12 +68,14 @@ if(!empty($_SESSION["mensaje"]))
     $_SESSION["mensaje"]="";
 }
 ?>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h4 class="m-t-0 header-title">Activities</h4>
       <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
       <div class="table-responsive m-b-20">
+        <!--tabla para mostrar las actividades del sistema-->
         <table id="example1" class="table">
           <thead>
             <tr>

@@ -8,20 +8,21 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe llamar al controller para agregar un nuevo usuario
+//verificamos si se debe llamar al controller para agregar un nuevo alumno
 if(isset($_GET["action"]) && $_GET["action"]=="add")
 {
     //se crea un objeto de mvcUsuario
     $add = new mvcAlumno();
 
-    //se manda a llamar el controller para agregar un nuevo usuario al sistema
+    //se manda a llamar el controller para agregar un nuevo alumno al sistema
     $add -> agregarAlumnoController();
 }
 ?>
 
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar un nuevo alumno-->
 <div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
+        <!--formulario para agregar un nuevo alumno-->
         <form enctype="multipart/form-data" action="index.php?section=students&action=add" method="post">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,10 +51,10 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                         <select style="width:100%;" class="form-control select2" name="carrera" required>
                             <option value=""></option>
                             <?php
-                            //creamos un objeto de mvcUsuario
+                            //creamos un objeto de mvcCarrera
                             $option = new mvcCarrera();
 
-                            //se manda a llamar el controller para enlistar todos los teachers en el select
+                            //se manda a llamar el controller para enlistar todas las carreras en el select
                             $option -> optionCarreraController();
                             ?>
                         </select>

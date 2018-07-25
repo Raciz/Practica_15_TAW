@@ -33,6 +33,7 @@ if(!empty($_GET["edit"]))
                 </a>
                 <h4 class="modal-title repairtext">Edit activity</h4>
             </div>
+          <!--formulario para editar la informacion de la actividad-->
             <form method="post" action="index.php?section=activities&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php

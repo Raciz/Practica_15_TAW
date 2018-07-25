@@ -35,6 +35,7 @@ if(!empty($_GET["edit"]))
                         
                 <h4 class="modal-title repairtext">Edit student</h4>
             </div>
+            <!--formulario para editar la informacion del alumno-->
             <form method="post" action="index.php?section=students&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php

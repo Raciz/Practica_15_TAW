@@ -11,35 +11,35 @@ if(!isset($_SESSION["nombre"]))
 //verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
 if(!empty($_SESSION["mensaje"]))
 {
-    //si session en mensaje es agregar un usuario
+    //si session en mensaje es agregar un alumno al grupo
     if($_SESSION["mensaje"]=="add")
     {
-        //se muestra el sweet alert de agregar un usuario
+        //se muestra el sweet alert de agregar un alumno al grupo
         echo"<script>
                     swal
                     (
                         {
-                            title: 'Registro Exitoso:',
-                            text: 'se ha registrado un nuevo alumno en el grupo',
+                            title: 'Successful registration:',
+                            text: 'a new student has registered in the group',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'Continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
             </script>";
     }
-    //si session en mensaje es eliminar un usuario
+    //si session en mensaje es eliminar un alumno al grupo
     elseif ($_SESSION["mensaje"]=="delete")
     {
-        //se muestra el sweet alert de eliminar un usuario
+        //se muestra el sweet alert de eliminar un alumno al grupo
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha eliminado al alumno del grupo',
+                        title: 'Warning:',
+                        text: 'the student has been removed from the group',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'Continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -61,6 +61,7 @@ if(!empty($_SESSION["mensaje"]))
             </button>
             
             <div class="table-responsive m-b-20">
+                <!--tabla para mostrar a los alumnos del grupo-->
                 <table id="example1" class="table">
                     <thead>
                         <tr>
@@ -76,7 +77,7 @@ if(!empty($_SESSION["mensaje"]))
                         //creamos un objeto de mvcGrupo
                         $list = new mvcAlumno();
 
-                        //se manda a llamar el control para enlistar a los grupos
+                        //se manda a llamar el control para enlistar a los alumnos del grupo
                         $list -> listadoAlumnoGrupoController();
                         ?>
                     </tbody>
@@ -88,7 +89,7 @@ if(!empty($_SESSION["mensaje"]))
 <!-- end container -->
 
 <?php
-//incluimos el archivo con el modal para agregar, editar y eliminar grupos
+//incluimos el archivo con el modal para agregar y eliminar grupos
 include_once "views/groups/add-student.php";
 include_once "views/groups/del-student.php";
 ?>

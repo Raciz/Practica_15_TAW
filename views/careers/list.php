@@ -11,53 +11,53 @@ if(!isset($_SESSION["nombre"]))
 //verificamos si se va a mostrar un mensaje de aviso al realizar alguna operacion de crud
 if(!empty($_SESSION["mensaje"]))
 {
-    //si session en mensaje es agregar un usuario
+    //si session en mensaje es agregar una carrera
     if($_SESSION["mensaje"]=="add")
     {
-        //se muestra el sweet alert de agregar un usuario
+        //se muestra el sweet alert de agregar una carrera
         echo"<script>
                     swal
                     (
                         {
-                            title: 'Success:',
-                            text: 'se ha registrado una nueva carrera en el sistema',
+                            title: 'Successful registration:',
+                            text: 'a new career has been registered in the system',
                             type: 'success',
-                            confirmButtonText: 'Continuar',
+                            confirmButtonText: 'continue',
                             confirmButtonColor: '#4fa7f3'
                         }
                     )
             </script>";
     }
-    //si session en mensaje es eliminar un usuario
+    //si session en mensaje es eliminar una carrera
     elseif ($_SESSION["mensaje"]=="delete")
     {
-        //se muestra el sweet alert de eliminar un usuario
+        //se muestra el sweet alert de eliminar una carrera
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Advertencia:',
-                        text: 'se ha eliminado una carrera del sistema',
+                        title: 'Warning:',
+                        text: 'a career has been removed from the system',
                         type: 'warning',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
             </script>";
 
     }
-    //si session en mensaje es editar un usuario
+    //si session en mensaje es editar una carrera
     elseif ($_SESSION["mensaje"]=="edit")
     {
-        //se muestra elsweet alert de editar un usuario
+        //se muestra elsweet alert de editar una carrera
         echo"<script>
                 swal
                 (
                     {
-                        title: 'Editado Exitoso',
-                        text: 'se ha editado la informacion de una carrera',
+                        title: 'Successful Edited:',
+                        text: 'the information of a race has been edited',
                         type: 'success',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
@@ -74,6 +74,7 @@ if(!empty($_SESSION["mensaje"]))
       <h4 class="m-t-0 header-title">Careers</h4>
       <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
       <div class="table-responsive m-b-20">
+        <!--tabla para mostrar las carreras del sistema-->
         <table id="datatable" class="table">
           <thead>
             <tr>

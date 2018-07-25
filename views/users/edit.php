@@ -24,7 +24,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="edit")
 if(!empty($_GET["edit"]))
 {
 ?>
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar una nuevo usuario -->
 <div id="editar-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block; padding-right: 15px;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -34,6 +34,7 @@ if(!empty($_GET["edit"]))
                 </a>
                 <h4 class="modal-title repairtext">Edit user</h4>
             </div>
+          <!--formulario para modificar la informacion del usuario-->
             <form method="post" action="index.php?section=users&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php

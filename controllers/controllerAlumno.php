@@ -15,7 +15,7 @@ class mvcAlumno
                           "carrera" => $_POST["carrera"],
                           "img" => "views/media/img/noimg.png");
 
-            //se verifica si se envio una imagen del boleto
+            //se verifica si se envio una imagen del alumno
             if(!empty($_FILES["img"]["name"]))
             {
                 //se extrae el tipo de la imagen
@@ -30,7 +30,7 @@ class mvcAlumno
                 //se extrae la ubicacion temporal de la imagen
                 $tmp = $_FILES["img"]["tmp_name"];
 
-                //se obtiene la fecha y hora en la que fue sibida la imagen
+                //se obtiene la fecha y hora en la que fue subida la imagen
                 $date = getdate();
                 
                 //se verifica si se envio una imagen jpg o png
@@ -41,13 +41,13 @@ class mvcAlumno
                     if($size < 5000000)
                     {
                         //en caso de que no supere el tamaño de 5MB
-                        //se mueve la imagen a la carpeta de imagenes de los boletos
+                        //se mueve la imagen a la carpeta de imagenes
                         if(!move_uploaded_file($tmp, "./views/media/img/".$date["mday"].$date["mon"].$date["year"].$date["hours"].$date["minutes"].$date["seconds"].$name))
                         {
                             //en caso de que no se pudiera mover se asigna el error copy en session error
                             $_SESSION["error"] = "copy";
 
-                            //nos redireccionamos al formulario de registro
+                            //nos redireccionamos al listado de alumnos
                             echo "<script>
                                     window.location.replace('index.php?section=students&action=list');
                                  </script>";
@@ -62,10 +62,10 @@ class mvcAlumno
                     }
                     else
                     {
-                        //en caso de que la imagen supere el el tamaño de 300KB se asigna el error size en session error
+                        //en caso de que la imagen supere el tamaño de 5MB se asigna el error size en session error
                         $_SESSION["error"] = "size";
 
-                        //nos redireccionamos al formulario de registro
+                        //nos redireccionamos al listado de alumnos
                         echo "<script>
                                     window.location.replace('index.php?section=students&action=list');
                               </script>";
@@ -79,7 +79,7 @@ class mvcAlumno
                     //en caso de que la imagen no sea png o jpg se asigna el error type en session error
                     $_SESSION["error"] = "type";
 
-                    //nos redireccionamos al formulario de registro
+                    //nos redireccionamos al listado de alumnos
                     echo "<script>
                             window.location.replace('index.php?section=students&action=list');
                           </script>";
@@ -221,7 +221,7 @@ class mvcAlumno
          echo "         </select>
                     </div>";                   
 
-        //script para seleccionar en el select el option de la carrera al que pertenece el Alumno
+        //script para seleccionar en el select el option de la carrera y grupo al que pertenece el Alumno
         echo "<script>
                 var career = document.getElementById('career');
                 var grupo = document.getElementById('grupo');
@@ -251,7 +251,7 @@ class mvcAlumno
         //se verifica si mediante el formulario se envio informacion
         if(isset($_POST["matricula"]))
         {
-            //se guardan la informacion del usuario
+            //se guardan la informacion del alumno
             $data = array("matricula" => $_POST["matricula"],
                           "nombre" => $_POST["nombre"],
                           "apellido" => $_POST["apellido"],

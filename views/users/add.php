@@ -19,9 +19,10 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 }
 ?>
 
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar un nuevo usuario-->
 <div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
+        <!--formulario para agregar un nuevo usuario en el sistema-->
         <form action="index.php?section=users&action=add" method="post">
             <div class="modal-content">
                 <div class="modal-header">

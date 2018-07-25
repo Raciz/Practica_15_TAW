@@ -24,7 +24,7 @@ class mvcUsuario
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "add";
                 
-                //nos redireccionara al listado deusuarios
+                //nos redireccionara al listado de usuarios
                 echo "<script>
                         window.location.replace('index.php?section=users&action=list');
                       </script>";

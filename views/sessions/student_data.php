@@ -21,7 +21,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="student_data")
 if(!empty($_GET["student_data"]))
 {
 ?>
-<!--  Modal content for the above example -->
+<!--  Modal para agregar al alumno a la sesion -->
 <div id="agregar-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block; padding-right: 15px;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

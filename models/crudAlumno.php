@@ -1,10 +1,10 @@
 <?php
 require_once "conexion.php";
 
-//clase para realizar operaciones a la base de datos para la seccion de grupo
+//clase para realizar operaciones a la base de datos para la seccion de alumno
 class CRUDAlumno
 {
-    //modelo para registrar un grupo en la base de datos
+    //modelo para registrar un alumno en la base de datos
     public static function agregarAlumnoModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
@@ -33,7 +33,7 @@ class CRUDAlumno
         $stmt -> close();
     }
 
-    //modelo para obtener la informacion de los grupos registrados
+    //modelo para obtener la informacion de los alumnos registrados
     public static function listadoAlumnoModel($tabla1,$tabla2,$tabla3)
     {
         //preparamos la consulta
@@ -51,10 +51,10 @@ class CRUDAlumno
         $stmt -> close();
     }
 
-    //modelo para borrar un grupo de la base de datos
+    //modelo para borrar un alumno de la base de datos
     public static function eliminarAlumnoModel($data,$tabla)
     {
-        //preparamos la sentencia para realizar el Delete para eliminar el grupo
+        //preparamos la sentencia para realizar el Delete para eliminar el alumno
         $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE matricula = :id");
 
         //se realiza la asignacion de los datos a eliminar
@@ -177,7 +177,6 @@ class CRUDAlumno
         $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE grupo = :grupo");
         $stmt -> bindParam(":grupo",$data,PDO::PARAM_STR);
 
-        
         //se ejecuta la consulta
         $stmt -> execute();
 

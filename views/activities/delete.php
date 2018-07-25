@@ -22,6 +22,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
 <!-- Modal para eliminar una actividad del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
+      <!--Formulario para confirmar el borrado de la actividad-->
         <form id="formDel" action="index.php?section=activities&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">
@@ -53,7 +54,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     //variable para modificar el formulario
     var form = document.getElementById("formDel");
 
-    //funcion para obtener el id de la carrera a eliminar
+    //funcion para obtener el id de la actividad a eliminar
     function idDel(del)
     {
         //obtenemos el objeto del input hidden
@@ -82,9 +83,9 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
                 (
                     {
                         title: 'Error:',
-                        text: 'Contraseña Incorrecta',
+                        text: 'Incorrect password',
                         type: 'error',
-                        confirmButtonText: 'Continuar',
+                        confirmButtonText: 'continue',
                         confirmButtonColor: '#4fa7f3'
                     }
                 )
