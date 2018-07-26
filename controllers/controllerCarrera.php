@@ -69,7 +69,7 @@ class mvcCarrera
             $data = $_POST["del"];
 
             //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
-            $resp = CRUDCarrera::eliminarCarreraModel($data,"alumno","carrera");
+            $resp = CRUDCarrera::eliminarCarreraModel($data,"asistencia","alumno","carrera");
 
             //en caso de haberse eliminado correctamente
             if($resp == "success")

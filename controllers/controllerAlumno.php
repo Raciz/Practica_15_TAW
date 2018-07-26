@@ -150,7 +150,7 @@ class mvcAlumno
             $data = $_POST["del"];
 
             //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
-            $resp = CRUDAlumno::eliminarAlumnoModel($data,"alumno");
+            $resp = CRUDAlumno::eliminarAlumnoModel($data,"asistencia","alumno");
 
             //en caso de haberse eliminado correctamente
             if($resp == "success")

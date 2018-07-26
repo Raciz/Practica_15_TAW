@@ -47,16 +47,24 @@ class CRUDActividad
     }
 
     //modelo para borrar una actividad de la base de datos
-    public static function eliminarActividadModel($data,$tabla1)
+    public static function eliminarActividadModel($data,$tabla1,$tabla2)
     {
-        //preparamos la sentencia para realizar un delete para eliminar la actividad
-        $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE id_actividad = :id");
+        //preparamos la sentencia para realizar un delete para eliminar las asistencias con esa actividad
+        $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE actividad = :id");
 
         //se realiza la asignacion de los datos a actualizar
         $stmt1 -> bindParam(":id",$data,PDO::PARAM_STR);
+        
+        //---------------------------------------------------
+        
+        //preparamos la sentencia para realizar un delete para eliminar la actividad
+        $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla2 WHERE id_actividad = :id");
+
+        //se realiza la asignacion de los datos a actualizar
+        $stmt2 -> bindParam(":id",$data,PDO::PARAM_STR);
 
         //se ejecuta las sentencias
-        if($stmt1 -> execute())
+        if($stmt1 -> execute() && $stmt2 -> execute())
         {
             //si se ejecuto correctamente nos retorna success
             return "success";

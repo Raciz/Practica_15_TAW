@@ -47,24 +47,37 @@ class CRUDCarrera
     }
 
     //modelo para borrar una carrera de la base de datos
-    public static function eliminarCarreraModel($data,$tabla1,$tabla2)
+    public static function eliminarCarreraModel($data,$tabla1,$tabla2,$tabla3)
     {
-        //preparamos la sentencia para realizar un delete para eliminar a los alumnos que pertenecen a la carrera a eliminar
-        $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE carrera = :id");
+        //select para obtener a los alumnos en la carrera a eliminar
+        $stmt = Conexion::conectar() -> prepare("SELECT matricula FROM $tabla2 WHERE carrera = :id");
+        
+        //asignamos los datos para el select
+        $stmt -> bindParam(":id",$data,PDO::PARAM_STR);
+        
+        //ejecutamos la sentencia
+        $stmt -> execute();
+        
+        //guardamos las matriculas de los alumnos
+        $students = $stmt -> fetchAll();
+                
+        //ciclo para eliminar las asistencias y alumnos de la carrera
+        foreach($students as $rows => $row)
+        {
+            //para esto usamos el modelo eliminarAlumnoModel
+            $resp = CRUDAlumno::eliminarAlumnoModel($row["matricula"],$tabla1,$tabla2);
+        }
 
-        //se realiza la asignacion de los datos a actualizar
-        $stmt1 -> bindParam(":id",$data,PDO::PARAM_STR);
-      
         //-----------------------------------------
-      
+        
         //preparamos la sentencia para realizar el Delete para eliminar la carrera
-        $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla2 WHERE siglas = :id");
+        $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla3 WHERE siglas = :id");
 
         //se realiza la asignacion de los datos a eliminar
-        $stmt2 -> bindParam(":id",$data,PDO::PARAM_STR);
+        $stmt1 -> bindParam(":id",$data,PDO::PARAM_STR);
 
         //se ejecuta las sentencias
-        if($stmt1 -> execute() && $stmt2 -> execute())
+        if($stmt1 -> execute())
         {
             //si se ejecuto correctamente nos retorna success
             return "success";
@@ -76,8 +89,8 @@ class CRUDCarrera
         }
 
         //cerramos la conexion
+        $stmt -> close();
         $stmt1 -> close();
-        $stmt2 -> close();
     }
 
     //modelo para obtener la informacion de una carrera

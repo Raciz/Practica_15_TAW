@@ -49,16 +49,23 @@ class CRUDUnidad
     
 
     //modelo para borrar una unidad de la base de datos
-    public static function eliminarUnidadModel($data,$tabla)
+    public static function eliminarUnidadModel($data,$tabla1,$tabla2)
     {
         //preparamos la sentencia para realizar el Delete de la unidad
-        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE id_unidad = :id");
+        $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE unidad = :id");
 
         //se realiza la asignacion de los datos a eliminar
-        $stmt -> bindParam(":id",$data,PDO::PARAM_INT);
+        $stmt1 -> bindParam(":id",$data,PDO::PARAM_INT);
+
+        //------------------------------------------
+        //preparamos la sentencia para realizar el Delete de la unidad
+        $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla2 WHERE id_unidad = :id");
+
+        //se realiza la asignacion de los datos a eliminar
+        $stmt2 -> bindParam(":id",$data,PDO::PARAM_INT);
         
         //se ejecuta las sentencias
-        if($stmt -> execute())
+        if($stmt1 -> execute() && $stmt2 -> execute())
         {
             //si se ejecuto correctamente nos retorna success
             return "success";

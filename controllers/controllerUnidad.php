@@ -67,7 +67,7 @@ class mvcUnidad
             $data = $_POST["del"];
 
             //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
-            $resp = CRUDUnidad::eliminarUnidadModel($data,"unidad");
+            $resp = CRUDUnidad::eliminarUnidadModel($data,"asistencia","unidad");
 
             //en caso de haberse eliminado correctamente
             if($resp == "success")
@@ -101,7 +101,7 @@ class mvcUnidad
                     <div class='col-md-12'>
                         <div class='form-group'>
                             <label class='control-label repairtext'>Name</label>
-                            <input type='text' name='nombre' class='form-control' placeholder='Name' value=".$resp["nombre"].">
+                            <input type='text' name='nombre' class='form-control' value='".$resp["nombre"]."' placeholder='Name'>
                         </div>
                     </div>
                 </div>

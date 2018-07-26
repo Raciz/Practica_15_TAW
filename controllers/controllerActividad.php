@@ -69,7 +69,7 @@ class mvcActividad
             $data = $_POST["del"];
 
             //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
-            $resp = CRUDActividad::eliminarActividadModel($data,"actividad");
+            $resp = CRUDActividad::eliminarActividadModel($data,"asistencia","actividad");
 
             //en caso de haberse eliminado correctamente
             if($resp == "success")

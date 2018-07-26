@@ -52,16 +52,24 @@ class CRUDAlumno
     }
 
     //modelo para borrar un alumno de la base de datos
-    public static function eliminarAlumnoModel($data,$tabla)
+    public static function eliminarAlumnoModel($data,$tabla1,$tabla2)
     {
-        //preparamos la sentencia para realizar el Delete para eliminar el alumno
-        $stmt = Conexion::conectar() -> prepare("DELETE FROM $tabla WHERE matricula = :id");
+        //preparamos la sentencia para realizar el Delete para eliminar las asistencias de ese alumno
+        $stmt1 = Conexion::conectar() -> prepare("DELETE FROM $tabla1 WHERE alumno = :id");
 
         //se realiza la asignacion de los datos a eliminar
-        $stmt -> bindParam(":id",$data,PDO::PARAM_INT);
+        $stmt1 -> bindParam(":id",$data,PDO::PARAM_INT);
+        
+        //--------------------------
+        
+        //preparamos la sentencia para realizar el Delete para eliminar el alumno
+        $stmt2 = Conexion::conectar() -> prepare("DELETE FROM $tabla2 WHERE matricula = :id");
+
+        //se realiza la asignacion de los datos a eliminar
+        $stmt2 -> bindParam(":id",$data,PDO::PARAM_INT);
 
         //se ejecuta las sentencias
-        if($stmt -> execute())
+        if($stmt1 -> execute() && $stmt2 -> execute())
         {
             //si se ejecuto correctamente nos retorna success
             return "success";
