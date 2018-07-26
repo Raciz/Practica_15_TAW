@@ -138,15 +138,15 @@ class mvcGrupo
         echo "<script>
                 var teacher = document.getElementById('teacher');
                 var level = document.getElementById('level');
-
-                for(var i = 1; i < teacher.options.length; i++)
-                {
-                    if(teacher.options[i].value ==".$resp["id"].")
+                
+                    for(var i = 1; i < teacher.options.length; i++)
                     {
-                        teacher.selectedIndex = i;
+                        if(teacher.options[i].value =="; if(!empty($resp["id"])){print($resp["id"]);}else{print("-1");} echo")
+                        {
+                            teacher.selectedIndex = i;
+                        }
                     }
-                }
-
+                
                 for(var i = 1; i < level.options.length; i++)
                 {
                     if(level.options[i].value ==".$resp["nivel"].")

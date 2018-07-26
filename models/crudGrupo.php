@@ -37,8 +37,8 @@ class CRUDGrupo
         //preparamos la consulta
         $stmt = Conexion::conectar() -> prepare("SELECT g.codigo as codigo , g.nivel as nivel , u.nombre as teacher 
                                                  FROM $tabla1 as g 
-                                                 JOIN $tabla2 as t on t.teacher = g.teacher
-                                                 JOIN $tabla3 as u on u.num_empleado = t.teacher");
+                                                 LEFT JOIN $tabla2 as t on t.teacher = g.teacher
+                                                 LEFT JOIN $tabla3 as u on u.num_empleado = t.teacher");
 
         //se ejecuta la consulta
         $stmt -> execute();
@@ -104,8 +104,8 @@ class CRUDGrupo
         //preparamos la sentencia para realizar el select
         $stmt = Conexion::conectar()->prepare("SELECT g.codigo as codigo, g.nivel as nivel, u.nombre as teacher, u.num_empleado as id
                                                FROM $tabla1 as g 
-                                               JOIN $tabla2 as t on t.teacher = g.teacher
-                                               JOIN $tabla3 as u on u.num_empleado = t.teacher 
+                                               LEFT JOIN $tabla2 as t on t.teacher = g.teacher
+                                               LEFT JOIN $tabla3 as u on u.num_empleado = t.teacher 
                                                WHERE g.codigo = :id");
 
         //se realiza la asignacion de los datos para la consulta
