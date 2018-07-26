@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-07-2018 a las 19:16:54
+-- Tiempo de generación: 10-07-2018 a las 16:06:43
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -68,8 +68,6 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`, `img`) VALUES
 (123, 'Miguel Angel', 'Perez Sanchez', 'EN-122', 'ITI', ''),
-(213, 'Aaron Leonardo', 'Sanchez Martinez', 'EN-143', 'ITI', 'views/media/img/19720186549Captura de pantalla de 2018-07-15 15-15-24.png'),
-(1234241, 'Osiel', 'Gomez Flores', 'EN-143', 'ISA', 'views/media/img/19720186856Captura de pantalla de 2018-07-15 14-56-32.png'),
 (1530061, 'Karla Vanessa', 'Balderrama', 'EN-333', 'PYMES', 'views/media/img/2672018183229avatar-1.jpg'),
 (1530123, 'David', 'Tovias Alanis', 'EN-333', 'MECA', 'views/media/img/2672018183046avatar-3.jpg');
 
@@ -97,9 +95,9 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `hora_completa`) VALUES
-(1, '2018-07-26', '17:36:44', '18:18:36', 213, 6, 7, 3, 'Brian Becerra', 0),
-(2, '2018-07-26', '17:46:47', '17:50:14', 1234241, 5, 7, 1, 'Brian Becerra', 0),
-(3, '2018-07-26', '18:19:29', '18:35:29', 213, 5, 7, 3, 'Brian Becerra', 0);
+(6, '2018-07-10', '14:39:45', '14:41:30', 1530123, 6, 7, 6, 'Angela Carrizales', 0),
+(7, '2018-07-10', '14:40:38', '15:41:13', 1530061, 6, 7, 6, 'Angela Carrizales', 1),
+(8, '2018-07-10', '14:42:09', '15:48:26', 1530123, 5, 7, 6, 'Angela Carrizales', 1);
 
 -- --------------------------------------------------------
 
@@ -288,13 +286,13 @@ ALTER TABLE `actividad`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `unidad`
 --
 ALTER TABLE `unidad`
-  MODIFY `id_unidad` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_unidad` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
