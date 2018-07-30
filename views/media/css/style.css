@@ -786,14 +786,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff !important; }
 
 .btn-custom {
-  background-color: #23b195;
-  border-color: #23b195; }
+  background: linear-gradient(to bottom, rgba(9, 248, 200, 0), rgba(9, 248, 200, 0.8)) !important;
+  border: 1px solid rgba(9, 248, 200, 0.5) !important; }
 
 .btn-custom:hover, .btn-custom:focus, .btn-custom:active, .btn-custom.active,
 .btn-custom.focus, .btn-custom:active, .btn-custom:focus, .btn-custom:hover,
 .open > .dropdown-toggle.btn-custom {
-  background-color: #1f9c83 !important;
-  border: 1px solid #1f9c83 !important; }
+  background: linear-gradient(to bottom, rgba(9, 248, 200, 0.2), rgba(9, 248, 200, 1)) !important;}
 
 .btn-default {
   background-color: #ffffff;
@@ -816,12 +815,11 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #3a7eb6 !important; }
 
 .btn-success {
-  background-color: #4fc55b !important;
-  border: 1px solid #4fc55b !important; }
+  background: linear-gradient(to bottom, rgba(9, 248, 93, 0), rgba(9, 248, 93, 0.8)) !important;
+  border: 1px solid rgba(9, 248, 93, 0.5) !important; }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .btn-success.focus, .btn-success:active, .btn-success:focus, .btn-success:hover, .open > .dropdown-toggle.btn-success {
-  background-color: #3ebc4b !important;
-  border: 1px solid #3ebc4b !important; }
+  background: linear-gradient(to bottom, rgba(9, 248, 93, 0.15), rgba(9, 248, 93, 1)) !important; }
 
 .btn-info {
   background-color: #3db9dc !important;
@@ -832,20 +830,18 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #27b1d8 !important; }
 
 .btn-warning {
-  background-color: #e2ab3b !important;
-  border: 1px solid #e2ab3b !important; }
+  background: linear-gradient(to bottom, rgba(248, 228, 9, 0), rgba(248, 228, 9, 0.8)) !important;
+  border: 1px solid rgba(248, 228, 9, 0.5) !important; }
 
 .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .btn-warning.focus, .btn-warning:active, .btn-warning:focus, .btn-warning:hover, .open > .dropdown-toggle.btn-warning {
-  background-color: #dfa125 !important;
-  border: 1px solid #dfa125 !important; }
+  background: linear-gradient(to bottom, rgba(248, 228, 9, 0.2), rgba(248, 228, 9, 1)) !important;}
 
 .btn-danger {
-  background-color: #d57171 !important;
-  border: 1px solid #d57171 !important; }
+  background: linear-gradient(to bottom, rgba(248, 9, 74, 0), rgba(248, 9, 74, 0.8)) !important;
+  border: 1px solid rgba(248, 9, 74, 0.5) !important; }
 
 .btn-danger:active, .btn-danger:focus, .btn-danger:hover, .btn-danger.active, .btn-danger.focus, .btn-danger:active, .btn-danger:focus, .btn-danger:hover, .open > .dropdown-toggle.btn-danger {
-  background-color: #cf5d5d !important;
-  border: 1px solid #cf5d5d !important; }
+  background: linear-gradient(to bottom, rgba(248, 9, 74, 0.3), rgba(248, 9, 74, 1)) !important; }
 
 .btn-dark {
   background-color: #626773 !important;
