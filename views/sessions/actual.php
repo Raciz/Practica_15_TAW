@@ -74,11 +74,15 @@ if(!empty($_SESSION["mensaje"]))
             <div class="pull-right" style="margin-top: -56px">
               <!--<b>Unit: </b> 1-->
                 <?php
+                //while(1)
+                //{
                 //creamos un objeto de mvcSession
-                $list = new mvcSession();
+                    $list = new mvcSession();
                 //se manda a llamar el control para enlistar a los alumnos de la sesión
-                $r = $list -> todasHoras(date("H:i:s"));
-                echo date("H:i:s");
+                    echo "Hora: ".date("H:i:s");
+                    $r = $list -> todasHoras(date("H:i:s"));
+                  //  sleep(60); # un paro de 5 segundos antes de volver a iniciar las instrucciones
+                //}
                 ?>
               <br>
             </div>

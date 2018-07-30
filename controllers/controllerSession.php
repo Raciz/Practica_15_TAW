@@ -41,6 +41,8 @@ class mvcSession
 
     function todasHoras($horaActual)
     {
+      //echo "hora: ".$horaActual."<br>";
+      //horario de CAI
       $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","13:55:00","14:45:00",
                     "15:40:00","16:35:00","17:30:00");
       $valor = -1;
@@ -51,9 +53,11 @@ class mvcSession
         $fecha2 = new DateTime($horaActual);//fecha de cierre
 
         $intervalo = $fecha1->diff($fecha2);
-        $intervalo = $intervalo->format('%H %i %s');
-        
-        if($intervalo<"00:10:00")
+        $intervalo = $intervalo->format('%H:%I:%S');
+
+        //echo $intervalo."<br>";
+        //tolerancia de 10 minutos
+        if($intervalo<="00:10:00")
         {
           $valor = $i;
           break;
@@ -154,6 +158,7 @@ class mvcSession
 
             $intervalo = $fecha1->diff($fecha2);
             $intervalo = $intervalo->format('%H %i %s');
+            //si son mas de 45min se cuenta como hora
             if($intervalo>="00:45:00"){
               $completa = 1;
             }else{
