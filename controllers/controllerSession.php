@@ -43,8 +43,8 @@ class mvcSession
     {
       //echo "hora: ".$horaActual."<br>";
       //horario de CAI
-      $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","13:55:00","14:45:00",
-                    "15:40:00","16:35:00","17:30:00");
+      $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","14:00:00","14:55:00",
+                    "15:50:00","16:45:00","17:30:00");
       $valor = -1;
       
       for($i=0;$i<10;$i++)
@@ -95,7 +95,8 @@ class mvcSession
                           "actividad" => $_POST["actividad"],
                           "unidad" => $unidad["id_unidad"],
                           "nivel" => $grupo["nivel"],
-                          "teacher" => $grupo["teacher"]);
+                          "teacher" => $grupo["teacher"],
+                          "grupo" => $_POST["grupo"]);
 
             //se manda la informacion al modelo con su respectiva tabla en la que se registrara
             $resp = CRUDSession::agregarSessionModel($data,"asistencia");
@@ -119,6 +120,14 @@ class mvcSession
         }
     }
 
+    //funcion para saber la unidad
+    function saberUnidad($fecha)
+    {
+      $unidad = CRUDSession::unidadesSessionModel($fecha,"unidad");
+      $unidad = explode(" ", $unidad["nombre"]);
+      return $unidad[1];
+    }
+
     //Control para mostrar un listado de los alumnos registrados en la sesión
     function listadoSessionController()
     {
@@ -137,7 +146,7 @@ class mvcSession
                 <td>".$row["actividad"]."</td>
                 <td>
                     <center>
-                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["asistencia"]."')>Finalizar</button>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["asistencia"]."')>Finish</button>
                     </center>
                 </td>
             </tr>";

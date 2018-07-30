@@ -73,7 +73,8 @@ class CRUDSession
     public static function agregarSessionModel($data,$tabla)
     {
         //se prepara la sentencia para realizar el insert
-        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla(id_asistencia,fecha,hora_entrada,alumno,actividad,unidad,nivel,teacher) VALUES (NULL,:fecha,:horaE,:alumno,:actividad,:unidad,:nivel,:teacher)");
+        $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla(id_asistencia,fecha,hora_entrada,alumno,actividad,unidad,nivel,teacher,grupo) 
+            VALUES (NULL,:fecha,:horaE,:alumno,:actividad,:unidad,:nivel,:teacher,:grupo)");
 
         //se realiza la asignacion de los datos a insertar
         $stmt -> bindParam(":fecha",$data["fecha"],PDO::PARAM_STR);
@@ -83,6 +84,7 @@ class CRUDSession
         $stmt -> bindParam(":unidad",$data["unidad"],PDO::PARAM_INT);
         $stmt -> bindParam(":nivel",$data["nivel"],PDO::PARAM_INT);
         $stmt -> bindParam(":teacher",$data["teacher"],PDO::PARAM_STR);
+        $stmt -> bindParam(":grupo",$data["grupo"],PDO::PARAM_STR);
 
         //se ejecuta la sentencia
         if($stmt -> execute())
