@@ -38,11 +38,13 @@ class mvcSession
                   </p>
                   </div>";
     }
-
-    function todasHoras($horaActual)
+    //al parecer ya no funciona para nada
+    /*function todasHoras($horaActual)
     {
-      $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","13:55:00","14:45:00",
-                    "15:40:00","16:35:00","17:30:00");
+      //echo "hora: ".$horaActual."<br>";
+      //horario de CAI
+      $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","14:00:00","14:55:00",
+                    "15:50:00","16:45:00","17:30:00");
       $valor = -1;
       
       for($i=0;$i<10;$i++)
@@ -51,9 +53,11 @@ class mvcSession
         $fecha2 = new DateTime($horaActual);//fecha de cierre
 
         $intervalo = $fecha1->diff($fecha2);
-        $intervalo = $intervalo->format('%H %i %s');
-        
-        if($intervalo<"00:10:00")
+        $intervalo = $intervalo->format('%H:%I:%S');
+
+        //echo $intervalo."<br>";
+        //tolerancia de 10 minutos
+        if($intervalo<="00:10:00")
         {
           $valor = $i;
           break;
@@ -72,7 +76,7 @@ class mvcSession
       {
         return $data[$valor];
       }
-    }
+    }*/
 
     //Control para manejar el registro de un nuevo alumno a la sesión
     function agregarSessionController()
@@ -91,7 +95,8 @@ class mvcSession
                           "actividad" => $_POST["actividad"],
                           "unidad" => $unidad["id_unidad"],
                           "nivel" => $grupo["nivel"],
-                          "teacher" => $grupo["teacher"]);
+                          "teacher" => $grupo["teacher"],
+                          "grupo" => $_POST["grupo"]);
 
             //se manda la informacion al modelo con su respectiva tabla en la que se registrara
             $resp = CRUDSession::agregarSessionModel($data,"asistencia");
@@ -115,6 +120,14 @@ class mvcSession
         }
     }
 
+    //funcion para saber la unidad
+    function saberUnidad($fecha)
+    {
+      $unidad = CRUDSession::unidadesSessionModel($fecha,"unidad");
+      $unidad = explode(" ", $unidad["nombre"]);
+      return $unidad[1];
+    }
+
     //Control para mostrar un listado de los alumnos registrados en la sesión
     function listadoSessionController()
     {
@@ -133,7 +146,7 @@ class mvcSession
                 <td>".$row["actividad"]."</td>
                 <td>
                     <center>
-                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["asistencia"]."')>Finalizar</button>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["asistencia"]."')>Finish</button>
                     </center>
                 </td>
             </tr>";
@@ -154,6 +167,7 @@ class mvcSession
 
             $intervalo = $fecha1->diff($fecha2);
             $intervalo = $intervalo->format('%H %i %s');
+            //si son mas de 45min se cuenta como hora
             if($intervalo>="00:45:00"){
               $completa = 1;
             }else{
