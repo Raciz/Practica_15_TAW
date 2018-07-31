@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-07-2018 a las 16:06:43
+-- Tiempo de generación: 31-07-2018 a las 09:34:50
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -68,7 +68,7 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`, `img`) VALUES
 (123, 'Miguel Angel', 'Perez Sanchez', 'EN-122', 'ITI', ''),
-(1530061, 'Karla Vanessa', 'Balderrama', 'EN-333', 'PYMES', 'views/media/img/2672018183229avatar-1.jpg'),
+(1530061, 'Karla Vanessa', 'Balderrama', 'EN-222', 'PYMES', 'views/media/img/2672018183229avatar-1.jpg'),
 (1530123, 'David', 'Tovias Alanis', 'EN-333', 'MECA', 'views/media/img/2672018183046avatar-3.jpg');
 
 -- --------------------------------------------------------
@@ -87,6 +87,7 @@ CREATE TABLE `asistencia` (
   `unidad` int(7) NOT NULL,
   `nivel` int(1) DEFAULT NULL,
   `teacher` varchar(50) DEFAULT NULL,
+  `grupo` varchar(7) NOT NULL,
   `hora_completa` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -94,10 +95,19 @@ CREATE TABLE `asistencia` (
 -- Volcado de datos para la tabla `asistencia`
 --
 
-INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `hora_completa`) VALUES
-(6, '2018-07-10', '14:39:45', '14:41:30', 1530123, 6, 7, 6, 'Angela Carrizales', 0),
-(7, '2018-07-10', '14:40:38', '15:41:13', 1530061, 6, 7, 6, 'Angela Carrizales', 1),
-(8, '2018-07-10', '14:42:09', '15:48:26', 1530123, 5, 7, 6, 'Angela Carrizales', 1);
+INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `grupo`, `hora_completa`) VALUES
+(6, '2018-07-10', '14:39:45', '14:41:30', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
+(7, '2018-07-10', '14:40:38', '15:41:13', 1530061, 6, 7, 6, 'Angela Carrizales', 'EN-222', 1),
+(8, '2018-07-10', '14:42:09', '15:48:26', 1530123, 5, 7, 6, 'Angela Carrizales', 'EN-333', 1),
+(9, '2018-07-26', '15:40:19', '16:25:17', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
+(10, '2018-07-26', '15:40:28', '15:42:52', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
+(11, '2018-07-26', '15:40:28', '15:43:04', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
+(12, '2018-07-26', '15:40:23', '16:27:12', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 1),
+(13, '2018-07-26', '15:42:33', '16:27:47', 1530061, 4, 7, 6, 'Angela Carrizales', 'EN-222', 1),
+(14, '2018-07-27', '03:01:28', '16:00:12', 1530061, 4, 7, 6, 'Angela Carrizales', 'EN-222', 1),
+(15, '2018-07-26', '16:00:56', '16:01:05', 1530061, 4, 7, 6, 'Angela Carrizales', 'EN-222', 0),
+(16, '2018-07-26', '16:02:00', '16:02:08', 1530123, 5, 7, 6, 'Angela Carrizales', 'EN-333', 0),
+(17, '2018-07-31', '11:10:53', '11:27:36', 1530061, 5, 7, 4, 'Angela Carrizales', 'EN-222', 0);
 
 -- --------------------------------------------------------
 
@@ -286,7 +296,7 @@ ALTER TABLE `actividad`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `unidad`
