@@ -82,7 +82,7 @@ class mvcTeacher
                                             <td>".$row2["nombre"]."</td>
                                             <td>".$row2["apellido"]."</td>
                                             <td>
-                                                <a href='index.php?section=groups&action=student-record&student=".$row2["matricula"]."'>
+                                                <a href='index.php?section=groups&action=student-record&group=".$_GET["group"]."&student=".$row2["matricula"]."'>
                                                     <button class='btn btn-rounded btn-warning' type='button' name='button'>View CAI hours</button>
                                                 </a>
                                             </td>
@@ -135,7 +135,7 @@ class mvcTeacher
     function horasAlumnoController()
     {
         //se le manda al modelo para obtener las hora de cai del alumno
-        $data = CRUDTeacher::horasAlumnoModel($_GET["student"],"asistencia","unidad","actividad");
+        $data = CRUDTeacher::horasAlumnoModel($_GET["student"],$_GET["group"],"asistencia","unidad","actividad");
 
         foreach($data as $rows => $row)
         {
