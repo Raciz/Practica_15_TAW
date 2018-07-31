@@ -38,8 +38,8 @@ class mvcSession
                   </p>
                   </div>";
     }
-
-    function todasHoras($horaActual)
+    //al parecer ya no funciona para nada
+    /*function todasHoras($horaActual)
     {
       //echo "hora: ".$horaActual."<br>";
       //horario de CAI
@@ -76,7 +76,7 @@ class mvcSession
       {
         return $data[$valor];
       }
-    }
+    }*/
 
     //Control para manejar el registro de un nuevo alumno a la sesión
     function agregarSessionController()
