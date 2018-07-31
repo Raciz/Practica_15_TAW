@@ -64,7 +64,7 @@ class mvcSession
         }
       }
       
-      if($valor==-1)
+      if($valor == -1)
       {
         return "Fuera";
       }

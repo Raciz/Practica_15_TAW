@@ -210,8 +210,8 @@ class mvcAlumno
                     </div>
                     
                     <div class='form-group'>
-                        <label class='control-label repairtext'>Career</label>
-                        <select style='width:100%;' class='form-control select2' id='grupo' name='grupo' required>
+                        <label class='control-label repairtext'>Group</label>
+                        <select style='width:100%;' class='form-control select2' id='grupo' name='grupo'>
                             <option value=''></option>";
                             //creamos un objeto de mvcGrupo
                             $option = new mvcGrupo();
