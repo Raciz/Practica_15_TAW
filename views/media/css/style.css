@@ -2412,3 +2412,22 @@ table > thead > tr{
 .open > .dropdown-toggle.btn-custom {
   background-color: #1f9c83 !important;
   border: 1px solid #1f9c83 !important; }
+
+.atras{
+  background-color: transparent;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px #fff solid;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.atras:hover{
+  background-color: #fff;
+  color: #126C4A;
+}
+
+.atras:active{
+  transform: scale(0.8);
+}

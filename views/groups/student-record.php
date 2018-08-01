@@ -7,20 +7,17 @@ if(!isset($_SESSION["nombre"]))
             window.location.replace('index.php');
           </script>";
 }
+//creamos un objeto de mvcTeacher
+$info = new mvcTeacher();
 ?>
 
 <div class="container">
     <div class="row" style="margin-bottom: 30px;">
         <div class="col-sm-12">
-            <a href="index.php?section=groups&action=my-students&group=<?php echo $_GET["group"]?>">
-                <button class='btn btn-rounded btn-warning pull-right' type='button' name='button'>Regresar</button>
-            </a>
             <h4 class="m-t-0 header-title">Student data</h4>
+            <a href="index.php?section=groups&action=my-students&group=<?php echo $info->idGrupoAlumno(); ?>"><button class="pull-right atras" style="margin-top: -50px">Back</button></a>
             <div class="clearfix">
                 <?php
-                //creamos un objeto de mvcTeacher
-                $info = new mvcTeacher();
-              
                 //mandamos a llamar el controller para obtener la informacion del alumno
                 $info -> dataAlumnoController();
                 ?>
