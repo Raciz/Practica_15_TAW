@@ -216,5 +216,62 @@ class mvcSession
                       </script>";
             }
     }
+    
+    //control para obtener las horas de cai realizada por los alumnos
+    public function historialSessionController()
+    {
+        //establecemos el valor por defectos de los filtros de busqueda para las hora de cai
+        $data = array("teacher" => "",
+                      "grupo" => "",
+                      "alumno" => "");
+        
+        //verificamos si envio informacion para filtrar los resultados
+        if(isset($_POST))
+        {
+            //en caso de que se haya enviado informacion para filtrar por teacher
+            if(!empty($_POST["teacher"]))
+            {
+                //se le guarda el valor enviado
+                $data["teacher"] = $_POST["teacher"];
+            }
+        
+            //en caso de que se haya enviado informacion para filtrar por grupo
+            if(!empty($_POST["grupo"]))
+            {
+                //se le guarda el valor enviado
+                $data["grupo"] = $_POST["grupo"];
+            }
+        
+            //en caso de que se haya enviado informacion para filtrar por alumno
+            if(!empty($_POST["alumno"]))
+            {
+                //se le guarda el valor enviado
+                $data["alumno"] = $_POST["alumno"];
+            }
+        }
+        
+        //se le manda al modelo para obtener la informacion de las horas de cai segun los filtros recibidos
+        $resp = CRUDSession::historialSessionModel($data,"usuario","teacher","grupo","alumno","asistencia","actividad","unidad");
+
+        //se imprime la informacion de cada uno de las horas de cai realizadas
+        foreach($resp as $rows => $row)
+        {
+            //e imprimimos la informacion de cada una de las de cai realizadas
+            echo 
+            "
+            <tr class='fondoTabla'>
+                <td>".$row["matricula"]."</td>
+                <td>".$row["nombre"]." ".$row["apellido"]."</td>
+                <td>Level ".$row["nivel"]."</td>
+                <td>".$row["fecha"]."</td>
+                <td>".$row["hora_entrada"]."</td>
+                <td>".$row["hora_salida"]."</td>
+                <td>".$row["actividad"]."</td>
+                <td>".$row["unidad"]."</td>
+                <td>".$row["teacher"]."</td>
+            </tr>
+            ";
+        }
+    }
 }
 ?>

@@ -101,7 +101,7 @@ class CRUDSession
         //cerramos la conexion
         $stmt -> close();
     }
-    
+
     //modelo para mostrar informacion de la asistencia
     public static function listadoSessionModel($tabla1,$tabla2, $tabla3, $tabla4, $tabla5)
     {
@@ -109,11 +109,9 @@ class CRUDSession
         $stmt = Conexion::conectar() -> prepare("SELECT asi.id_asistencia as asistencia, a.nombre as nombre, a.apellido as apellido, g.codigo as grupo, c.nombre as carrera, act.nombre as actividad
                                                         FROM $tabla1 as asi
                                                         JOIN $tabla2 as a on a.matricula = asi.alumno
-                                                        JOIN $tabla3 as g on g.nivel = asi.nivel
+                                                        JOIN $tabla3 as g on g.codigo = asi.grupo
                                                         JOIN $tabla4 as c on c.siglas = a.carrera
                                                         JOIN $tabla5 as act on act.id_actividad = asi.actividad WHERE hora_salida IS NULL");
-
-        //se realiza la asignacion de los datos a buscar
 
         //se ejecuta la sentencia
         $stmt -> execute();
@@ -149,7 +147,7 @@ class CRUDSession
     {
         //preparamos la sentencia para realizar el update
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET hora_salida = :horaS, hora_completa = :completa WHERE id_asistencia = :id");
-        
+
         //se realiza la asignacion de los datos para el update
         $stmt -> bindParam(":id", $data["asistencia"], PDO::PARAM_INT);
         $stmt -> bindParam(":horaS", $data["horaS"], PDO::PARAM_STR);
@@ -176,7 +174,7 @@ class CRUDSession
     {
         //preparamos la sentencia para realizar el update
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET hora_salida = :horaS, hora_completa = :completa WHERE hora_completa IS NULL");
-        
+
         //se realiza la asignacion de los datos para el update
         $stmt -> bindParam(":horaS", $hora, PDO::PARAM_STR);
         $stmt -> bindParam(":completa", $c, PDO::PARAM_INT);
@@ -195,6 +193,54 @@ class CRUDSession
 
         //cerramos la conexion
         $stmt->close();
+    }
+
+    //modelo para obtener la las horas de cai realizadas por los alumnos
+    public static function historialSessionModel($data,$tabla1,$tabla2,$tabla3,$tabla4,$tabla5,$tabla6,$tabla7)
+    {
+        //creamos la consulta para la ontencion de la informacion de las horas de cai
+        $query = "SELECT a.matricula, a.nombre, a.apellido, asi.nivel, asi.fecha, asi.hora_entrada, asi.hora_salida, ac.nombre as actividad, un.nombre as unidad, u.nombre as teacher
+                  FROM $tabla1 as u
+                  JOIN $tabla2 as t on t.teacher = u.num_empleado  
+                  JOIN $tabla3 as g on g.teacher = t.teacher
+                  JOIN $tabla4 as a on a.grupo = g.codigo
+                  JOIN $tabla5 as asi on asi.alumno = a.matricula
+                  JOIN $tabla6 as ac on ac.id_actividad = asi.actividad
+                  JOIN $tabla7 as un on un.id_unidad = asi.unidad
+                  WHERE asi.hora_completa = 1";
+        
+        //verificamos si la consulta se tiene que filtrar por teacher
+        if(!empty($data["teacher"]))
+        {
+            //de ser cierto, agregamos el filtro a la consulta
+            $query .= " && u.num_empleado = ".$data["teacher"];
+        }
+
+        //verificamos si la consulta se tiene que filtrar por grupo
+        if(!empty($data["grupo"]))
+        {
+            //de ser cierto, agregamos el filtro a la consulta
+            $query .= " && asi.grupo = '".$data["grupo"]."'";
+        }
+
+        //verificamos si la consulta se tiene que filtrar por alumno
+        if(!empty($data["alumno"]))
+        {
+            //de ser cierto, agregamos el filtro a la consulta
+            $query .= " && asi.alumno = ".$data["alumno"];
+        }
+
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare($query);
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
     }
 }
 ?>

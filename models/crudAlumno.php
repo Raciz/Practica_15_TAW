@@ -139,6 +139,22 @@ class CRUDAlumno
         $stmt->close();
     }
     
+    //modelo para obtener la informacion de todos los alumnos
+    public static function optionTodosAlumnosModel($tabla)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+    
     //----------------------------------------------------------------------------------------
     
     //modelo para obtener la informacion de los alumnos sin grupos
@@ -184,10 +200,14 @@ class CRUDAlumno
     }
     
     //modelo para obtener la informacion de los alumnos en el grupos
-    public static function listadoAlumnoGrupoModel($data,$tabla)
+    public static function listadoAlumnoGrupoModel($data,$tabla1,$tabla2)
     {
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla WHERE grupo = :grupo");
+        $stmt = Conexion::conectar() -> prepare("SELECT a.nombre, a.apellido, a.matricula, c.nombre as carrera 
+                                                 FROM $tabla1 as a 
+                                                 JOIN $tabla2 as c on c.siglas = a.carrera 
+                                                 WHERE grupo = :grupo");
+        
         $stmt -> bindParam(":grupo",$data,PDO::PARAM_STR);
 
         //se ejecuta la consulta
@@ -225,7 +245,7 @@ class CRUDAlumno
         $stmt -> close();
     }
 
-    //modelo para obtener la informacion de los alumnos registrados
+    //modelo para obtener la informacion de los alumnos registrados que tengan grupo
     public static function optionAlumnosModel($tabla)
     {
         //preparamos la consulta
