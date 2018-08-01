@@ -55,7 +55,8 @@ if(!empty($_SESSION["mensaje"]))
     <div class="row">
         <div class="col-sm-12">
             <h4 class="m-t-0 header-title"><?php echo $_GET["group"]; ?></h4>
-            
+
+            <a href="index.php?section=groups&action=list"><button class="pull-right atras" style="margin-top: -50px">Back</button></a>
             <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-alumno-modal">
                 Add student
             </button>
