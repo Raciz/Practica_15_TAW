@@ -131,6 +131,13 @@ class mvcTeacher
         ";
     }
 
+    function idGrupoAlumno(){
+        //se le manda al modelo el nombre de la tabla a mostrar la informacion del alumno
+        $data = CRUDTeacher::dataAlumnoModel($_GET["student"],"alumno");
+
+        return $data["grupo"];
+    }
+
     //Control para mostrar las horas de cai del alumno
     function horasAlumnoController()
     {
