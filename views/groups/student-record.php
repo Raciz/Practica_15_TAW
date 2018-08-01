@@ -12,6 +12,9 @@ if(!isset($_SESSION["nombre"]))
 <div class="container">
     <div class="row" style="margin-bottom: 30px;">
         <div class="col-sm-12">
+            <a href="index.php?section=groups&action=my-students&group=<?php echo $_GET["group"]?>">
+                <button class='btn btn-rounded btn-warning pull-right' type='button' name='button'>Regresar</button>
+            </a>
             <h4 class="m-t-0 header-title">Student data</h4>
             <div class="clearfix">
                 <?php

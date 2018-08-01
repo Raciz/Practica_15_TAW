@@ -24,7 +24,7 @@ class CRUDAlumno
             return "success";
         }
         else
-        {            
+        {
             //en caso de no ser asi nos retorna fail
             return "fail";
         }
@@ -97,7 +97,7 @@ class CRUDAlumno
 
         //se ejecuta la sentencia
         $stmt->execute();
-
+        
         //retornamos la fila obtenida con el select
         return $stmt->fetch();
 
@@ -110,6 +110,11 @@ class CRUDAlumno
     {
         //preparamos la sentencia para realizar el update
         $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido, carrera = :carrera, grupo = :grupo WHERE matricula = :id");
+        
+        if(empty($data["grupo"]))
+        {
+            $data["grupo"] = null;
+        }
         
         //se realiza la asignacion de los datos para el update
         $stmt -> bindParam(":id", $data["matricula"], PDO::PARAM_INT);
