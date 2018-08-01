@@ -98,6 +98,7 @@ if(!empty($_SESSION["nombre"]))
                                 <li><a href="#" style="color: #fff">Contact</a></li>-->
                                 <li><a href="index.php?section=dashboard" style="color: #fff">Home</a></li>
                                 <li><a href="index.php?section=sessions&action=actual" style="color: #fff">CAI sessions</a></li>
+                                <li><a href="index.php?section=record" style="color: #fff">CAI sessions queries</a></li>
                             </ul>
                             <?php
                             }
@@ -230,7 +231,7 @@ if(!empty($_SESSION["nombre"]))
             <!-- Page content start -->
             <div class="page-contentbar">
               <!-- Se verifica que la sección no sea la de las sesiones de cai porque esa no lleva menú -->
-                <?php if($_GET["section"] != "sessions"): ?>
+                <?php if(($_GET["section"] != "sessions") && ($_GET["section"] != "record")): ?>
                   <!--left navigation start-->
                   <aside class="sidebar-navigation">
                       <div class="scrollbar-wrapper">
@@ -262,7 +263,7 @@ if(!empty($_SESSION["nombre"]))
               <?php endif ?>
 
                 <!-- START PAGE CONTENT -->
-                <?php if($_GET["section"] != "sessions"): ?>
+                <?php if(($_GET["section"] != "sessions") && ($_GET["section"] != "record")): ?>
                   <div id="page-right-content">
                 <?php else: ?>
                   <div id="page-right-content" style="margin-left: -5px !important">
@@ -354,11 +355,11 @@ if(!empty($_SESSION["nombre"]))
                 'autoWidth'   : false
             }
         );
-        
+
         $('.data').DataTable
         (
             {
-                
+
                 'paging'      : true,
                 'lengthChange': false,
                 'searching'   : true,
@@ -367,7 +368,7 @@ if(!empty($_SESSION["nombre"]))
                 'autoWidth'   : false
             }
         );
-        
+
         $(".select2").select2
         (
             {
