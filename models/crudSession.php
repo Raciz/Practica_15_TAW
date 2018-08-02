@@ -195,43 +195,17 @@ class CRUDSession
         $stmt->close();
     }
 
+
     //modelo para obtener la las horas de cai realizadas por los alumnos
-    public static function historialSessionModel($data,$tabla1,$tabla2,$tabla3,$tabla4,$tabla5,$tabla6,$tabla7)
+    public static function historialSessionModel($data,$tabla1,$tabla2,$tabla3,$tabla4)
     {
-        //creamos la consulta para la ontencion de la informacion de las horas de cai
-        $query = "SELECT a.matricula, a.nombre, a.apellido, asi.nivel, asi.fecha, asi.hora_entrada, asi.hora_salida, ac.nombre as actividad, un.nombre as unidad, u.nombre as teacher
-                  FROM $tabla1 as u
-                  JOIN $tabla2 as t on t.teacher = u.num_empleado  
-                  JOIN $tabla3 as g on g.teacher = t.teacher
-                  JOIN $tabla4 as a on a.grupo = g.codigo
-                  JOIN $tabla5 as asi on asi.alumno = a.matricula
-                  JOIN $tabla6 as ac on ac.id_actividad = asi.actividad
-                  JOIN $tabla7 as un on un.id_unidad = asi.unidad
-                  WHERE asi.hora_completa = 1";
-        
-        //verificamos si la consulta se tiene que filtrar por teacher
-        if(!empty($data["teacher"]))
-        {
-            //de ser cierto, agregamos el filtro a la consulta
-            $query .= " && u.num_empleado = ".$data["teacher"];
-        }
-
-        //verificamos si la consulta se tiene que filtrar por grupo
-        if(!empty($data["grupo"]))
-        {
-            //de ser cierto, agregamos el filtro a la consulta
-            $query .= " && asi.grupo = '".$data["grupo"]."'";
-        }
-
-        //verificamos si la consulta se tiene que filtrar por alumno
-        if(!empty($data["alumno"]))
-        {
-            //de ser cierto, agregamos el filtro a la consulta
-            $query .= " && asi.alumno = ".$data["alumno"];
-        }
-
         //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare($query);
+        $stmt = Conexion::conectar() -> prepare("SELECT a.matricula, a.nombre, a.apellido, u.nombre as teacher, g.codigo as grupo, g.nivel
+                                                 FROM $tabla1 as u
+                                                 JOIN $tabla2 as t on t.teacher = u.num_empleado  
+                                                 JOIN $tabla3 as g on g.teacher = t.teacher
+                                                 JOIN $tabla4 as a on a.grupo = g.codigo
+                                                 WHERE g.codigo = '".$data["grupo"]."'");
 
         //se ejecuta la consulta
         $stmt -> execute();
@@ -241,6 +215,83 @@ class CRUDSession
 
         //cerramos la conexion
         $stmt -> close();
+    }
+
+    //modelo para obtener las horas de cai del alumno
+    public static function horasCAIModel($student,$group,$unit,$tabla1,$tabla2,$tabla3,$tabla4)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT al.nombre, al.apellido, a.fecha, a.hora_entrada, a.hora_salida, u.nombre as unidad, ac.nombre as actividad 
+                                                 FROM $tabla1 as a
+                                                 JOIN $tabla2 as u on u.id_unidad = a.unidad
+                                                 JOIN $tabla3 as ac on ac.id_actividad = a.actividad
+                                                 JOIN $tabla4 as al on al.matricula = a.alumno
+                                                 WHERE a.alumno = :matricula && u.id_unidad = :unidad && a.hora_completa = 1 && a.grupo = :grupo");
+
+        //asignamos los datos para el select
+        $stmt -> bindParam(":matricula",$student,PDO::PARAM_INT);
+        $stmt -> bindParam(":grupo",$group,PDO::PARAM_STR);
+        $stmt -> bindParam(":unidad",$unit,PDO::PARAM_INT);
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetchAll();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+
+    //modelo para obtener el total de horas de cai del alumno
+    public static function horasModel($student,$unit,$tabla1,$tabla2)
+    {
+        //preparamos la consulta
+        $stmt = Conexion::conectar() -> prepare("SELECT COUNT(*) as horas
+                                                 FROM $tabla1 as a
+                                                 JOIN $tabla2 as u on u.id_unidad = a.unidad
+                                                 WHERE a.alumno = :matricula && unidad = :unidad");
+
+        //asignamos los datos para el select
+        $stmt -> bindParam(":matricula",$student,PDO::PARAM_INT);
+        $stmt -> bindParam(":unidad",$unit,PDO::PARAM_INT);
+
+        //se ejecuta la consulta
+        $stmt -> execute();
+
+        //retornamos la informacion de la tabla
+        return $stmt -> fetch();
+
+        //cerramos la conexion
+        $stmt -> close();
+    }
+
+    public static function terminar()
+    {
+        $hora = Date("H:i:s");
+        $completa = 1;
+
+        $stmt = Conexion::conectar()->prepare("UPDATE asistencia SET hora_salida = :horaS, hora_completa = :completa WHERE hora_salida IS NULL");
+
+        //se realiza la asignacion de los datos para el update
+        $stmt -> bindParam(":horaS", $hora, PDO::PARAM_STR);
+        $stmt -> bindParam(":completa",$completa, PDO::PARAM_INT);
+
+        //se ejecuta la sentencia
+        if($stmt -> execute())
+        {
+            //si se ejecuto correctamente nos retorna success
+            return "success";
+        }
+        else
+        {
+            //en caso de no ser asi nos retorna fail
+            return "fail";
+        }
+
+        //cerramos la conexion
+        $stmt->close();
+            
     }
 }
 ?>

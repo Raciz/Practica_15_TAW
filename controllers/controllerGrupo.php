@@ -199,5 +199,19 @@ class mvcGrupo
             echo "<option class='repairtext' value=".$row["codigo"].">".$row["codigo"]."</option>";
         }
     }
+    
+    //Control para mostrar a los grupos en un select
+    public function optionGrupoTeacherController()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar su informacion
+        $data = CRUDGrupo::listadoGrupoModel("grupo","teacher","usuario");
+
+        //mostramos a cada uno de los grupos en el select
+        foreach($data as $rows => $row)
+        {
+            //se muestra cada una de los grupos en un option del select
+            echo "<option class='repairtext' value=".$row["codigo"].">".$row["teacher"]." - ".$row["codigo"]."</option>";
+        }
+    }
 }
 ?>
