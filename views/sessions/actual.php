@@ -63,6 +63,22 @@ if(!empty($_SESSION["mensaje"]))
                 )
             </script>";
     }
+    elseif ($_SESSION["mensaje"]=="error")
+    {
+
+        echo"<script>
+                swal
+                (
+                    {
+                        title: 'Error:',
+                        text: 'Something happened',
+                        type: 'error',
+                        confirmButtonText: 'Continue',
+                        confirmButtonColor: '#4fa7f3'
+                    }
+                )
+            </script>";
+    }
     //se elimina el contenido de session en mensaje
     $_SESSION["mensaje"]="";
 }
@@ -146,6 +162,7 @@ if(!empty($_SESSION["mensaje"]))
                         if(valor==-1){
                             elementoBoton.disabled = true;
                         }else{
+                            window.location.href = "index.php?section=terminar";
                             elementoBoton.disabled = false; //y si es una hora valida se habilita
                         }
                         setTimeout(mostrarhora,1000);
