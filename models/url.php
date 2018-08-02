@@ -18,7 +18,7 @@ class url
         {
             $url = "views/".$section."/".$action.".php";
         }
-        elseif($section == "logout" || $section == "dashboard" || $section == "record")
+        elseif($section == "logout" || $section == "dashboard" || $section == "record" || $section == "terminar")
         {
             $url = "views/modules/".$section.".php";
         }
