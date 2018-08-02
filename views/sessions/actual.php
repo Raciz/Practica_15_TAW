@@ -151,6 +151,9 @@ if(!empty($_SESSION["mensaje"]))
                             t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
                             //tolerancia de 10 minutos
                             if(t1.getMinutes()<=10 && t1.getHours()==0){
+                                if(t1.getMinutes()==0 && t1.getHours()==0 && t1.getSeconds()==0){
+                                    window.location.href = "index.php?section=terminar";
+                                }
                                 valor = i;
                                 break;
                             }else{
