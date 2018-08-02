@@ -10,7 +10,7 @@ class mvcSession
 
         //se manda el id de la asistencia y el nombre de la tabla donde esta almacenada
         $resp = CRUDSession::mostrarSessionModel($data,"alumno","carrera");
-      
+
         //se imprime la informacion de la asistencia en inputs de un formulario
         echo "
               <input type=hidden value=".$actividad." name='actividad'>
@@ -46,7 +46,7 @@ class mvcSession
       $data = array("08:50:00","09:45:00","11:10:00","12:05:00","13:00:00","14:00:00","14:55:00",
                     "15:50:00","16:45:00","17:30:00");
       $valor = -1;
-      
+
       for($i=0;$i<10;$i++)
       {
         $fecha1 = new DateTime($data[$i]);//fecha inicial
@@ -67,7 +67,7 @@ class mvcSession
           $valor = -1;
         }
       }
-      
+
       if($valor == -1)
       {
         return "Fuera";
@@ -123,9 +123,9 @@ class mvcSession
     //funcion para saber la unidad
     function saberUnidad($fecha)
     {
-      $unidad = CRUDSession::unidadesSessionModel($fecha,"unidad");
-      $unidad = explode(" ", $unidad["nombre"]);
-      return $unidad[1];
+        $unidad = CRUDSession::unidadesSessionModel($fecha,"unidad");
+        $unidad = explode(" ", $unidad["nombre"]);
+        return $unidad[1];
     }
 
     //Control para mostrar un listado de los alumnos registrados en la sesión
@@ -146,7 +146,7 @@ class mvcSession
                 <td>".$row["actividad"]."</td>
                 <td>
                     <center>
-                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["asistencia"]."')>Finish</button>
+                        <button class='btn btn-rounded btn-danger' id='eliminar' data-toggle='modal' data-target='#delete-modal' onclick=idDel('".$row["asistencia"]."','".$row["hora_entrada"]."')>Finish</button>
                     </center>
                 </td>
             </tr>";
@@ -156,27 +156,11 @@ class mvcSession
     //Control para editar la hora de salida de la asistencia del alumno
     public function finalizarSessionController()
     {
-        //se verifica si se envio el id del grupo a eliminar
         if(isset($_POST["del"]))
         {
-            //de ser asi se guarda el id del grupo
-            $horaS = date("H:i:s");
-            $horaE = CRUDSession::horasSessionModel($_POST["del"],"asistencia");
-            $fecha1 = new DateTime($horaE["hora_entrada"]);//fecha inicial
-            $fecha2 = new DateTime($horaS);//fecha de cierre
-
-            $intervalo = $fecha1->diff($fecha2);
-            $intervalo = $intervalo->format('%H %i %s');
-            //si son mas de 45min se cuenta como hora
-            if($intervalo>="00:45:00"){
-              $completa = 1;
-            }else{
-              $completa = 0;
-            }
-
             $data = array("asistencia" => $_POST["del"],
-                          "horaS" => $horaS,
-                          "completa" => $completa);
+                          "horaS" => $_POST["salida"],
+                          "completa" => $_POST["completa"]); 
 
             //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
             $resp = CRUDSession::finalizarSessionModel($data,"asistencia");
@@ -199,24 +183,24 @@ class mvcSession
     public function terminarSessionController()
     {
         //se verifica si se envio el id del grupo a eliminar
-            //de ser asi se guarda el id del grupo
-            //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
-            $hora = date("H:i:s");
-            $resp = CRUDSession::terminarSessionModel($hora,1,"asistencia");
+        //de ser asi se guarda el id del grupo
+        //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
+        $hora = date("H:i:s");
+        $resp = CRUDSession::terminarSessionModel($hora,1,"asistencia");
 
-            //en caso de haberse eliminado correctamente
-            if($resp == "success")
-            {
-                //asignamos el tipo de mensaje a mostrar
-                $_SESSION["mensaje"] = "die";
+        //en caso de haberse eliminado correctamente
+        if($resp == "success")
+        {
+            //asignamos el tipo de mensaje a mostrar
+            $_SESSION["mensaje"] = "die";
 
-                //nos redireccionara a la sesion actual
-                echo "<script>
+            //nos redireccionara a la sesion actual
+            echo "<script>
                         window.location.replace('index.php?section=sessions&action=actual');
                       </script>";
-            }
+        }
     }
-    
+
     //control para obtener las horas de cai realizada por los alumnos
     public function historialSessionController()
     {
@@ -224,7 +208,7 @@ class mvcSession
         $data = array("teacher" => "",
                       "grupo" => "",
                       "alumno" => "");
-        
+
         //verificamos si envio informacion para filtrar los resultados
         if(isset($_POST))
         {
@@ -234,14 +218,14 @@ class mvcSession
                 //se le guarda el valor enviado
                 $data["teacher"] = $_POST["teacher"];
             }
-        
+
             //en caso de que se haya enviado informacion para filtrar por grupo
             if(!empty($_POST["grupo"]))
             {
                 //se le guarda el valor enviado
                 $data["grupo"] = $_POST["grupo"];
             }
-        
+
             //en caso de que se haya enviado informacion para filtrar por alumno
             if(!empty($_POST["alumno"]))
             {
@@ -249,7 +233,7 @@ class mvcSession
                 $data["alumno"] = $_POST["alumno"];
             }
         }
-        
+
         //se le manda al modelo para obtener la informacion de las horas de cai segun los filtros recibidos
         $resp = CRUDSession::historialSessionModel($data,"usuario","teacher","grupo","alumno","asistencia","actividad","unidad");
 
@@ -258,7 +242,7 @@ class mvcSession
         {
             //e imprimimos la informacion de cada una de las de cai realizadas
             echo 
-            "
+                "
             <tr class='fondoTabla'>
                 <td>".$row["matricula"]."</td>
                 <td>".$row["nombre"]." ".$row["apellido"]."</td>

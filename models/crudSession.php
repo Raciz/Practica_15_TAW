@@ -106,7 +106,7 @@ class CRUDSession
     public static function listadoSessionModel($tabla1,$tabla2, $tabla3, $tabla4, $tabla5)
     {
         //se prepara la sentencia para realizar la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT asi.id_asistencia as asistencia, a.nombre as nombre, a.apellido as apellido, g.codigo as grupo, c.nombre as carrera, act.nombre as actividad
+        $stmt = Conexion::conectar() -> prepare("SELECT asi.id_asistencia as asistencia, a.nombre as nombre, a.apellido as apellido, g.codigo as grupo, c.nombre as carrera, act.nombre as actividad, asi.hora_entrada
                                                         FROM $tabla1 as asi
                                                         JOIN $tabla2 as a on a.matricula = asi.alumno
                                                         JOIN $tabla3 as g on g.codigo = asi.grupo

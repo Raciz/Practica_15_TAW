@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-07-2018 a las 09:34:50
+-- Tiempo de generación: 01-08-2018 a las 18:50:10
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -67,9 +67,16 @@ CREATE TABLE `alumno` (
 --
 
 INSERT INTO `alumno` (`matricula`, `nombre`, `apellido`, `grupo`, `carrera`, `img`) VALUES
-(123, 'Miguel Angel', 'Perez Sanchez', 'EN-122', 'ITI', ''),
+(1450057, 'Liliana', 'Garcia Perez', 'EN-333', 'PYMES', 'views/media/img/1122016135356avatar10.png'),
+(1530011, 'Luis', 'Torres Grimaldo', 'EN-111', 'MECA', 'views/media/img/112201613261avatar-2.jpg'),
+(1530047, 'Rachel', 'Garner', 'EN-143', 'MECA', 'views/media/img/1122016134155avatar8.png'),
+(1530048, 'Ismael ', 'Torrez Ledezma', 'EN-122', 'ISA', 'views/media/img/112201613573avatar11.png'),
 (1530061, 'Karla Vanessa', 'Balderrama', 'EN-222', 'PYMES', 'views/media/img/2672018183229avatar-1.jpg'),
-(1530123, 'David', 'Tovias Alanis', 'EN-333', 'MECA', 'views/media/img/2672018183046avatar-3.jpg');
+(1530078, 'Juan Francisco', 'Hernandez Rios', 'EN-143', 'ITI', 'views/media/img/1122016132721avatar-5.jpg'),
+(1530123, 'David', 'Tovias Alanis', 'EN-333', 'MECA', 'views/media/img/2672018183046avatar-3.jpg'),
+(1560046, 'Isaac', 'Fooster', 'EN-333', 'ITI', 'views/media/img/1122016134614avatar9.png'),
+(1630034, 'Johana', 'Chavez Garcia', 'EN-122', 'MECA', 'views/media/img/1122016132958avatar-4.jpg'),
+(1630056, 'Alma', 'Hernandez Chavez', 'EN-111', 'PYMES', 'views/media/img/1122016133048avatar-6.jpg');
 
 -- --------------------------------------------------------
 
@@ -96,18 +103,33 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `grupo`, `hora_completa`) VALUES
-(6, '2018-07-10', '14:39:45', '14:41:30', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
-(7, '2018-07-10', '14:40:38', '15:41:13', 1530061, 6, 7, 6, 'Angela Carrizales', 'EN-222', 1),
-(8, '2018-07-10', '14:42:09', '15:48:26', 1530123, 5, 7, 6, 'Angela Carrizales', 'EN-333', 1),
-(9, '2018-07-26', '15:40:19', '16:25:17', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
-(10, '2018-07-26', '15:40:28', '15:42:52', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
-(11, '2018-07-26', '15:40:28', '15:43:04', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 0),
-(12, '2018-07-26', '15:40:23', '16:27:12', 1530123, 6, 7, 6, 'Angela Carrizales', 'EN-333', 1),
-(13, '2018-07-26', '15:42:33', '16:27:47', 1530061, 4, 7, 6, 'Angela Carrizales', 'EN-222', 1),
-(14, '2018-07-27', '03:01:28', '16:00:12', 1530061, 4, 7, 6, 'Angela Carrizales', 'EN-222', 1),
-(15, '2018-07-26', '16:00:56', '16:01:05', 1530061, 4, 7, 6, 'Angela Carrizales', 'EN-222', 0),
-(16, '2018-07-26', '16:02:00', '16:02:08', 1530123, 5, 7, 6, 'Angela Carrizales', 'EN-333', 0),
-(17, '2018-07-31', '11:10:53', '11:27:36', 1530061, 5, 7, 4, 'Angela Carrizales', 'EN-222', 0);
+(23, '2018-08-01', '12:10:32', '12:56:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 0),
+(24, '2018-08-01', '12:10:13', '13:18:32', 1450057, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(25, '2018-08-01', '12:10:25', '12:55:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
+(26, '2018-08-01', '12:10:44', '12:55:48', 1450057, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(27, '2018-08-01', '12:11:02', '12:57:03', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 1),
+(28, '2018-08-01', '12:11:23', '12:57:22', 1530048, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
+(29, '2018-08-01', '12:11:46', '12:57:33', 1530061, 5, 8, 4, 'Angela Carrizales', 'EN-222', 1),
+(30, '2018-08-01', '12:12:03', '12:58:34', 1530078, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
+(31, '2018-08-01', '12:12:28', '12:58:45', 1530123, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(32, '2018-08-01', '12:12:56', '12:59:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(33, '2018-08-01', '12:13:15', '12:59:39', 1630034, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
+(34, '2018-08-01', '12:13:35', '12:59:48', 1630056, 6, 8, 3, 'Talia Caballero', 'EN-111', 1),
+(35, '2018-08-02', '12:10:32', '12:56:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 0),
+(36, '2018-08-02', '12:10:13', '13:18:32', 1450057, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(37, '2018-08-02', '12:10:25', '12:55:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
+(38, '2018-08-02', '12:10:44', '12:55:48', 1450057, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(39, '2018-08-02', '12:11:02', '12:57:03', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 1),
+(40, '2018-08-02', '12:11:23', '12:57:22', 1530048, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
+(41, '2018-08-02', '12:11:46', '12:57:33', 1530061, 5, 8, 4, 'Angela Carrizales', 'EN-222', 1),
+(42, '2018-08-02', '12:12:03', '12:58:34', 1530078, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
+(43, '2018-08-02', '12:12:28', '12:58:45', 1530123, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(44, '2018-08-02', '12:12:56', '12:59:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(45, '2018-08-02', '12:13:15', '12:59:39', 1630034, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
+(46, '2018-08-02', '12:13:35', '12:59:48', 1630056, 6, 8, 3, 'Talia Caballero', 'EN-111', 1),
+(47, '2018-08-01', '13:08:33', '13:24:46', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 0),
+(48, '2018-08-01', '12:06:24', '12:51:24', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(49, '2018-08-01', '12:06:26', '12:51:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1);
 
 -- --------------------------------------------------------
 
@@ -190,10 +212,10 @@ CREATE TABLE `unidad` (
 --
 
 INSERT INTO `unidad` (`id_unidad`, `nombre`, `fecha_inicio`, `fecha_fin`) VALUES
-(5, 'Unit 1 2018-2', '2018-05-01', '2018-05-31'),
-(6, 'Unit 2 2018-2', '2018-06-01', '2018-06-30'),
-(7, 'Unit 3 2018-2', '2018-07-01', '2018-07-31'),
-(8, 'Unit 4 2018-2', '2018-08-01', '2018-08-31');
+(5, 'Unit 1', '2018-05-01', '2018-05-31'),
+(6, 'Unit 2', '2018-06-01', '2018-06-30'),
+(7, 'Unit 3', '2018-07-01', '2018-07-31'),
+(8, 'Unit 4', '2018-08-01', '2018-08-31');
 
 -- --------------------------------------------------------
 
@@ -296,7 +318,7 @@ ALTER TABLE `actividad`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `unidad`

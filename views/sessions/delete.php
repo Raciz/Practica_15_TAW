@@ -31,6 +31,8 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
                 <div class="modal-body">
 
                     <input type="hidden" id="del" name="del">
+                    <input type="hidden" id="completa" name="completa">
+                    <input type="hidden" id="salida" name="salida">
 
                     <div class="form-group">
                         <label class="control-label repairtext">Password</label>
@@ -54,14 +56,86 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     var form = document.getElementById("formDel");
 
     //funcion para obtener el id del grupo a eliminar
-    function idDel(del)
+    function idDel(del,horaE)
     {
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
         //le asignamos a value del que es el id del grupo a eliminar 
         input.setAttribute("value",del);
+
+        //ejecutamos la funcion para saber si es hora completa
+        horaCompleta(horaE);
     }
+
+    function horaCompleta(horaE)
+    {
+        var fecha = new Date(); //Date contiene fecha y hora
+        var segundos = 0; //variable para almacenar los segundos
+        var minutos = 0; //variable para almacenar los minutos
+        var horas = 0; //variable para almacenar las horas
+
+        //se obtienen los segundos y se es menor que dos digitos se antepone un 0
+        if(fecha.getSeconds()<10)
+        {
+            segundos = '0'+fecha.getSeconds();
+        }
+        else
+        {
+            segundos = fecha.getSeconds();
+        }
+
+        //se obtienen los minutos y se es menor que dos digitos se antepone un 0
+        if(fecha.getMinutes()<10)
+        {
+            minutos = '0'+fecha.getMinutes();
+        }
+        else
+        {
+            minutos = fecha.getMinutes();
+        }
+
+        //se obtienen las horas y se es menor que dos digitos se antepone un 0
+        if(fecha.getHours()<10)
+        {
+            horas = '0'+fecha.getHours();
+        }
+        else
+        {
+            horas = fecha.getHours();
+        }
+
+        var hora2 = horaE.split(':');
+
+        var t1 = new Date();
+        var t2 = new Date();
+        t1.setHours(horas, minutos, segundos);
+        t2.setHours(hora2[0], hora2[1], hora2[2]);
+
+
+        //se obtiene la diferencia entre las dos horas
+        t1.setHours(t1.getHours() - t2.getHours(), t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
+
+        var completa = 0;
+
+        if(t1.getMinutes()>=45 || t1.getHours() >= 1)
+        {
+            completa = 1;
+        }
+
+        //obtenemos el objeto del input hidden
+        var inputCompleta = document.getElementById("completa");
+
+        //le asignamos a value completa si es hora completa
+        inputCompleta.setAttribute("value",completa);
+
+        //obtenemos el objeto del input hidden
+        var inputCompleta = document.getElementById("salida");
+
+        //le asignamos a value salida la hora de salida 
+        inputCompleta.setAttribute("value",horas+":"+minutos+":"+segundos);
+    }
+
 
     (function()
      {
