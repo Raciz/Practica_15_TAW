@@ -20,15 +20,15 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 ?>
 
 <!-- Modal para agregar un nuevo usuario-->
-<div id="agregar-modal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <!--formulario para agregar un nuevo usuario en el sistema-->
         <form action="index.php?section=users&action=add" method="post">
             <div class="modal-content">
-                <!--<div class="modal-header">
+                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title repairtext">Add a new user</h4>
-                </div>-->
+                </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="control-label repairtext">Name</label>

@@ -205,20 +205,12 @@ class mvcSession
     public function historialSessionController()
     {
         //establecemos el valor por defectos de los filtros de busqueda para las hora de cai
-        $data = array("teacher" => "",
-                      "grupo" => "",
-                      "alumno" => "");
+        $data = array("grupo" => "",
+                      "unidad" => "");
 
         //verificamos si envio informacion para filtrar los resultados
         if(isset($_POST))
         {
-            //en caso de que se haya enviado informacion para filtrar por teacher
-            if(!empty($_POST["teacher"]))
-            {
-                //se le guarda el valor enviado
-                $data["teacher"] = $_POST["teacher"];
-            }
-
             //en caso de que se haya enviado informacion para filtrar por grupo
             if(!empty($_POST["grupo"]))
             {
@@ -227,32 +219,58 @@ class mvcSession
             }
 
             //en caso de que se haya enviado informacion para filtrar por alumno
-            if(!empty($_POST["alumno"]))
+            if(!empty($_POST["unidad"]))
             {
                 //se le guarda el valor enviado
-                $data["alumno"] = $_POST["alumno"];
+                $data["unidad"] = $_POST["unidad"];
             }
         }
 
         //se le manda al modelo para obtener la informacion de las horas de cai segun los filtros recibidos
-        $resp = CRUDSession::historialSessionModel($data,"usuario","teacher","grupo","alumno","asistencia","actividad","unidad");
+        $resp = CRUDSession::historialSessionModel($data,"usuario","teacher","grupo","alumno");
 
         //se imprime la informacion de cada uno de las horas de cai realizadas
         foreach($resp as $rows => $row)
         {
+            $hours = CRUDSession::horasModel($row["matricula"],$_POST["unidad"],"asistencia","unidad");
+            
             //e imprimimos la informacion de cada una de las de cai realizadas
             echo 
-                "
+            "
             <tr class='fondoTabla'>
                 <td>".$row["matricula"]."</td>
                 <td>".$row["nombre"]." ".$row["apellido"]."</td>
                 <td>Level ".$row["nivel"]."</td>
+                <td>".$row["teacher"]."</td>
+                <td>".$hours["horas"]." Hours</td>
+                <td>
+                    <a href='index.php?section=record&student=".$row["matricula"]."&group=".$row["grupo"]."&unit=".$_POST["unidad"]."'>
+                        <button class='btn btn-rounded btn-warning'>CAI Hours</button>
+                    </a>
+                </td>
+            </tr>
+            ";
+        }
+    }
+    
+    //Control para mostrar las horas de cai del alumno en una unidad
+    function horasCAIController()
+    {
+        //se le manda al modelo para obtener las hora de cai del alumno en una unidad
+        $data = CRUDSession::horasCAIModel($_GET["student"],$_GET["group"],$_GET["unit"],"asistencia","unidad","actividad","alumno");
+
+        foreach($data as $rows => $row)
+        {
+            //se imprime la informacion de las horas de cai
+            echo
+            "
+            <tr class='fondoTabla'>
+                <td>".$row["nombre"]." ".$row["apellido"]."</td>
                 <td>".$row["fecha"]."</td>
                 <td>".$row["hora_entrada"]."</td>
                 <td>".$row["hora_salida"]."</td>
                 <td>".$row["actividad"]."</td>
                 <td>".$row["unidad"]."</td>
-                <td>".$row["teacher"]."</td>
             </tr>
             ";
         }
