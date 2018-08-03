@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-08-2018 a las 18:50:10
+-- Tiempo de generación: 03-08-2018 a las 01:38:40
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -95,7 +95,7 @@ CREATE TABLE `asistencia` (
   `nivel` int(1) DEFAULT NULL,
   `teacher` varchar(50) DEFAULT NULL,
   `grupo` varchar(7) NOT NULL,
-  `hora_completa` int(1) NOT NULL
+  `hora_completa` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -105,21 +105,17 @@ CREATE TABLE `asistencia` (
 INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida`, `alumno`, `actividad`, `unidad`, `nivel`, `teacher`, `grupo`, `hora_completa`) VALUES
 (23, '2018-08-01', '12:10:32', '12:56:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 0),
 (24, '2018-08-01', '12:10:13', '13:18:32', 1450057, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
-(25, '2018-08-01', '12:10:25', '12:55:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
-(26, '2018-08-01', '12:10:44', '12:55:48', 1450057, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(25, '2018-08-03', '12:10:25', '12:55:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
 (27, '2018-08-01', '12:11:02', '12:57:03', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 1),
 (28, '2018-08-01', '12:11:23', '12:57:22', 1530048, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
 (29, '2018-08-01', '12:11:46', '12:57:33', 1530061, 5, 8, 4, 'Angela Carrizales', 'EN-222', 1),
 (30, '2018-08-01', '12:12:03', '12:58:34', 1530078, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
 (31, '2018-08-01', '12:12:28', '12:58:45', 1530123, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
-(32, '2018-08-01', '12:12:56', '12:59:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
 (33, '2018-08-01', '12:13:15', '12:59:39', 1630034, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
 (34, '2018-08-01', '12:13:35', '12:59:48', 1630056, 6, 8, 3, 'Talia Caballero', 'EN-111', 1),
-(35, '2018-08-02', '12:10:32', '12:56:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 0),
 (36, '2018-08-02', '12:10:13', '13:18:32', 1450057, 5, 8, 6, 'Angela Carrizales', 'EN-333', 1),
 (37, '2018-08-02', '12:10:25', '12:55:54', 1530047, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
-(38, '2018-08-02', '12:10:44', '12:55:48', 1450057, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
-(39, '2018-08-02', '12:11:02', '12:57:03', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 1),
+(38, '2018-08-03', '12:10:44', '12:55:48', 1450057, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
 (40, '2018-08-02', '12:11:23', '12:57:22', 1530048, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
 (41, '2018-08-02', '12:11:46', '12:57:33', 1530061, 5, 8, 4, 'Angela Carrizales', 'EN-222', 1),
 (42, '2018-08-02', '12:12:03', '12:58:34', 1530078, 5, 8, 3, 'Brian Becerra', 'EN-143', 1),
@@ -127,9 +123,11 @@ INSERT INTO `asistencia` (`id_asistencia`, `fecha`, `hora_entrada`, `hora_salida
 (44, '2018-08-02', '12:12:56', '12:59:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
 (45, '2018-08-02', '12:13:15', '12:59:39', 1630034, 4, 8, 9, 'Talia Caballero', 'EN-122', 1),
 (46, '2018-08-02', '12:13:35', '12:59:48', 1630056, 6, 8, 3, 'Talia Caballero', 'EN-111', 1),
-(47, '2018-08-01', '13:08:33', '13:24:46', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 0),
-(48, '2018-08-01', '12:06:24', '12:51:24', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
-(49, '2018-08-01', '12:06:26', '12:51:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1);
+(47, '2018-08-02', '13:08:33', '13:24:46', 1530011, 4, 8, 3, 'Talia Caballero', 'EN-111', 0),
+(49, '2018-08-01', '12:06:26', '12:51:26', 1560046, 6, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(50, '2018-08-02', '13:02:14', '14:00:00', 1530061, 5, 8, 4, 'Angela Carrizales', 'EN-222', 1),
+(51, '2018-08-02', '13:00:40', '14:00:00', 1450057, 4, 8, 6, 'Angela Carrizales', 'EN-333', 1),
+(52, '2018-08-02', '14:05:55', '15:00:34', 1530011, 5, 8, 3, 'Talia Caballero', 'EN-111', 1);
 
 -- --------------------------------------------------------
 
@@ -318,7 +316,7 @@ ALTER TABLE `actividad`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_asistencia` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `unidad`
