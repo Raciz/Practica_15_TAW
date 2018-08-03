@@ -250,7 +250,7 @@ class CRUDSession
         $stmt = Conexion::conectar() -> prepare("SELECT COUNT(*) as horas
                                                  FROM $tabla1 as a
                                                  JOIN $tabla2 as u on u.id_unidad = a.unidad
-                                                 WHERE a.alumno = :matricula && unidad = :unidad");
+                                                 WHERE a.alumno = :matricula && unidad = :unidad && hora_completa = 1");
 
         //asignamos los datos para el select
         $stmt -> bindParam(":matricula",$student,PDO::PARAM_INT);

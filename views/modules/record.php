@@ -129,7 +129,7 @@ if(!isset($_SESSION["nombre"]))
                 </table>
             </div>
         </div>
-        <?
+        <?php
         }
         else
         {
