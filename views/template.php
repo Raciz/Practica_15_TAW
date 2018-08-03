@@ -215,8 +215,8 @@ if(!empty($_SESSION["nombre"]))
                                 <li class="dropdown top-menu-item-xs">
                                     <a href="" class="dropdown-toggle menu-right-item profile" data-toggle="dropdown" aria-expanded="true"><img src="views/media/images/users/user1.png" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:void(0)"><i class="ti-user m-r-10"></i> Profile</a></li>
-                                        <li class="divider"></li>
+                                        <!--<li><a href="javascript:void(0)"><i class="ti-user m-r-10"></i> Profile</a></li>
+                                        <li class="divider"></li>-->
                                         <li><a href="index.php?section=logout"><i class="ti-power-off m-r-10"></i> Logout</a></li>
                                     </ul>
                                 </li>
