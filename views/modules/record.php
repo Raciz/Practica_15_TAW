@@ -102,6 +102,29 @@ if(!isset($_SESSION["nombre"]))
         if(!empty($_GET["student"]) && !empty($_GET["group"]) && !empty($_GET["unit"]))
         {
         ?>
+
+        <script>
+            //script para seleccionar al grupo que se utilizo para filtrar los resultados
+            var grupo = document.getElementById('grupo');
+            for(var i = 1; i < grupo.options.length; i++)
+            {
+                if(grupo.options[i].value =='<?php echo $_GET["group"]; ?>')
+                {
+                    grupo.selectedIndex = i;
+                }
+            }
+
+            //script para seleccionar al alumno que se utilizo para filtrar los resultados
+            var unidad = document.getElementById('unidad');
+            for(var i = 1; i < unidad.options.length; i++)
+            {
+                if(unidad.options[i].value ==<?php echo $_GET["unit"]; ?>)
+                {
+                    unidad.selectedIndex = i;
+                }
+            }
+        </script>
+
         <div class="col-sm-12">
             <div class="table-responsive m-b-20">
                 <!--Tabla para mostrar las horas de cai realizada por los alumnos-->
@@ -118,12 +141,12 @@ if(!isset($_SESSION["nombre"]))
                     </thead>
                     <tbody>
                         <?php
-                        
-                        //creamos un objeto de mvcSession
-                        $list = new mvcSession();
-                        
-                        //se manda a llamar el control para enlistar todas las horas de cai realizadas por los alumnos 
-                        $list -> horasCAIController();
+
+            //creamos un objeto de mvcSession
+            $list = new mvcSession();
+
+            //se manda a llamar el control para enlistar todas las horas de cai realizadas por los alumnos 
+            $list -> horasCAIController();
                         ?>
                     </tbody>
                 </table>
@@ -150,13 +173,13 @@ if(!isset($_SESSION["nombre"]))
                     </thead>
                     <tbody>
                         <?php
-                        if(!empty($_POST))
-                        {
-                            //creamos un objeto de mvcSession
-                            $list = new mvcSession();
-                            //se manda a llamar el control para enlistar todas las horas de cai realizadas por los alumnos 
-                            $list -> historialSessionController();
-                        }
+            if(!empty($_POST))
+            {
+                //creamos un objeto de mvcSession
+                $list = new mvcSession();
+                //se manda a llamar el control para enlistar todas las horas de cai realizadas por los alumnos 
+                $list -> historialSessionController();
+            }
                         ?>
                     </tbody>
                 </table>
@@ -165,7 +188,7 @@ if(!isset($_SESSION["nombre"]))
         <?php
         }
         ?>
-        
+
     </div>
 </div>
 <!-- end container -->
