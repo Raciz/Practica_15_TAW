@@ -90,7 +90,7 @@ if(!empty($_SESSION["mensaje"]))
         <div class="col-sm-12">
             <h4 class="m-t-0 header-title">Actual session</h4>
             <div class="pull-right" style="margin-top: -56px">
-              <b>Unit: </b> 
+              <b>Unit: </b>
                 <?php
                     //creamos un objeto de mvcSession
                     $list = new mvcSession();
@@ -100,7 +100,7 @@ if(!empty($_SESSION["mensaje"]))
                 ?>
                 <label id="hora"></label>
                 <script type="text/javascript">
-                    function mostrarhora(){ 
+                    function mostrarhora(){
                         var fecha = new Date(); //Date contiene fecha y hora
                         var segundos = 0; //variable para almacenar los segundos
                         var minutos = 0; //variable para almacenar los minutos
@@ -127,7 +127,7 @@ if(!empty($_SESSION["mensaje"]))
                             horas = fecha.getHours();
                         }
 
-                        cad=horas+":"+minutos+":"+segundos; 
+                        cad=horas+":"+minutos+":"+segundos;
                         var elementoHora = document.getElementById("hora");
                         var elementoBoton = document.getElementById("agregarStudent");
                         elementoHora.innerHTML = cad;
@@ -136,12 +136,12 @@ if(!empty($_SESSION["mensaje"]))
                         var data = ["08:50:00","09:45:00","11:10:00","12:05:00","13:00:00",
                         "14:00:00","14:55:00","15:50:00","16:45:00","17:30:00"];
                         var valor = -1;
-      
+
                         //aqui se busca obtener la diferencia que hay entre la hora actual y el
                         //horario de CAI para saber si es una hora valida en la que el alumno
                         //puede hacer una hora de CAI
                         for(var i=0;i<10;i++){
-                            var hora1 = cad.split(":"); //hora actual 
+                            var hora1 = cad.split(":"); //hora actual
                             var hora2 = data[i].split(":"); //horario de CAI
                             var t1 = new Date();
                             var t2 = new Date();
@@ -149,7 +149,7 @@ if(!empty($_SESSION["mensaje"]))
                             t2.setHours(hora2[0], hora2[1], hora2[2]);
 
                             //se obtiene la diferencia entre las dos horas
-                            t1.setHours(t1.getHours() - t2.getHours(), 
+                            t1.setHours(t1.getHours() - t2.getHours(),
                             t1.getMinutes() - t2.getMinutes(), t1.getSeconds() - t2.getSeconds());
                             //tolerancia de 10 minutos
                             if(t1.getMinutes()<=10 && t1.getHours()==0)
@@ -164,7 +164,7 @@ if(!empty($_SESSION["mensaje"]))
                                 valor = -1;
                             }
                         }
-                        
+
                         //si no es una hora valida se deshabilita el boton para agregar
                         if(valor==-1)
                         {
