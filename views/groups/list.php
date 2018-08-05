@@ -76,7 +76,7 @@ if(!empty($_SESSION["mensaje"]))
             <button class="btn btn-rounded btn-success" style="margin-bottom: 10px" data-toggle="modal" data-target="#agregar-modal">Add new</button>
             <div class="table-responsive m-b-20">
               <!--tabla para mostrar los grupos del sistema-->  
-              <table id="example1" class="table">
+              <table class="data table">
                     <thead>
                         <tr>
                             <th>ID</th>

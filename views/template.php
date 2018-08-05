@@ -344,30 +344,41 @@ if(!empty($_SESSION["nombre"]))
     </body>
 
     <script type="text/javascript">
-        $('#example1').DataTable
-        (
-            {
-                'paging'      : true,
-                'lengthChange': false,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : false
+                var handleDataTableButtons = 
+        function () 
+        {
+            "use strict";
+            0 !== $(".data").length && $(".data").DataTable({
+            dom: "Bfrtip",
+            buttons: 
+                [ 
+                    {
+                        extend: "csv",
+                        className: "btn-sm"
+                    }, 
+                    {
+                        extend: "excel",
+                        className: "btn-sm"
+                    }, 
+                    {
+                        extend: "pdf",
+                        className: "btn-sm"
+                    }
+                ],
+            responsive: !0
+        })
+    },
+    
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                handleDataTableButtons()
             }
-        );
+        }
+    }();
 
-        $('.data').DataTable
-        (
-            {
-
-                'paging'      : true,
-                'lengthChange': false,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : false
-            }
-        );
+        TableManageButtons.init();
 
         $(".select2").select2
         (
@@ -387,6 +398,7 @@ if(!empty($_SESSION["nombre"]))
         );
         };
     </script>
+    
     <style>
         .repairtext
         {

@@ -181,7 +181,7 @@ if(!empty($_SESSION["mensaje"]))
             <button id="agregarStudent" class="btn btn-rounded btn-success" style="margin-bottom: 10px"
              data-toggle="modal" data-target="#agregar-modal">Add student</button>
             <div class="table-responsive m-b-20">
-                <table id="example1" class="table">
+                <table class="data table">
                     <thead>
                         <tr>
                             <th>ID</th>

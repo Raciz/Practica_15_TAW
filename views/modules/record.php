@@ -128,7 +128,7 @@ if(!isset($_SESSION["nombre"]))
         <div class="col-sm-12">
             <div class="table-responsive m-b-20">
                 <!--Tabla para mostrar las horas de cai realizada por los alumnos-->
-                <table id="example1" class="table">
+                <table class="data table">
                     <thead>
                         <tr>
                             <th>Student</th>
@@ -160,7 +160,7 @@ if(!isset($_SESSION["nombre"]))
         <div class="col-sm-12">
             <div class="table-responsive m-b-20">
                 <!--Tabla para mostrar las horas de cai realizada por los alumnos-->
-                <table id="example1" class="table">
+                <table class="data table">
                     <thead>
                         <tr>
                             <th>Student ID</th>

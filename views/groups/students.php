@@ -63,7 +63,7 @@ if(!empty($_SESSION["mensaje"]))
             
             <div class="table-responsive m-b-20">
                 <!--tabla para mostrar a los alumnos del grupo-->
-                <table id="example1" class="table">
+                <table class="data table">
                     <thead>
                         <tr>
                             <th>ID</th>

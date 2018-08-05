@@ -33,16 +33,16 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="field-3" class="control-label repairtext">Code</label>
-                            <input type="text" name="siglas" class="form-control" id="field-3" placeholder="Code">
+                            <label class="control-label repairtext">Code</label>
+                            <input type="text" name="siglas" class="form-control" placeholder="Code">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="field-3" class="control-label repairtext">Name</label>
-                            <input type="text" name="nombre" class="form-control" id="field-3" placeholder="Name">
+                            <label class="control-label repairtext">Name</label>
+                            <input type="text" name="nombre" class="form-control" placeholder="Name">
                         </div>
                     </div>
                 </div>

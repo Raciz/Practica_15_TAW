@@ -30,7 +30,7 @@ $info = new mvcTeacher();
             <h4 class="m-t-0 header-title">CAI record</h4>
             <div class="table-responsive m-b-20">
                 <!--tabla para mostrar las horas de cai realizadas por el alumno-->
-                <table id="example1" class="table">
+                <table class="data table">
                     <thead>
                         <tr>
                             <th>Date</th>

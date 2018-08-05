@@ -15,7 +15,7 @@ if(!isset($_SESSION["nombre"]))
             <h4 class="m-t-0 header-title">My Groups</h4>
             <div class="table-responsive m-b-20">
                 <!--tabla para mostrar los grupos del teacher-->
-                <table id="example1" class="table">
+                <table class="data table">
                     <thead>
                         <tr>
                             <th>ID</th>
