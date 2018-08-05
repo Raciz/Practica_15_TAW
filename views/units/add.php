@@ -19,7 +19,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="add")
 }
 ?>
 
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar una nueva unidad-->
 <div id="agregar-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <!--Formulario para agregar una nueva unidad-->

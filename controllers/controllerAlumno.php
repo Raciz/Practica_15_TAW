@@ -274,20 +274,6 @@ class mvcAlumno
             }
         }
     }
-    
-    //Control para mostrar a todos los alumnos en un select
-    public function optionTodosAlumnosController()
-    {
-        //se le manda al modelo el nombre de la tabla a mostrar su informacion
-        $data = CRUDAlumno::optionTodosAlumnosModel("alumno");
-
-        //mostramos el nombre de cada una de los alumnos
-        foreach($data as $rows => $row)
-        {
-            //se muestra cada una de los alumnos en un option del select
-            echo "<option value='".$row["matricula"]."'>".$row["nombre"]." ".$row["apellido"]."</option>";
-        }
-    }
 //------------------------------------------------------------------------------------- 
     //Control para mostrar a los alumnos sin grupo en un select
     public function optionAlumnoController()
@@ -396,7 +382,7 @@ class mvcAlumno
         foreach($data as $rows => $row)
         {
             //se muestra cada una de los alumnos en un option del select
-            echo "<option value='".$row["matricula"]."'>".$row["nombre"]." ".$row["apellido"]."</option>";
+            echo "<option value='".$row["matricula"]."'>".$row["nombre"]." ".$row["apellido"]." (".$row["matricula"].")</option>";
         }
     }
 }

@@ -131,10 +131,13 @@ class mvcTeacher
         ";
     }
 
-    function idGrupoAlumno(){
-        //se le manda al modelo el nombre de la tabla a mostrar la informacion del alumno
+    //controller para obtener el nombre del grupo de un alumno 
+    function idGrupoAlumno()
+    {
+        //se le manda al modelo el nombre de la tabla a mostrar la informacion del grupo alumno
         $data = CRUDTeacher::dataAlumnoModel($_GET["student"],"alumno");
 
+        //se retorna el nombre del grupo
         return $data["grupo"];
     }
 

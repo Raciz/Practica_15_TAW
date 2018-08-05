@@ -47,9 +47,10 @@ if(!empty($_SESSION["mensaje"]))
             </script>";
 
     }
+    //si session en mensaje es finalizacion de la hora automatica
     elseif ($_SESSION["mensaje"]=="die")
     {
-
+        //se muestra el sweet alert de finalizacion de la hora automatica
         echo"<script>
                 swal
                 (
@@ -63,9 +64,10 @@ if(!empty($_SESSION["mensaje"]))
                 )
             </script>";
     }
+    //si session en mensaje de error
     elseif ($_SESSION["mensaje"]=="error")
     {
-
+        //se muestra el sweet alert de error
         echo"<script>
                 swal
                 (

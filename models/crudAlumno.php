@@ -139,22 +139,6 @@ class CRUDAlumno
         $stmt->close();
     }
     
-    //modelo para obtener la informacion de todos los alumnos
-    public static function optionTodosAlumnosModel($tabla)
-    {
-        //preparamos la consulta
-        $stmt = Conexion::conectar() -> prepare("SELECT * FROM $tabla");
-
-        //se ejecuta la consulta
-        $stmt -> execute();
-
-        //retornamos la informacion de la tabla
-        return $stmt -> fetchAll();
-
-        //cerramos la conexion
-        $stmt -> close();
-    }
-    
     //----------------------------------------------------------------------------------------
     
     //modelo para obtener la informacion de los alumnos sin grupos

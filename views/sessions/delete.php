@@ -8,18 +8,18 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para eliminar un grupo del sistema
+//verificamos si se debe mandar a llamar el controller para finalizar una session
 if(isset($_GET["action"]) && $_GET["action"]=="delete")
 {
     //se crea un objeto de mvcSession
     $delete = new mvcSession();
 
-    //se manda a llamar el controller para eliminar un Grupo
+    //se manda a llamar el controller para eliminar una session
     $delete -> finalizarSessionController();
 }
 ?>
 
-<!-- Modal para eliminar un grupo del sistema -->
+<!-- Modal para eliminar una session-->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
         <form id="formDel" action="index.php?section=sessions&action=delete" method="post">
@@ -55,13 +55,13 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
     //variable para modificar el formulario
     var form = document.getElementById("formDel");
 
-    //funcion para obtener el id del grupo a eliminar
+    //funcion para obtener el id de la session a terminar
     function idDel(del,horaE)
     {
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
-        //le asignamos a value del que es el id del grupo a eliminar 
+        //le asignamos a value del que es el id de la session a terminar 
         input.setAttribute("value",del);
 
         //ejecutamos la funcion para saber si es hora completa

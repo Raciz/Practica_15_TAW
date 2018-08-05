@@ -60,7 +60,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="delete")
         //obtenemos el objeto del input hidden
         var input = document.getElementById("del");
 
-        //le asignamos a value del que es el id de la carrera a eliminar 
+        //le asignamos a value del que es el id de la actividad a eliminar 
         input.setAttribute("value",del);
     }
 

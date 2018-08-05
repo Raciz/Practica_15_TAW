@@ -23,7 +23,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="edit")
 if(!empty($_GET["edit"]))
 {
 ?>
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para agregar un nuevo grupo-->
 <div id="editar-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block; padding-right: 15px;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -40,7 +40,7 @@ if(!empty($_GET["edit"]))
                     //creamos un objeto de mvcGrupo
                     $edit = new mvcGrupo();
                     
-                    //mandamos a llamar a el controller para obtener la informacion del usuario
+                    //mandamos a llamar a el controller para obtener la informacion del grupo
                     $edit -> editarGrupoController();
                     ?> 
                 </div>

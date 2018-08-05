@@ -8,13 +8,13 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para modificar un usuario
+//verificamos si se debe mandar a llamar el controller para modificar un alumno
 if(isset($_GET["action"]) && $_GET["action"]=="edit")
 {
-    //creamos un objeto de mvcUsuario
+    //creamos un objeto de mvcAlumno
     $edit = new mvcAlumno();
 
-    //se manda a llamar el controller para modificar la informacion de un Usuario
+    //se manda a llamar el controller para modificar la informacion de un alumno
     $edit -> modificarAlumnoController();
 }
 
@@ -24,7 +24,7 @@ if(isset($_GET["action"]) && $_GET["action"]=="edit")
 if(!empty($_GET["edit"]))
 {
 ?>
-<!-- Modal para agregar una nueva carrera -->
+<!-- Modal para modificar un alumno -->
 <div id="editar-modal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: block; padding-right: 15px;">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -39,10 +39,10 @@ if(!empty($_GET["edit"]))
             <form method="post" action="index.php?section=students&action=edit" autocomplete="off">
                 <div class="modal-body">
                     <?php
-                    //creamos un objeto de mvcUsuario
+                    //creamos un objeto de mvcAlumno
                     $edit = new mvcAlumno();
 
-                    //mandamos a llamar a el controller para obtener la informacion del usuario
+                    //mandamos a llamar a el controller para obtener la informacion del Alumno
                     $edit -> editarAlumnoController();
                     ?>
                 </div>

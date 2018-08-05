@@ -8,21 +8,21 @@ if(!isset($_SESSION["nombre"]))
           </script>";
 }
 
-//verificamos si se debe mandar a llamar el controller para eliminar un usuario del sistema
+//verificamos si se debe mandar a llamar el controller para eliminar un alumno del sistema
 if(isset($_GET["action"]) && $_GET["action"]=="delete")
 {
-    //se crea un objeto de mvcUsuario
+    //se crea un objeto de mvcAlumno
     $delete = new mvcAlumno();
 
-    //se manda a llamar el controller para eliminar un Usuario
+    //se manda a llamar el controller para eliminar un alumno
     $delete -> eliminarAlumnoController();
 }
 ?>
 
-<!-- Modal para eliminar una usuario del sistema -->
+<!-- Modal para eliminar un alumno del sistema -->
 <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <!--formulario para la confirmacion del borrado del estudiante-->
+        <!--formulario para la confirmacion del borrado del alumno-->
         <form id="formDel" action="index.php?section=students&action=delete" method="post">
             <div class="modal-content">
                 <div class="modal-header">

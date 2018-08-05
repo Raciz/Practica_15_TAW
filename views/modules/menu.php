@@ -1,7 +1,7 @@
 <!-- Left Menu Start -->
 <ul class="metisMenu nav" id="side-menu">
     <?php
-    //verificamos que tipo de usuario es
+    //verificamos que tipo de usuario es administrador
     if($_SESSION["tipo"]=="Administrator")
     {
     ?>
@@ -18,7 +18,7 @@
     else if($_SESSION["tipo"]=="Teacher")
     {
     ?>
-    <!-- y si es teacher mostramos esta opcione-->
+    <!-- y si es teacher mostramos esta opciones-->
     <li><a href="index.php?section=groups&action=my-groups"><i class="ti-home"></i>Dashboard</a></li>
     <?php
     }

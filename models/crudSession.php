@@ -1,7 +1,7 @@
 <?php
 require_once "conexion.php";
 
-//clase para realizar operaciones a la base de datos para la seccion de asistencia
+//clase para realizar operaciones a la base de datos para la seccion de session
 class CRUDSession
 {
     //modelo para mostrar informacion del alumno
@@ -123,7 +123,7 @@ class CRUDSession
         $stmt -> close();
     }
 
-    //modelo para 
+    //modelo para obtener la informacion de una session
     public static function horasSessionModel($data,$tabla)
     {
         //preparamos la sentencia para realizar el select
@@ -266,11 +266,14 @@ class CRUDSession
         $stmt -> close();
     }
 
+    //modelo para terminar las horas de cai automaticamente
     public static function terminar()
     {
+        //obtenemos las hora actual
         $hora = Date("H:i:s");
         $completa = 1;
 
+        //preparamos el update
         $stmt = Conexion::conectar()->prepare("UPDATE asistencia SET hora_salida = :horaS, hora_completa = :completa WHERE hora_salida IS NULL");
 
         //se realiza la asignacion de los datos para el update

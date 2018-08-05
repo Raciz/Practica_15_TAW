@@ -209,7 +209,7 @@ class mvcGrupo
         //mostramos a cada uno de los grupos en el select
         foreach($data as $rows => $row)
         {
-            //se muestra cada una de los grupos en un option del select
+            //se muestra cada uno de los grupos en un option del select
             echo "<option class='repairtext' value=".$row["codigo"].">".$row["teacher"]." - ".$row["codigo"]."</option>";
         }
     }

@@ -2,13 +2,13 @@
 
 class mvcSession
 {
-    //Control para poder mostrar la informacion de una asistencia
+    //Control para poder mostrar la informacion de un alumno antes de registrarlo en la session
     public function mostrarSessionController($id, $actividad)
     {
-        //se obtiene el id de la asistencia a mostrar su informacion
+        //se obtiene el id del alumno a mostrar su informacion
         $data = $id;
 
-        //se manda el id de la asistencia y el nombre de la tabla donde esta almacenada
+        //se manda el id del alumno y el nombre de la tabla donde esta almacenada
         $resp = CRUDSession::mostrarSessionModel($data,"alumno","carrera");
 
         //se imprime la informacion de la asistencia en inputs de un formulario
@@ -78,13 +78,13 @@ class mvcSession
       }
     }*/
 
-    //Control para manejar el registro de un nuevo alumno a la sesión
+    //Control para agregar un nuevo alumno a la sesión
     function agregarSessionController()
     {
         //se verifica si mediante el formulario se envio informacion
         if(isset($_POST["matricula"]))
         {
-            //se guardan la informacion del grupo
+            //se guardan la informacion de la session a la que ingresara el alumno
             $fecha = date("Y-m-d");
             $horaE = date("H:i:s");
             $unidad = CRUDSession::unidadesSessionModel($fecha,"unidad");
@@ -107,7 +107,7 @@ class mvcSession
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "add";
 
-                //nos redireccionara al listado de grupos
+                //nos redireccionara al listado de la session actual
                 echo "<script>
                         window.location.replace('index.php?section=sessions&action=actual');
                       </script>";
@@ -123,8 +123,13 @@ class mvcSession
     //funcion para saber la unidad
     function saberUnidad($fecha)
     {
+        //se le manda al modelo la fecha actual y la tabla para obtener la unidad
         $unidad = CRUDSession::unidadesSessionModel($fecha,"unidad");
+        
+        //se obtiene unicamente el numero de la unidad
         $unidad = explode(" ", $unidad["nombre"]);
+        
+        //se retorna el numero de la unidad actual
         return $unidad[1];
     }
 
@@ -134,10 +139,10 @@ class mvcSession
         //se le manda al modelo el nombre de la tabla a mostrar la informacion de la asistencia
         $data = CRUDSession::listadoSessionModel("asistencia","alumno","grupo","carrera","actividad");
 
-        //se imprime la informacion de cada uno de las carreras registradas
+        //se imprime la informacion de cada uno de alumnos en la session actual
         foreach($data as $rows => $row)
         {
-            //e imprimimos la informacion de cada una de las carreras
+            //e imprimimos la informacion de cada uno de los alumnos
             echo "<tr class='fondoTabla'>
                 <td>".$row["asistencia"]."</td>
                 <td>".$row["nombre"]." ".$row["apellido"]."</td>
@@ -156,22 +161,24 @@ class mvcSession
     //Control para editar la hora de salida de la asistencia del alumno
     public function finalizarSessionController()
     {
+        //se verifica si se envio el id del alumno a terminar la session
         if(isset($_POST["del"]))
         {
+            //guerdamos los datos enviados
             $data = array("asistencia" => $_POST["del"],
                           "horaS" => $_POST["salida"],
                           "completa" => $_POST["completa"]); 
 
-            //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
+            //y se manda al modelo los dato y el nombre de la tabla
             $resp = CRUDSession::finalizarSessionModel($data,"asistencia");
 
-            //en caso de haberse eliminado correctamente
+            //en caso de haberse terminado correctamente
             if($resp == "success")
             {
                 //asignamos el tipo de mensaje a mostrar
                 $_SESSION["mensaje"] = "delete";
 
-                //nos redireccionara al listado de grupos
+                //nos redireccionara al listado de la session actual
                 echo "<script>
                         window.location.replace('index.php?section=sessions&action=actual');
                       </script>";
@@ -182,13 +189,13 @@ class mvcSession
     //Control para terminar la hora de salida de la asistencia del alumno
     public function terminarSessionController()
     {
-        //se verifica si se envio el id del grupo a eliminar
-        //de ser asi se guarda el id del grupo
-        //y se manda al modelo el id y el nombre de la tabla de donde se va a eliminar
+        //se obtiene lahora de termino
         $hora = date("H:i:s");
+        
+        //se envia al modelo los datos y el nombre de la tabla
         $resp = CRUDSession::terminarSessionModel($hora,1,"asistencia");
 
-        //en caso de haberse eliminado correctamente
+        //en caso de haberse terminado correctamente
         if($resp == "success")
         {
             //asignamos el tipo de mensaje a mostrar
