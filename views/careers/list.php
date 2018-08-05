@@ -55,7 +55,7 @@ if(!empty($_SESSION["mensaje"]))
                 (
                     {
                         title: 'Successful Edited:',
-                        text: 'the information of a race has been edited',
+                        text: 'the information of a career has been edited',
                         type: 'success',
                         confirmButtonText: 'continue',
                         confirmButtonColor: '#4fa7f3'
